@@ -27,154 +27,39 @@ $fid=$_GET['id'];
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
-  <style>
-    @media print{
-      body * {
-        visibility: hidden;
-      }
-      .tbl * {
-        visibility: visible;
-      }
-    }
-   </style>
 </head>
 <body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <?php include("partials/header.php"); ?>
 
-    
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+  
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <?php include("partials/sidebar.php"); ?>     
+
+      <!-- partial -->
       <div class="main-panel">
-        <div class="">
-        <input type = "button" value = "Print" onclick = "window.print()" />
-          <div class="row">
+        <div class="content-wrapper">
+         
             <div class="col-sm-12">
               <div class="home-tab">
-
-                <div class="tab-content tab-content-basic">
-				  <div class="col-lg-12 grid-margin stretch-card">
-              <div class="tbl">
-                <div class="card-body">
-					<div class="row" align="center">
-						 <h2>भाडेकरु माहिती फॉर्म</h2>
-					</div>
-					<div class="row" >
-						<div class="col-lg-8">
-						 </div>
-						<div class="col-lg-4">
-						 <h4>रजिस्टर नंबर :-</h4>
-					</div>
-					</div>
-					<div class="row" >
-						<div class="col-lg-8">
-						 </div>
-						<div class="col-lg-4">
-						 <h4>दिनांक :-</h4>
-					</div>
-					</div>
-					<div class="col" >
-					
-					</div>
-					<div class="row justify-content-start" style="padding-top:10px;">
-
-                <div class="col" style="padding-top:10px;">
-				<img alt="Image html" width="90%" height="90%" style="max-height:500px;max-width:400px;" src="images/Shape 1.svg">
-                </div>
-                <div class="col" style="padding-top:10px;">
-				<img alt="Image html" width="90%" height="90%" style="max-height:500px;max-width:400px;" src="images/Shape 1.svg">
-                </div>
-                <div class="col" style="padding-top:10px;">
-				<img alt="Image html" width="90%" height="90%" style="max-height:500px;max-width:400px;" src="images/Shape 1.svg">
-                </div>
-                <div class="col" style="padding-top:10px;">
-				<img alt="Image html" width="90%" height="90%" style="max-height:500px;max-width:400px;" src="images/Shape 1.svg">
-                </div>
-                <div class="col" style="padding-top:10px;">
-				<img alt="Image html" width="90%" height="90%" style="max-height:500px;max-width:400px;" src="images/Shape 1.svg">
-                </div>						
-                </div>
-                  <div class="table-responsive pt-3">
-                      <table class="table table-bordered">
-                      
-                        <tbody>
-                        <?php 
-                        
-                          $sql=mysqli_query($conn,"select * from owner where document_no= '$fid'");
-                          while($arr=mysqli_fetch_array($sql)){
-                          ?>
-                          <tr>
-                           <th class="col-1 ">१</th>
-                            <th class="col-5">घर मालकाचे संपूर्ण नाव, सध्याचा पत्त, वय, मोबाईल क्रमांक <br><br> Name, Address & Mobile No of Owner</th>
-                            <td class="col-6"><label><?php echo $arr['fullname'];?></label></br>
-                        
-                            <label><?php echo $arr['address'];?></label></br>
-                            <label><?php echo $arr['mobile'];?></label></br>
-                            
-                          
-                          </td>
-                          </tr>
-                          
-                          <tr>
-                           <th class="col-1 ">२</th>
-                            <th class="col-5">घर मालकाचे संपूर्ण नाव, सध्याचा पत्त, वय, मोबाईल क्रमांक <br><br>Pancard No and Aadhar Card No of Owner</th>
-                            <td class="col-6">
-                            <label><?php echo $arr['pan_card'];?></label></br>
-                            <label><?php echo $arr['aadhaar'];?></label></br>
-                          
-                          </td>
-                          </tr>
-                          <?php } ?>
-                          <?php 
-                        
-                        $sql=mysqli_query($conn,"select * from tenant where document_no= '$fid'");
-                        while($arr=mysqli_fetch_array($sql)){
-                        ?>
-							<tr>
-                           <th class="col-1 ">३</th>
-                            <th class="col-5">भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्त, वय, मोबाईल क्रमांक<br><br>Name, Previous Address, Mobile No of Tenant</th>
-                            <td class="col-6"><label><?php echo $arr['fullname'];?></label></br>
-                        
-                        <label><?php echo $arr['address'];?></label></br>
-                        <label><?php echo $arr['mobile'];?></label></br>
- 
-                      </td>
-                          </tr>
-                          <tr>
-                           <th class="col-1 ">४</th>
-                            <th class="col-5">भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्त, वय, मोबाईल क्रमांक<br><br>Pancard No and Aadhar Card No of Tenant</th>
-                            <td class="col-6">
-                        <label><?php echo $arr['pan_card'];?></label></br>
-                         <label><?php echo $arr['aadhaar'];?></label></br>
-                      </td>
-                          </tr>
-							<tr>
-                           <th class="col-1 ">५</th>
-                            <th class="col-5">भाडेकरुचे मूळ गावचा पत्ता, फोन नंबर<br><br> Permanent Address of Tenant</th>
-                            <td class="col-6"> <label><?php echo $arr['permanent_address'];?></label></td>
-                          </tr>
-                          <?php } ?>
-
-                          <?php 
-                        
-                        $sql=mysqli_query($conn,"select * from property_details where document_no= '$fid'");
-                        while($arr=mysqli_fetch_array($sql)){
-                        ?>
-							<tr>
-							<th class="col-1 ">६</th>
-                            <th class="col-5">भाड्याने देण्यात येणाऱ्या जागेचा पत्ता <br><br>Address of Rental Room</th>
-                            <td class="col-6"><label><?php echo $arr['address'];?></label></td>
-                          </tr>
-                          <?php } ?>
-							<tr>
-							<th class="col-1 ">७</th>
-                            <th class="col-5">एजंटचे नाव, पत्ता, मोबाईल क्रमांक<br><br>Name of Agent, Address & Mobile No.</th>
-                            <td class="col-6"></td>
-                          </tr>
-					
-							
- 
-                        </tbody>
-                      </table>
+                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+              
+                  <div>
+                    <div class="btn-wrapper">
+                      <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
+                      <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
+                      <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
+                    </div>
                   </div>
                 </div>
-            
+                <div class="tab-content tab-content-basic">
+				  <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
                 <div class="card-body">
 
                   <div class="table-responsive pt-3">
@@ -316,18 +201,20 @@ $fid=$_GET['id'];
 						 <h4>सदर माहितीचा / फॉर्मचा उपयोग केवळ पोलीसांच्या रेकॉर्डसाठी असून अन्य कोणत्याही कारणासाठी पुरवा म्हणून वापरता येणार नाही . </h4>
 					</div>
 					</div>
-				  
-              </div>
+				  </div>
               </div>
             </div>
 					</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-</div>
-</div>
+	
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
+        <?php include("partials/footer.php"); ?>
+
         <!-- partial -->
       </div>
       <!-- main-panel ends -->

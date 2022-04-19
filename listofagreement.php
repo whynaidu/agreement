@@ -1,3 +1,21 @@
+
+<?php  
+include("include/configure.inc.php");
+$fid=$_GET['id'];
+
+if(isset($_GET['delid'])){
+  $id=mysqli_real_escape_string($conn,$_GET['delid']);
+  $sql=mysqli_query($conn,"delete new_agreement.*,tenant.*,owner.*,property_details.*,amenities.*, family_members.*,payment.* from new_agreement inner join tenant on new_agreement.document_no=tenant.document_no inner join owner on new_agreement.document_no=owner.document_no inner join property_details on new_agreement.document_no=property_details.document_no 
+  inner join amenities on new_agreement.document_no=amenities.document_no inner 
+  join family_members on new_agreement.document_no=family_members.document_no 
+  inner join payment on new_agreement.document_no=payment.document_no where 
+  new_agreement.document_no='$id'");
+  if($sql=1){
+   header("location:listofagreement.php");
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -380,8 +398,8 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
 				<li class="nav-item"> <a class="nav-link " href="newagreement.html">New Agreement</a></li>
-				<li class="nav-item"> <a class="nav-link" href="">List of Agreement</a></li>
-				<li class="nav-item"> <a class="nav-link" href="">Police NOC</a></li>
+				<li class="nav-item"> <a class="nav-link active" href="listofagreement.html">List of Agreement</a></li>
+				<li class="nav-item"> <a class="nav-link" href="policenoc.html">Police NOC</a></li>
 			    <li class="nav-item"> <a class="nav-link" href="">Payment Receipt</a></li>
               </ul>
             </div>
@@ -421,134 +439,44 @@
 				  <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-
+				<h4 class="card-title">List of Agreements</h4>
                   <div class="table-responsive pt-3">
-					  <table class="table table-bordered">
-					<tbody>                   
-		<tr>
-			<th rowspan="2">८</th>
-			<th colspan="2" rowspan="2">भाडेकरुचे परिवारातील सदस्यांची संख्या <br><br> No. of Family Members</th>
-			<th colspan="2" align="center">पुरुष</th>
-			<th colspan="2" align="center">स्त्रिया</th>
-			<th colspan="2" align="center">लहान मुले</th>
-		</tr>
-		<tr>
-			<td colspan="2"></td>
-			<td colspan="2"></td>
-			<td colspan="2"></td>
-		</tr>
-		<tr>
-			<th>९</th>
-			<th colspan="2">ई-मेल आयडी<br><br>E-mail ID of Tenant</th>
-			<td colspan="6"></td>
-		</tr>
-		<tr>
-			<th>१०</th>
-			<th colspan="2">पासपोर्ट नंबर <br><br> Passport No. of Tenant</th>
-			<td colspan="6"></td>
-		</tr>
-		<tr>
-			<th>११</th>
-			<th colspan="2">कामाचे स्वरूप [पुराव्यासह]<br><br>Nature of Work & Proof</th>
-			<td colspan="6"></td>
-		</tr>
-		<tr>
-			<th>१२</th>
-			<th colspan="2">काम करत असलेल्या कार्यालयाचे नाव, पत्ता, फोन नंबर <br><br> Office Name, Address & Phone No.</th>
-			<td colspan="6"></td>
-		</tr>
-		<tr>
-			<th>१३</th>
-			<th colspan="2">भाडेकरुला ओळखणाऱ्या दोन व्यक्तीचे संपूर्ण नाव, पत्ता, मोबाईल क्रमांक <br><br>Two persons reference with Address & Mobile No.</th>
-			<td colspan="6"></td>
-		</tr>
-		<tr>
-			<th>१४</th>
-			<th colspan="2">करार केल्याची तारीक व कराराचा कालावधी <br><br>Date of Agreement & Period</th>
-			<td colspan="6"></td>
-		</tr>
-	</tbody>
-</table>
-                  </div><br>
-                 <div class="row" align="center">
-					 <h4>अर्जा सोबत सादर करावयाची छायांकीत प्रमाणपत्रे</h4>
-					</div>
-					<div class="row">
-					 <div class="col-lg-6" align="center">
-						<h4>घर मालक</h4>
-						</div>
-						<div class="col-lg-6" align="center">
-						 <h4> भाडेकरु</h4>
-					</div>
-					</div>
-					<div class="row">
-						<div class="col-md-1" align="right">
-						<h4> १ )</h4>
-						</div>
-					 <div class="col-lg-5">
-						<h4>ओळखपत्र </h4>
-						</div>
-						<div class="col-md-1" align="right">
-						<h4>१ )</h4>
-						</div>
-						<div class="col-lg-5">
-						 <h4>कंपनीचे ओळखपत्र</h4>
-					</div>
-					</div>
-					<div class="row">
-						<div class="col-md-1" align="right">
-						<h4>२ )</h4>
-						</div>
-					 <div class="col-lg-5">
-						<h4>राहण्याचा पुरावा </h4>
-						</div>
-						<div class="col-md-1" align="right">
-						<h4>२ )</h4>
-						</div>
-						<div class="col-lg-5">
-						 <h4>काम करीत असलेल्या ठिकाणचे सिलसहित प्रमाणपत्र</h4>
-					</div>
-					</div>
-					<div class="row">
-						<div class="col-md-1" align="right">
-						<h4>३ )</h4>
-						</div>
-					 <div class="col-lg-5">
-						<h4>लाईटबील , पजेशन लेटर , पाणीबील , टॅक्सबील, सोसायटी मेंटेनन्स पावती यापैकी कोणतेही एक</h4>
-						</div>
-						<div class="col-md-1" align="right">
-						<h4>३ )</h4>
-						</div>
-						<div class="col-lg-5">
-						 <h4>मूळ वास्तव्याचा पुरावा [मतदान ओळखपत्र, पासपोर्ट, ग्रामपंचायत दाखला , शाळेचा दाखला , रेशनकार्ड यापैकी कोणतेही एक]</h4>
-					</div>
-					</div>
-					 <br><br><br><br>
-				  <div class="row">
-					 <div class="col-lg-6" align="center">
-						<h4>घर मालकाची स्वाक्षरी Signature of Owner</h4>
-						</div>
-						<div class="col-lg-6" align="center">
-						 <h4>भाडेकरूची स्वाक्षरी Signature of Tenant</h4>
-					</div>
-					</div>
-					<br>
-					<div class="row" align="center">
-					 <h4>घोषणापत्र</h4>
-					</div>
-					<div class="row" align="center">
-					 <h4>वरील भरुन दिलेली माहिती ही खरी असून त्यामध्ये काही खोटे आढळल्यास भी कायदेशीर कार्यवाहीस पात्र राहिन.</h4>
-					</div>
-					<br>
-					<div class="row">
-					 <div class="col-lg-2" align="right">
-						<h4>टिप:-</h4>
-						</div>
-						<div class="col-lg-10" align="left">
-						 <h4>सदर माहितीचा / फॉर्मचा उपयोग केवळ पोलीसांच्या रेकॉर्डसाठी असून अन्य कोणत्याही कारणासाठी पुरवा म्हणून वापरता येणार नाही . </h4>
-					</div>
-					</div>
-				  </div>
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Sr.No</th>
+                            <th>Client Name</th>
+                            <th>Mobile No.</th>
+                            <th>Date of Aggrement</th>
+                            <th>Date of Expiry</th>
+							<th>Action</th>
+                          </tr>
+                        </thead>
+
+                        <?php                 
+      $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile from new_agreement inner join tenant on tenant.document_no=new_agreement.document_no");
+      $count=1;
+      while($row = mysqli_fetch_array($sql)) {
+      ?>
+                        <tbody>
+                          <tr>
+                            <td>  <?php echo $count;?> </td>
+                            <td> <?php echo $row["tname"]; ?> </td>
+                            <td><?php echo $row["tmobile"]; ?> </td>
+                            <td><?php echo $row["doa"]; ?> </td>
+                            <td> May 15, 2015 </td>
+                            <td><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-pencil"></i> </button>
+                            <a class="btn btn-danger btn-rounded btn-icon" href="listofagreement.php?delid=<?php echo $row['did']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
+                          <i class="mdi mdi-delete"></i>
+                          </a></td>
+                          </tr>
+                        </tbody>
+                        <?php $count++;
+} ?>  
+
+                      </table>
+                  </div>
+                </div>
               </div>
             </div>
 					</div>
@@ -560,12 +488,8 @@
 		</div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">TECTIGNIS IT SOLUTIONS PVT. LTD.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
-          </div>
-        </footer>
+        <?php include("partials/footer.php"); ?>
+
         <!-- partial -->
       </div>
       <!-- main-panel ends -->

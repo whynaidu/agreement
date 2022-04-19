@@ -9,8 +9,11 @@ if(isset($_POST['submit'])){
 	$mobile=$_POST['mobile'];
 	$aadhaar=$_POST['aadhaar'];
 	$pancard=$_POST['pancard'];
+  $email=$_POST['email'];
+	$passport=$_POST['passport'];
 	
-	$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`, `address`,`permanent_address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$surname','$name','$address','$permanent_address','$mobile','$aadhaar','$pancard')");
+	$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`) VALUES 
+  ('$id','$surname','$name','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard')");
 	if($sql==1){	
     header("location:stage3.php?id=".$id);
   	}else{
@@ -414,20 +417,7 @@ if(isset($_POST['submit'])){
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab" aria-selected="false">Audiences</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false">Demographics</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
-                    </li>
-                  </ul>
+                  <h4 class="page-title">Rent Agreement</h4>
                   <div>
                     <div class="btn-wrapper">
                       <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
@@ -471,6 +461,18 @@ if(isset($_POST['submit'])){
                       <label for="exampleInputMobile" class="col-sm-2 col-form-label">Mobile No.</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control"name="mobile">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">E-mail ID</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control"name="email">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Passport No</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control"name="passport">
                       </div>
                     </div>
                     <div class="form-group row">

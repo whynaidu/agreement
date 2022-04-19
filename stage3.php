@@ -428,7 +428,7 @@ if(isset($_POST['submit'])){
                 </div>
                 <div class="tab-content tab-content-basic">
 <?php
-$selectquery="select * from new_agreement where documentid='$id'";
+$selectquery="select * from new_agreement where document_no='$id'";
 $doctors = mysqli_query($conn,$selectquery);  
 if (mysqli_num_rows($doctors)>0){
   

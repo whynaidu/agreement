@@ -467,7 +467,7 @@ if(isset($_GET['delid'])){
 					<div class="col" align="right">
 					<a href="stage4.html"><button type="button" class="btn btn-primary btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
 						<button type="submit" name="submit" class="btn btn-primary btn-lg" style="color: aliceblue">Add</button>
-                    <a href="stage6.html"><button type="button" class="btn btn-primary btn-lg" style="color: aliceblue" >Next<i class="mdi mdi-chevron-right"></i></button></a>
+                    <a href="stage6.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary btn-lg" style="color: aliceblue" >Next<i class="mdi mdi-chevron-right"></i></button></a>
 					</div>
                   </form>
                 </div>
