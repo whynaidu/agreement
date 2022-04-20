@@ -1,24 +1,23 @@
 <?php  
 include("include/configure.inc.php");
 $fid=$_GET['id'];
+
+
 if(isset($_POST['submit'])){
 	$security_deposit=$_POST['security_deposit'];  
   $rent_amount=$_POST['rent_amount'];
-	$sql=mysqli_query($conn,"INSERT INTO `payment`(`document_no`,`security_deposit`,`rent_amount`) VALUES 
-  ('$fid','$security_deposit','$rent_amount')");
+  $method=$_POST['method'];  
+  $bank=$_POST['bank'];  
+
+  $date=$_POST['date'];  
+  $tid=$_POST['tid'];
+	$sql=mysqli_query($conn,"INSERT INTO `payment`(`document_no`,`security_deposit`,`rent_amount`,`bank`,`method`,`date`,`tid`) VALUES 
+  ('$fid','$security_deposit','$rent_amount','$bank','$method','$date','$tid')");
 	if($sql==1){	
-    header("location:stage5.php?id=".$fid);
+    header("location:policeform.php?id=".$fid);
   	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
-}
-
-if(isset($_GET['delid'])){
-  $id=mysqli_real_escape_string($conn,$_GET['delid']);
-  $sql=mysqli_query($conn,"delete from amenities where id='$id'");
-  if($sql=1){
-    header("location:stage5.php?id=".$fid);
-  }
 }
 ?><!DOCTYPE html>
 <html lang="en">
@@ -454,6 +453,7 @@ if(isset($_GET['delid'])){
                         <input type="text" class="form-control"name="security_deposit">
                       </div>
                     </div>
+                
 					</div>
 					<div class="col-sm-6">
                      <div class="form-group row">
@@ -461,13 +461,49 @@ if(isset($_GET['delid'])){
                       <div class="col-sm-9">
                         <input type="text" class="form-control"name="rent_amount">
                       </div>
-                    </div>
+                    </div>     
 					  </div>
 						</div>
-					<div class="col" align="right">
+
+            <h4 class="card-title">Deposit Payment Details</h4>
+
+                   <div class="form-group row">
+                     <label for="examplename" class="col-sm-2 col-form-label">Payment Methods</label>	
+					 <div class="col-sm-10">
+                      <select class="form-control" id="exampleSelecthod" name="method">
+                          <option>Cash</option>
+                              <option>Cheque</option>
+						                  <option>UPI</option>
+						               <option>NFTS</option>
+						                <option>RTGS</option>
+                        </select>  
+                      </div>
+					   </div>
+             <div class="form-group row">
+                      <label for="exampldate" class="col-sm-2 col-form-label">Bank </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="bank">
+                      </div>
+                    </div>
+					  <div class="form-group row">
+                      <label for="exampldate" class="col-sm-2 col-form-label">Date of Payment</label>
+                      <div class="col-sm-10">
+                        <input type="date" class="form-control" name="date">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Transaction ID</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="tid">
+                      </div>
+                    </div>
+				
+                    <div class="col" align="right">
 					<a href="stage5.html"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
 					<button type="submit" name="submit" class="btn btn-primary btn-lg" style="color: aliceblue">Submit</button>
 					</div>
+               
+
                   </form>
                 </div>
               </div>

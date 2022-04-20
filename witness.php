@@ -2,19 +2,15 @@
 include("include/configure.inc.php");
 $id=$_GET['id'];
 if(isset($_POST['submit'])){
-	$surname=$_POST['abbreviation'];
-	$name=$_POST['name'];
-  $age=$_POST['age'];
-  $permanent_address=$_POST['permanent_address'];
-	$address=$_POST['address'];
-	$mobile=$_POST['mobile'];
-	$aadhaar=$_POST['aadhaar'];
-	$pancard=$_POST['pancard'];
-  $email=$_POST['email'];
-	$passport=$_POST['passport'];
+	$owitness1=$_POST['owitness1'];
+	$owitness2=$_POST['owitness2'];
+  $twitness1=$_POST['twitness1'];
+  $twitness2=$_POST['twitness2'];
 	
-	$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`) VALUES 
-  ('$id','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard')");
+	
+	$sql=mysqli_query($conn,"INSERT INTO `owner`(`name1`, `name2`) VALUES 
+  ('$owitness1','$owitness2');INSERT INTO `tenant`(`name1`, `name2`) VALUES 
+  ('$twitness1','$twitness2')");
 	if($sql==1){	
     header("location:stage3.php?id=".$id);
   	}else{
@@ -396,13 +392,13 @@ if(isset($_POST['submit'])){
         <ul class="nav">
 		 <li class="nav-item nav-category">Home</li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link active" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
               <span class="menu-title">Rent Agreement</span>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-				<li class="nav-item"> <a class="nav-link" href="newagreement.html">New Agreement</a></li>
+				<li class="nav-item"> <a class="nav-link " href="newagreement.html">New Agreement</a></li>
 				<li class="nav-item"> <a class="nav-link" href="">List of Agreement</a></li>
 				<li class="nav-item"> <a class="nav-link" href="">Police NOC</a></li>
 			    <li class="nav-item"> <a class="nav-link" href="">Payment Receipt</a></li>
@@ -418,7 +414,20 @@ if(isset($_POST['submit'])){
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
-                  <h4 class="page-title">Rent Agreement</h4>
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab" aria-selected="false">Audiences</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false">Demographics</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
+                    </li>
+                  </ul>
                   <div>
                     <div class="btn-wrapper">
                       <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
@@ -432,77 +441,41 @@ if(isset($_POST['submit'])){
 				 <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Tenant Details</h4>
-                  <form class="forms-sample"method="post">
-                    <div class="form-group row">
-                     <label for="examplename" class="col-sm-2 col-form-label">Full Name</label>	
-					 <div class="col-sm-2">
-                      <select class="form-control" id="exampleSelectGender" name="abbreviation">
-                          <option>Mr.</option>
-                          <option>Mrs.</option>
-                        </select>  
-                      </div>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="name" >
+                  <h4 class="card-title">Owner Witness page</h4>
+                  <form class="forms-sample">
+                  <div class="form-group row">
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control"name="owitness1">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleaddress" class="col-sm-2 col-form-label">Age</label>
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
                       <div class="col-sm-10">
-                        <input type="text"  class="form-control" name="age">
+                        <input type="text" class="form-control"name="owitness2">
                       </div>
                     </div>
+					  <h4 class="card-title">Tenant Witness page</h4>					  
                     <div class="form-group row">
-                      <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address</label>
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
                       <div class="col-sm-10">
-                        <input type="text"  class="form-control" name="address">
+                        <input type="text" class="form-control"name="twitness1">
                       </div>
-                    </div>
-					          <div class="form-group row">
-                      <label for="examplepreaddress" class="col-sm-2 col-form-label">Present Address</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="permanent_address">
-                      </div>
-                    </div>
+                    </div> 
                     <div class="form-group row">
-                      <label for="exampleInputMobile" class="col-sm-2 col-form-label">Mobile No.</label>
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control"name="mobile">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">E-mail ID</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control"name="email">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Passport No</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="passport">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar No.</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="aadhaar">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="examplepan" class="col-sm-2 col-form-label">Pancard</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="pancard">
+                        <input type="text" class="form-control"name="twitness2">
                       </div>
                     </div>
 					<div class="col" align="right">
-						 <a href="stage1.html"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue" name="submit">Next<i class="mdi mdi-chevron-right"></i></button>
+                    <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>
 					</div>
                   </form>
-               		 </div>
-              			</div>
-            		   	</div>
-                  	  </div>
+                </div>
+              </div>
+            </div>
+                    </div>
 					</div>
                 </div>
               </div>

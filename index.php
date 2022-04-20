@@ -5,8 +5,9 @@ if(isset($_POST['submit'])){
 	$date=$_POST['date'];
 	$type=$_POST['type'];
 	$month=$_POST['month'];
+  $place=$_POST['place'];
 	
-	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`document_no`, `property_type`, `date_of_agreement`, `no_of_month`) VALUES ('$no','$type','$date','$month')");
+	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('$no','$type','$date','$month','$place')");
 	if($sql==1){
 		$sql=mysqli_query($conn,"select documentid from new_agreement order by documentid desc") or die( mysqli_error($conn));;
                       $row=mysqli_fetch_array($sql);
@@ -499,7 +500,16 @@ if(isset($_POST['submit'])){
                         </select>
                       </div>
                     </div>
+                    
 						</div>
+            <div class="col-md-6 ">
+                    <div class="form-group row">
+                      <label for="exampleprop" class="col-sm-3 col-form-label">Place of Agreement</label>
+                      <div class="col-sm-9">
+                      <input type="TEXT" name="place" class="form-control" id="exampledate" required>
+
+                      </div>
+                    </div>
 						</div>
 						
 					  <div class="col" align="right">

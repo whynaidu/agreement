@@ -1,3 +1,46 @@
+<?php  
+include("include/configure.inc.php");
+$fid=$_GET['id'];
+
+function AmountInWords(float $amount)
+{
+   $amount_after_decimal = round($amount - ($num = floor($amount)), 2) * 100;
+   // Check if there is any number after decimal
+   $amt_hundred = null;
+   $count_length = strlen($num);
+   $x = 0;
+   $string = array();
+   $change_words = array(0 => '', 1 => 'One', 2 => 'Two',
+     3 => 'Three', 4 => 'Four', 5 => 'Five', 6 => 'Six',
+     7 => 'Seven', 8 => 'Eight', 9 => 'Nine',
+     10 => 'Ten', 11 => 'Eleven', 12 => 'Twelve',
+     13 => 'Thirteen', 14 => 'Fourteen', 15 => 'Fifteen',
+     16 => 'Sixteen', 17 => 'Seventeen', 18 => 'Eighteen',
+     19 => 'Nineteen', 20 => 'Twenty', 30 => 'Thirty',
+     40 => 'Forty', 50 => 'Fifty', 60 => 'Sixty',
+     70 => 'Seventy', 80 => 'Eighty', 90 => 'Ninety');
+    $here_digits = array('', 'Hundred','Thousand','Lakh', 'Crore');
+    while( $x < $count_length ) {
+      $get_divider = ($x == 2) ? 10 : 100;
+      $amount = floor($num % $get_divider);
+      $num = floor($num / $get_divider);
+      $x += $get_divider == 10 ? 1 : 2;
+      if ($amount) {
+       $add_plural = (($counter = count($string)) && $amount > 9) ? 's' : null;
+       $amt_hundred = ($counter == 1 && $string[0]) ? ' and ' : null;
+       $string [] = ($amount < 21) ? $change_words[$amount].' '. $here_digits[$counter]. $add_plural.' 
+       '.$amt_hundred:$change_words[floor($amount / 10) * 10].' '.$change_words[$amount % 10]. ' 
+       '.$here_digits[$counter].$add_plural.' '.$amt_hundred;
+        }
+   else $string[] = null;
+   }
+   $implode_to_Rupees = implode('', array_reverse($string));
+   $get_paise = ($amount_after_decimal > 0) ? "And " . ($change_words[$amount_after_decimal / 10] . " 
+   " . $change_words[$amount_after_decimal % 10]) . ' Paise' : '';
+   return ($implode_to_Rupees ? $implode_to_Rupees . 'Rupees ' : '') . $get_paise;
+}
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -31,11 +74,19 @@ th {
 </style>
 <body>
 
+
+
 <p><b>WHERE AS : </b>       </p>                                                                                                                                                                                     <p>The LICENSOR is fully seized and possessed of or otherwise well and sufficiently entitled to hold the following  FLAT/SHOP:</p> <br>
 			
 <div>
 	<table style="width: 100%;">
+	<?php 
+	
+	$sql=mysqli_query($conn,"select * from property_details where document_no='$fid'");
+	 while($arr=mysqli_fetch_array($sql)){
+	?>
 	<tbody>
+
 		<tr>
 			<td>FLAT/SHOP NO.</td>
 			<td>PLOT NO.</td>
@@ -43,21 +94,23 @@ th {
 			<td>AREA(in Sq.feet)</td>
 		</tr>
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td><?php echo $arr['address'];?></td>
+			<td><?php echo $arr['plot_no'];?></td>
+			<td><?php echo $arr['sector'];?></td>
+			<td><?php echo $arr['area'];?></td>
 		</tr>
 		<tr>
-			<td colspan="4">CIDCO APARTMENT:</td>
+			<td colspan="4">CIDCO APARTMENT:<b><?php echo $arr['cidco'];?></b></td>
 		</tr>
 		<tr>
-			<td colspan="4">CO.OP.HSG.SOCITY:</td>
+			<td colspan="4">CO.OP.HSG.SOCITY:<b><?php echo $arr['chs'];?></b></td>
 		</tr>
 		<tr>
-			<td colspan="4">NODE:</td>
+			<td colspan="4">NODE:<b><?php echo $arr['node'];?></b></td>
 		</tr>
 	</tbody>
+	<?php } ?>
+ 
 </table>
 </div><br>
  (hereinafter called and referred to as ‘‘ THE SAID FLAT / SHOP).<br>
@@ -70,16 +123,25 @@ th {
 <p>ii)	Present Address :</p>
 
 <p>iii) The photograph of the LICENSOR and LICENSEE is a appended in appropriate place.</p>
+<?php 
+	
+	$sql=mysqli_query($conn,"select * from payment where document_no='$fid'");
+	
+	while($arr=mysqli_fetch_array($sql)){
+		$amt_words=$arr['rent_amount'];
+		$get_amount= AmountInWords($amt_words);
+		
 
-	<p><b>OWN THIS AGREEMENT WITNESSETH AS UNDER</b></p>
+	?>
+	<p><b>NOW THIS AGREEMENT WITNESSETH AS UNDER</b></p>
 <p>1.	The owner do hereby grants to the LICENSEE his/her permission to enter upon, occupy and look after, temporarily, the said premises for a certain period of        MONTHS,  which shall commence from DAY of ___________________. And shall expire on this day of _________________</p>
 <p>2.	The LICENSEE convents with the owenr that LICENSEE  shall observe and perform the following terms and conditions:</p>
-<p>b)     To pay a Monthly compensation of sum of Rs. _______________________/-  (RUPEES
-___________________________________________ONLY.)  as per English calendar month, in advance and thereafter on the 10th of each ensuring month.</p>
+<p>b)     To pay a Monthly compensation of sum of <b>Rs.<?php echo $arr['rent_amount'];?>/- </b> (<u><?php echo $get_amount;?></u> ONLY.) as per English calendar month, in advance and thereafter on the 10th of each ensuring month.</p>
 <p>C)     The Electricity, water and any others applicable service charges shall be regularly paid by the LICENSEE, where                                      society maintenance charges and Lease Tax , property TAX , if any shall be paid by the OWNER/LICENSOR.</p>
 <p>d)     To use the said premise for RESIDENTIAL/BUSINESS purpose only . Note to cause ,permit or suffer anything in any                          way which may become a nuisance  or annoyance or cause damage/ loss to the said premises or to the neighbor ‘s property.</p>
 <p>e)     Not to sublet, transfer or otherwise part with the possession of the said premises or any part thereof to anyone.</p>
 <p>f)      TO permit the owner and facilitate him/her to inspect the said premises at any reasonable time during the period of this Agreement.</p>
+<?php } ?>
 <p>3.      It is hereby expressly agreed and declared that neither this  Agreement nor anything contained herein shall be deemed to create any interest or estate in favor of the LICENSEE in the said premise and that relationship of the two parties shall always be that of LICENSOR and LICENSEE only.</p>
 <p>4) The LICENSEE  is entitled to surrender the said premises by giving the LICENSOR, one calendar month’s notice, in writing  or his intention and at the expiry of the said notice period, this Agreement shall REVOKED and the LICENSEE shall be entitled to get the security Deposit amount refunded, against the delivery of the vacant possession.</p>
 <p>a) The LICENSOR may also give one calendar month’s  notice, in case the LICENSOR wish to terminate the Agreement entered in to between the parties, and is ready and willing to refund the security  deposit against delivery of the possession.</p>
@@ -91,24 +153,28 @@ ___________________________________________ONLY.)  as per English calendar month
                        
 <table style="width: 100%;">
 	<tbody>
+	
 		<tr>
 			<td>Sr.No</td>
 			<td>Name</td>
 			<td>Relation</td>
 			<td>Age</td>
 		</tr>
+		<?php 
+	
+	$sql=mysqli_query($conn,"select * from family_members where document_no='$fid'");
+	$count=1;
+	 while($arr=mysqli_fetch_array($sql)){
+	?>
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td><?php echo $count;?></td>
+			<td><?php echo $arr['name'];?></td>
+			<td><?php echo $arr['gender'];?></td>
+			<td><?php echo $arr['age'];?></td>
 		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
+		
+		<?php $count++;} ?>
+	
 	</tbody>
 </table>
 	
@@ -121,16 +187,21 @@ ___________________________________________ONLY.)  as per English calendar month
 			<td>Name</td>
 			<td>No. of Items</td>
 		</tr>
+		<?php 
+	
+	$sql=mysqli_query($conn,"select * from amenities where document_no='$fid'");
+	$count=1;
+	 while($arr=mysqli_fetch_array($sql)){
+	?>
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td><?php echo $count;?></td>
+			<td><?php echo $arr['name'];?></td>
+			<td><?php echo $arr['number'];?></td>
+		
 		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
+		
+		<?php $count++;} ?>
+	
 	</tbody>
 </table>
 	

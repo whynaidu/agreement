@@ -2,6 +2,7 @@
 <?php  
 include("include/configure.inc.php");
 $fid=$_GET['id'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,17 +56,15 @@ $fid=$_GET['id'];
 					<div class="row" align="center">
 						 <h2>भाडेकरु माहिती फॉर्म</h2>
 					</div>
-					<div class="row" >
-						<div class="col-lg-8">
-						 </div>
-						<div class="col-lg-4">
+					<div class="row" style="text-align:end;margin-right:100px;">
+					
+						<div class="">
 						 <h4>रजिस्टर नंबर :-</h4>
+						</div>
 					</div>
-					</div>
-					<div class="row" >
-						<div class="col-lg-8">
-						 </div>
-						<div class="col-lg-4">
+					<div class="row" style="text-align:end;margin-right:100px;">
+				
+						<div class="">
 						 <h4>दिनांक :-</h4>
 					</div>
 					</div>
@@ -162,12 +161,19 @@ $fid=$_GET['id'];
                             <td class="col-6"><label><?php echo $arr['address'];?></label></td>
                           </tr>
                           <?php } ?>
+						  <?php 
+                        
+                        $sql=mysqli_query($conn,"select * from agent_details");
+                        while($arr=mysqli_fetch_array($sql)){
+                        ?>
 							<tr>
 							<th class="col-1 ">७</th>
                             <th class="col-5">एजंटचे नाव, पत्ता, मोबाईल क्रमांक<br><br>Name of Agent, Address & Mobile No.</th>
-                            <td class="col-6"></td>
+                            <td class="col-6"><label><?php echo $arr['agent_name'];?></label></br>
+							<label><?php echo $arr['office_address'];?></label></br>
+							<label><?php echo $arr['mobile_no'];?></label></br></td>
                           </tr>
-					
+						  <?php } ?>
 							
  
                         </tbody>
@@ -238,14 +244,15 @@ $fid=$_GET['id'];
 	</tbody>
 </table>
                   </div><br>
+
                  <div class="row" align="center">
 					 <h4>अर्जा सोबत सादर करावयाची छायांकीत प्रमाणपत्रे</h4>
 					</div>
-					<div class="row">
-					 <div class="col-lg-6" align="center">
+					<div class="row" align="center">
+					 <div class="col-lg-6">
 						<h4>घर मालक</h4>
 						</div>
-						<div class="col-lg-6" align="center">
+						<div class="col-lg-6">
 						 <h4> भाडेकरु</h4>
 					</div>
 					</div>

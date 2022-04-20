@@ -8,8 +8,9 @@ if(isset($_POST['submit'])){
 	$mobile=$_POST['mobile'];
 	$aadhaar=$_POST['aadhaar'];
 	$pancard=$_POST['pancard'];
+  $age=$_POST['age'];
 	
-	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$address','$mobile','$aadhaar','$pancard')");
+	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`,`age`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$age','$address','$mobile','$aadhaar','$pancard')");
 	if($sql==1){	
     header("location:stage2.php?id=".$id);
 	}else{
@@ -453,6 +454,12 @@ if(isset($_POST['submit'])){
                       </div>
                       <div class="col-sm-8">
                         <input type="text" name="name" class="form-control" required>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="exampleaddress" class="col-sm-2 col-form-label">Age</label>
+                      <div class="col-sm-10">
+                        <input type="number" name="age" class="form-control" required>
                       </div>
                     </div>
                     <div class="form-group row">

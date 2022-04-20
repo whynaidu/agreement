@@ -2,6 +2,7 @@
 <?php  
 include("include/configure.inc.php");
 $fid=$_GET['id'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
