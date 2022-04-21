@@ -2,9 +2,9 @@
   <ul class="nav">
   
    <li class="nav-item">
-   <a class="nav-link active" href="dashboard.php" aria-expanded="false" aria-controls="ui-basic">
+   <a class="nav-link active" href="index.php" aria-expanded="false" aria-controls="ui-basic">
 
-   <i class="menu-icon mdi mdi-home"></i>
+   <i class="menu-icon  mdi mdi-home-modern"></i>
    <span class="menu-title">Home</span></li>
    </a>
     <li class="nav-item">

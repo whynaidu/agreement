@@ -14,7 +14,7 @@ include("include/configure.inc.php");
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
+  <title></title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -103,7 +103,7 @@ include("include/configure.inc.php");
                             <td> <?php echo $arr['tname'];?></td>
                             <td> <?php echo $arr['doa'];?> </td>
                             <td>
-                            <a href="policeform.php?id=<?php echo $arr['docno'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+                            <a href="policenocform.php?id=<?php echo $arr['docno'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
                               <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button></td>
                           </tr>
                         </tbody>

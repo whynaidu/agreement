@@ -209,22 +209,33 @@ th {
 	
 	</tbody>
 </table>
+<?php 
 	
+	$sql=mysqli_query($conn,"select * from owner where document_no='$fid'");
+	 while($arr=mysqli_fetch_array($sql)){
+	?>
 <p>IN CASE THE LEAVE & LICENSE AGREEMENT IS EXTENDED THEN THE LICENSEE SHALL PAY THE COMMISSION/BROKERAGE TO THE ESTATE AGENT_____________________________________  </p>                                                                                                                             
 <p>IN WITHNESS WHEREOF THE PARTIES HERETO HAVE EXECUTED THIS AGREEMENT IN THE MNNER HEREINAFTER APPEARING ON TH DAY AND THE YEAR FIRST HEREIN ABOVE WRI</p>
 	<p><b>Within named 'LICENSOR'</b></p>
-<p><b>Mr./Mrs._____________________________________   </b></p>
+<p><b><?php echo $arr['abbreviation'];?><u><?php echo $arr['fullname'];?> </b></u></p>
 <p>In the presence of ………</p>
-<p>1.</p>
-	<p>2.</p>
 
+<p>1.<?php echo $arr['name1'];?></p>
+<p>2.<?php echo $arr['name2'];?></p>
+<?php } ?>
+<?php 
+	
+	$sql=mysqli_query($conn,"select * from tenant where document_no='$fid'");
+	 while($arr=mysqli_fetch_array($sql)){
+	?>
 <p><b>SIGNED AND DEVELOPED by the</b></p>
 <p><b>Within named 'LICENSEE'</b></p>
-<p><b>Mr./Mrs._____________________________________   </b></p>
+<p><b><?php echo $arr['abbreviation'];?><u><?php echo $arr['fullname'];?> </b></u></p>
 	<p>In the presence of ………</p>
-	<p>1.</p>
-	<p>2.</p>
-	
+
+<p>1.<?php echo $arr['name1'];?></p>
+<p>2.<?php echo $arr['name2'];?></p>
+<?php } ?>
 
 
 	

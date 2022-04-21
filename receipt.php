@@ -48,7 +48,7 @@ function AmountInWords(float $amount)
 <html>
 <head>
 <meta charset="utf-8">
-<title>R E C E I P T</title>
+<title>Receipt</title>
 <style>
 	table , td, th {
 	border: 1px solid #595959;
@@ -81,8 +81,8 @@ th {
 		$get_amount= AmountInWords($amt_words);
                     ?>
 
-		<p>RECEIVED OF AND FROM the withinamed LICENSEE MR/Mss:&nbsp;<b><u><?php echo $arr['tname'];?></u></b></p>
-		<p>The sum of Rs.<b><u><?php echo $arr['rent'];?></u></b>/- (<b><u><?php echo $get_amount;?>Only</u></b>)</p>
+		<p>RECEIVED OF AND FROM the withinamed LICENSEE MR/Mss:&nbsp;<b><u><?php echo $arr['tname'];?>.</u></b>
+		The sum of Rs.<b><u><?php echo $arr['rent'];?></u></b>/- (<b><u><?php echo $get_amount;?>Only</u></b>)</p>
 <?php } ?>
 	<br>
 	<br>
