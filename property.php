@@ -7,23 +7,25 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
 include("include/configure.inc.php");
 $id=$_GET['id'];
 if(isset($_POST['submit'])){
-	$owitness1=$_POST['owitness1'];
-	$owitness2=$_POST['owitness2'];
-  $twitness1=$_POST['twitness1'];
-  $twitness2=$_POST['twitness2'];
+	$type=$_POST['type'];  
+  $sector=$_POST['sector'];
+	$address=$_POST['address'];
+	$plotno=$_POST['plotno'];
+	$cidco=$_POST['cidco'];
+	$area=$_POST['area'];
+  $chs=$_POST['chs'];
+  $node=$_POST['node'];
 	
-	
-	$sql=mysqli_query($conn,"UPDATE owner SET name1='$owitness1',name2='$owitness2' WHERE document_no='$id'"); 
-  $tenant=mysqli_query($conn,"UPDATE tenant SET name1='$twitness1',name2='$twitness2' WHERE document_no='$id'"); 
-
+	$sql=mysqli_query($conn,"INSERT INTO `property_details`(`document_no`,`property_type`, `address`, `sector`, `plot_no`,`cidco`, `area`, `chs`, `node`) VALUES 
+  ('$id','$type','$address','$sector','$plotno','$cidco','$area','$chs','$node')");
 	if($sql==1){	
-
-    header("location:family.php?id=".$id);
+    header("location:witness.php?id=".$id);
   	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -61,14 +63,13 @@ if(isset($_POST['submit'])){
       <!-- partial:partials/_sidebar.html -->
       <?php include("partials/sidebar.php");?>
       <!-- partial -->
-      <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
-               
+                
                   <div>
                     <div class="btn-wrapper">
                       <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
@@ -78,41 +79,89 @@ if(isset($_POST['submit'])){
                   </div>
                 </div>
                 <div class="tab-content tab-content-basic">
+<?php
+$selectquery="select * from new_agreement where document_no='$id'";
+$doctors = mysqli_query($conn,$selectquery);  
+if (mysqli_num_rows($doctors)>0){
+
+}
+
+?>        
+     
 				<div class="row" >
 				 <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Owner Witness page</h4>
+                  <h4 class="card-title">Property Details</h4>
                   <form class="forms-sample" method="post">
-                  <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
+                    <div class="form-group row">
+                     <label for="examplename" class="col-2 col-form-label">Property Type</label>	
+                    
+					 <div class="col-sm-2">
+           <?php
+                     while($row = mysqli_fetch_array($doctors)) {
+?>
+           <label for="examplename" value="<?php echo $row["property_type"]; ?>" class="col-form-label"><b><?php echo $row["property_type"]; ?></b></label>	
+          
+          <?php
+          }
+?>
+            </div>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" name="address"required>
+                      </div>
+                    </div>
+					  <div class="row">
+						  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <label for="examplesec" class="col-sm-4 col-form-label">Sector</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control"name="sector"required>
+                      </div>
+                    </div>
+					</div>
+					<div class="col-sm-6">
+                    <div class="form-group row">
+                      <label for="exampleplot" class="col-sm-4 col-form-label">Plot No.</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control"name="plotno">
+                      </div>
+                    </div>
+					  </div>
+						</div>
+					  <div class="row">
+						  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <label for="examplecid" class="col-sm-4 col-form-label">CIDCO</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control"name="cidco">
+                      </div>
+                    </div>
+					</div>
+					<div class="col-sm-6">
+                    <div class="form-group row">
+                      <label for="examplearea" class="col-sm-4 col-form-label">Area(in sq.ft)</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control"name="area">
+                      </div>
+                    </div>
+					  </div>
+						</div>
+                    <div class="form-group row">
+                      <label for="examplecoop" class="col-sm-2 col-form-label">Co.op Housing Society</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control"name="owitness1">
+                        <input type="text" class="form-control"name="chs">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
+                      <label for="examplenode" class="col-sm-2 col-form-label">NODE</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control"name="owitness2">
-                      </div>
-                    </div>
-					  <h4 class="card-title">Tenant Witness page</h4>					  
-                    <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="twitness1">
-                      </div>
-                    </div> 
-                    <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="twitness2">
+                        <input type="text" class="form-control"name="node">
                       </div>
                     </div>
 					<div class="col" align="right">
-          <a href="property.php?id=<?php echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-
-                    <button type="submit" name="submit"class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>
+					<a href="tenant.php?id=<?php echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
+                    <button type="submit" name="submit"class="btn btn-primary  btn-lg" style="color: aliceblue">Next<i class="mdi mdi-chevron-right"></i></button>
 					</div>
                   </form>
                 </div>
@@ -126,13 +175,12 @@ if(isset($_POST['submit'])){
           </div>
         </div>
 		</div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <?php include("partials/footer.php"); ?>
+
+      <?php include("partials/footer.php"); ?>
       </div>
 
   <script>
-      document.title="Witness Details";
+      document.title="Property Details";
       document.getElementById("welcome").innerHTML = document.title;
     </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
@@ -156,6 +204,5 @@ if(isset($_POST['submit'])){
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
 </body>
-
 </html>
 

@@ -1,4 +1,9 @@
 <?php  
+session_start();
+if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
+{
+ header("Location:login.php"); 
+}
 include("include/configure.inc.php");
 $fid=$_GET['id'];
 function AmountInWords(float $amount)
@@ -42,9 +47,30 @@ function AmountInWords(float $amount)
 <!doctype html>
 <html>
 <head>
-	<link rel="stylesheet" href="RECEIPT.css">
 <meta charset="utf-8">
 <title>R E C E I P T</title>
+<style>
+	table , td, th {
+	border: 1px solid #595959;
+	border-collapse: collapse;
+}
+td, th {
+	padding: 3px;
+	width: 30px;
+	height: 25px;
+}
+th {
+	background: #f0e6cc;
+}
+.even {
+	background: #fbf8f0;
+}
+.odd {
+	background: #fefcf9;
+}
+
+	</style>
+
 </head>
 
 <body ><h1 style="text-align: center">Receipt</h1>
@@ -135,7 +161,7 @@ function AmountInWords(float $amount)
 			<br>
 			<br>
 			<br>
-			<?php $sql=mysqli_query($conn,"select owner.fullname as oname,owner.abbreviation as abb, payment.security_deposit as rent from payment inner join owner on payment.document_no=owner.document_no where payment.document_no='$fid'");
+			<?php $sql=mysqli_query($conn,"select owner.fullname as oname,owner.name1 as o1,owner.name2 as o2,owner.abbreviation as abb, payment.security_deposit as rent from payment inner join owner on payment.document_no=owner.document_no where payment.document_no='$fid'");
                  
                     while($arr=mysqli_fetch_array($sql)){
 						$amt_words=$arr['rent'];
@@ -147,15 +173,14 @@ function AmountInWords(float $amount)
 			<br>
 			<div style="padding-left: 70%;"><u><b><?php echo $arr['abb'];?>.<?php echo $arr['oname'];?></u></b></div><br>
 			<div style="padding-left: 76%;">(LICENSOR)</div>
-			<?php } ?>
 			<div>WITNESSES:</div>
 			<br>
 			<br>
-			<div>1.</div>
+			<div>1.<?php echo $arr['o1'];?></div>
 			<br>
 			<br>
 			<br>
-			<div>2.</div>
-			
+			<div>2.<?php echo $arr['o2'];?></div>
+			<?php } ?>
 </body>
 </html>

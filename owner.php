@@ -7,30 +7,30 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
 include("include/configure.inc.php");
 $id=$_GET['id'];
 if(isset($_POST['submit'])){
-	$owitness1=$_POST['owitness1'];
-	$owitness2=$_POST['owitness2'];
-  $twitness1=$_POST['twitness1'];
-  $twitness2=$_POST['twitness2'];
+	$abbreviation=$_POST['abbreviation'];
+	$name=$_POST['name'];
+	$address=$_POST['address'];
+	$mobile=$_POST['mobile'];
+	$aadhaar=$_POST['aadhaar'];
+	$pancard=$_POST['pancard'];
+  $age=$_POST['age'];
 	
-	
-	$sql=mysqli_query($conn,"UPDATE owner SET name1='$owitness1',name2='$owitness2' WHERE document_no='$id'"); 
-  $tenant=mysqli_query($conn,"UPDATE tenant SET name1='$twitness1',name2='$twitness2' WHERE document_no='$id'"); 
-
+	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`,`age`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$age','$address','$mobile','$aadhaar','$pancard')");
 	if($sql==1){	
-
-    header("location:family.php?id=".$id);
-  	}else{
+    header("location:tenant.php?id=".$id);
+	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
+  <title></title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
   <link rel="shortcut icon" href="images/favicon.png" />
 </head>
 <body>
-<div class="container-scroller">
+  <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <?php include("partials/header.php");?>
 
@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <?php include("partials/sidebar.php");?>
-      <!-- partial -->
+    
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -68,7 +68,7 @@ if(isset($_POST['submit'])){
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
-               
+                  
                   <div>
                     <div class="btn-wrapper">
                       <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
@@ -82,37 +82,51 @@ if(isset($_POST['submit'])){
 				 <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Owner Witness page</h4>
+                  <h4 class="card-title">Owner Details</h4>
                   <form class="forms-sample" method="post">
-                  <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="owitness1">
+                    <div class="form-group row">
+                     <label for="examplename" class="col-sm-2 col-form-label">Full Name</label>	
+					 <div class="col-sm-2">
+                      <select class="form-control" name="abbreviation" id="exampleSelectGender" required>
+                          <option>Mr.</option>
+                          <option>Mrs.</option>
+                        </select>  
+                      </div>
+                      <div class="col-sm-8">
+                        <input type="text" name="name" class="form-control" required>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="owitness2">
+                      <label for="exampleaddress" class="col-sm-2 col-form-label">Age</label>
+                      <div class="col-sm-4">
+                        <input type="number" name="age" class="form-control" required>
+                      </div>
+                 
+                      <label for="exampleInputMobile" class="col-sm-2 col-form-label">Mobile No.</label>
+                      <div class="col-sm-4">
+                        <input type="tel" name="mobile" class="form-control"  minlength="10" maxlength="10" required>
                       </div>
                     </div>
-					  <h4 class="card-title">Tenant Witness page</h4>					  
                     <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="twitness1">
+                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar No.</label>
+                      <div class="col-sm-4">
+                        <input type="text" name="aadhaar" class="form-control" required>
                       </div>
-                    </div> 
-                    <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="twitness2">
+                 
+                      <label for="examplepan" class="col-sm-2 col-form-label">Pancard</label>
+                      <div class="col-sm-4">
+                        <input type="text" name="pancard" class="form-control" required>
                       </div>
                     </div>
+                    <div class="form-group row">
+                      <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address</label>
+                      <div class="col-sm-10">
+                        <textarea type="text" rows="4" cols="50" name="address" class="form-control" required></textarea>
+                      </div>
+                    </div>
+                   
 					<div class="col" align="right">
-          <a href="property.php?id=<?php echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-
-                    <button type="submit" name="submit"class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>
+                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue" name="submit">Next<i class="mdi mdi-chevron-right"></i></button>
 					</div>
                   </form>
                 </div>
@@ -128,11 +142,18 @@ if(isset($_POST['submit'])){
 		</div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <?php include("partials/footer.php"); ?>
-      </div>
+        <?php include("partials/footer.php");?>
 
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+
+    <!-- page-body-wrapper ends -->
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
   <script>
-      document.title="Witness Details";
+      document.title="Owner Details";
       document.getElementById("welcome").innerHTML = document.title;
     </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>

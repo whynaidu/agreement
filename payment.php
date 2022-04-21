@@ -5,20 +5,21 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
-$id=$_GET['id'];
+$fid=$_GET['id'];
+
+
 if(isset($_POST['submit'])){
-	$owitness1=$_POST['owitness1'];
-	$owitness2=$_POST['owitness2'];
-  $twitness1=$_POST['twitness1'];
-  $twitness2=$_POST['twitness2'];
-	
-	
-	$sql=mysqli_query($conn,"UPDATE owner SET name1='$owitness1',name2='$owitness2' WHERE document_no='$id'"); 
-  $tenant=mysqli_query($conn,"UPDATE tenant SET name1='$twitness1',name2='$twitness2' WHERE document_no='$id'"); 
+	$security_deposit=$_POST['security_deposit'];  
+  $rent_amount=$_POST['rent_amount'];
+  $method=$_POST['method'];  
+  $bank=$_POST['bank'];  
 
+  $date=$_POST['date'];  
+  $tid=$_POST['tid'];
+	$sql=mysqli_query($conn,"INSERT INTO `payment`(`document_no`,`security_deposit`,`rent_amount`,`bank`,`method`,`date`,`tid`) VALUES 
+  ('$fid','$security_deposit','$rent_amount','$bank','$method','$date','$tid')");
 	if($sql==1){	
-
-    header("location:family.php?id=".$id);
+    header("location:policeform.php?id=".$fid);
   	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
@@ -60,15 +61,13 @@ if(isset($_POST['submit'])){
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <?php include("partials/sidebar.php");?>
-      <!-- partial -->
-      <!-- partial -->
+      <!-- partial -->      <!-- partial -->      <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
-               
                   <div>
                     <div class="btn-wrapper">
                       <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
@@ -82,38 +81,67 @@ if(isset($_POST['submit'])){
 				 <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Owner Witness page</h4>
+                  <h4 class="card-title">Payment Terms</h4>
                   <form class="forms-sample" method="post">
-                  <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="owitness1">
+					  <div class="row">
+						  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <label for="examplename" class="col-sm-3 col-form-label-sm">Security Deposit</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control"name="security_deposit">
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="owitness2">
-                      </div>
-                    </div>
-					  <h4 class="card-title">Tenant Witness page</h4>					  
-                    <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="twitness1">
-                      </div>
-                    </div> 
-                    <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control"name="twitness2">
-                      </div>
-                    </div>
-					<div class="col" align="right">
-          <a href="property.php?id=<?php echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-
-                    <button type="submit" name="submit"class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>
+                
 					</div>
+					<div class="col-sm-6">
+                     <div class="form-group row">
+                      <label for="exampleage" class="col-sm-3 col-form-label-sm">Monthly Rent</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control"name="rent_amount">
+                      </div>
+                    </div>     
+					  </div>
+						</div>
+
+            <h4 class="card-title">Deposit Payment Details</h4>
+
+                   <div class="form-group row">
+                     <label for="examplename" class="col-sm-2 col-form-label">Payment Methods</label>	
+					 <div class="col-sm-10">
+                      <select class="form-control" id="exampleSelecthod" name="method">
+                          <option>Cash</option>
+                              <option>Cheque</option>
+						                  <option>UPI</option>
+						               <option>NFTS</option>
+						                <option>RTGS</option>
+                        </select>  
+                      </div>
+					   </div>
+             <div class="form-group row">
+                      <label for="exampldate" class="col-sm-2 col-form-label">Bank </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="bank">
+                      </div>
+                    </div>
+					  <div class="form-group row">
+                      <label for="exampldate" class="col-sm-2 col-form-label">Date of Payment</label>
+                      <div class="col-sm-10">
+                        <input type="date" class="form-control" name="date">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Transaction ID</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="tid">
+                      </div>
+                    </div>
+				
+                    <div class="col" align="right">
+					<a href="amenities.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
+					<button type="submit" name="submit" class="btn btn-primary btn-lg" style="color: aliceblue">Submit</button>
+					</div>
+               
+
                   </form>
                 </div>
               </div>
@@ -132,9 +160,18 @@ if(isset($_POST['submit'])){
       </div>
 
   <script>
-      document.title="Witness Details";
+      document.title="Payment Details";
       document.getElementById("welcome").innerHTML = document.title;
     </script>
+  <script> 
+  swal({
+  title: "Good job!",
+  text: "You clicked the button!",
+  icon: "success",
+  button: "Aww yiss!",
+});
+
+</script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
@@ -149,6 +186,7 @@ if(isset($_POST['submit'])){
   <script src="js/template.js"></script>
   <script src="js/settings.js"></script>
   <script src="js/todolist.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="js/jquery.cookie.js" type="text/javascript"></script>

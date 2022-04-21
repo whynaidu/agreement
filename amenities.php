@@ -1,13 +1,31 @@
-
-<?php  
+<?php
 session_start();
 if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
-}
+}  
 include("include/configure.inc.php");
-?>
-<!DOCTYPE html>
+$fid=$_GET['id'];
+if(isset($_POST['submit'])){
+	$name=$_POST['name'];  
+  $number=$_POST['number'];
+	$sql=mysqli_query($conn,"INSERT INTO `amenities`(`document_no`,`name`,`number`) VALUES 
+  ('$fid','$name','$number')");
+	if($sql==1){	
+    header("location:amenities.php?id=".$fid);
+  	}else{
+		echo "<script>alert('Something went wrong');</script>";
+	}
+}
+
+if(isset($_GET['delid'])){
+  $id=mysqli_real_escape_string($conn,$_GET['delid']);
+  $sql=mysqli_query($conn,"delete from amenities where id='$id'");
+  if($sql=1){
+    header("location:stage5.php?id=".$fid);
+  }
+}
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -33,17 +51,18 @@ include("include/configure.inc.php");
   <link rel="shortcut icon" href="images/favicon.png" />
 </head>
 <body>
-  <div class="container-scroller">
+<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-    <?php include("partials/header.php"); ?>
+    <?php include("partials/header.php");?>
 
-<!-- partial -->
-<div class="container-fluid page-body-wrapper">
-  <!-- partial:partials/_settings-panel.html -->
-
-  <!-- partial -->
-  <!-- partial:partials/_sidebar.html -->
-  <?php include("partials/sidebar.php"); ?>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+  
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <?php include("partials/sidebar.php");?>
+      <!-- partial -->      <!-- partial -->
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -51,7 +70,7 @@ include("include/configure.inc.php");
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
-              
+               
                   <div>
                     <div class="btn-wrapper">
                       <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
@@ -61,58 +80,76 @@ include("include/configure.inc.php");
                   </div>
                 </div>
                 <div class="tab-content tab-content-basic">
-				 <div class="col-lg-12 grid-margin stretch-card">
+				<div class="row" >
+				 <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-					<div class="row">
-						<div class="col-9">
-					 <h4 class="card-title">Police NOC</h4>
-						</div>
-						<div class="col-3">
-					 <div class="input-group">
-                      <input type="text" class="form-control">
-                      <div class="input-group-append">
-                        <button class="btn btn-sm btn-primary" type="button" style="color: aliceblue">Search</button>
+                  <h4 class="card-title">List of Amenities</h4>
+                  <form class="forms-sample" method="post">
+					  <div class="row">
+						  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <label for="examplename" class="col-sm-3 col-form-label-sm">Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control"name="name"required>
                       </div>
                     </div>
-						</div>
 					</div>
+					<div class="col-sm-6">
+                     <div class="form-group row">
+                      <label for="exampleitem" class="col-sm-3 col-form-label-sm">Number of items</label>
+                      <div class="col-sm-9">
+                        <input type="number" class="form-control"name="number"required>
+                      </div>
+                    </div>
+					  </div>
+						</div>
+					<div class="col" align="right">
+					<a href="family.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
+						<button type="submit" name="submit" class="btn btn-primary btn-lg" style="color: aliceblue">Add</button>
+                    <a href="payment.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary btn-lg" style="color: aliceblue" >Next<i class="mdi mdi-chevron-right"></i></button></a>
+					</div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
                   <div class="table-responsive pt-3">
                       <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th>Sr.No</th>
-						              	<th>Document No</th>
-                            <th>Owner Name</th>
-                            <th>Tenant Name</th>
-                            <th>Date of Agreement</th> 
+                            <th>Name</th>
+                            <th>Number of items</th>
                             <th> Action </th>
                           </tr>
                         </thead>
-                        <?php 
-                        
-                        $sql=mysqli_query($conn,"select new_agreement.document_no as docno,new_agreement.date_of_agreement as doa, owner.fullname as name, tenant.fullname as tname from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on new_agreement.document_no=tenant.document_no");
-                        $count=1;
-                         while($arr=mysqli_fetch_array($sql)){
-                        ?>
                         <tbody>
+                        <?php $sql=mysqli_query($conn,"select * from amenities where document_no= '$fid'");
+                    $count=1;
+                    while($arr=mysqli_fetch_array($sql)){
+                    ?>
                           <tr>
                             <td> <?php echo $count;?></td>
-                            <td> <?php echo $arr['docno'];?> </td>
                             <td> <?php echo $arr['name'];?></td>
-                            <td> <?php echo $arr['tname'];?></td>
-                            <td> <?php echo $arr['doa'];?> </td>
-                            <td>
-                            <a href="policeform.php?id=<?php echo $arr['docno'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
-                              <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button></td>
+                            <td> <?php echo $arr['number'];?></td>
+                            <td><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button>
+                                               
+                      <a class="btn btn-danger btn-rounded btn-icon" href="stage5.php?delid=<?php echo $arr['id']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
+                          <i class="mdi mdi-delete"></i>
+                          </a></td>
                           </tr>
+                          <?php $count++;
+                  } ?>
                         </tbody>
-                        <?php $count++;} ?>
                       </table>
                   </div>
                 </div>
               </div>
-            </div>
+             </div>
+                    </div>
 					</div>
                 </div>
               </div>
@@ -122,19 +159,20 @@ include("include/configure.inc.php");
 		</div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <?php include("partials/footer.php"); ?>
+        <?php include("partials/footer.php");?>
 
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
+<!-- partial -->
+</div>
+<!-- main-panel ends -->
 
-    <!-- page-body-wrapper ends -->
-  <!-- container-scroller -->
-  <script>
-      document.title="Police NOC List";
-      document.getElementById("welcome").innerHTML = document.title;
-    </script>
-  <!-- plugins:js -->
+<!-- page-body-wrapper ends -->
+<!-- container-scroller -->
+
+<!-- plugins:js -->
+<script>
+document.title="Amenities Details";
+document.getElementById("welcome").innerHTML = document.title;
+</script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
