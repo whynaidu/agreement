@@ -44,13 +44,32 @@ th {
 	<h2 align="center">भाडेकरु माहिती फॉर्म</h2>
 	<p class="ex1">रजिस्टर नंबर :-</p>
 	<p class="ex1">दिनांक :-</p>
+	<div class="row" style="padding:10px;text-align:center;">
+<div class="row" style="display:flex;">
+                <div class="" style="padding-top:10px;" >
+				<img alt="Image html" style="max-height:800px;max-width:150px;" src="images/Shape 1.svg"height="100%">
+                </div>
+                <div class="" style="padding-top:10px;">
+				<img alt="Image html" style="max-height:600px;max-width:120px;" src="images/Shape 1.svg" width="90%" height="100%">
+                </div>
+                <div class="col" style="padding-top:10px;">
+				<img alt="Image html" style="max-height:600px;max-width:120px;" src="images/Shape 1.svg" width="90%" height="100%">
+                </div>
+                <div class="col" style="padding-top:10px;">
+				<img alt="Image html" style="max-height:600px;max-width:120px;" src="images/Shape 1.svg" width="90%" height="100%">
+                </div>
+                <div class="col" style="padding-top:10px;">
+				<img alt="Image html" style="max-height:600px;max-width:120px;" src="images/Shape 1.svg" width="90%" height="100%">
+                </div>						
+                </div>
+	</div>
 	<table width="100%">
 	<tbody>
 	
 		<tr>
 
 			<td style="width:5%">१</td>
-			<td style="width:48%">घर मालकाचे संपूर्ण नाव, सध्याचा पत्त, वय, मोबाईल क्रमांक <br><br> Name, Address & Mobile No. of Owner</td>
+			<td style="width:48%">घर मालकाचे संपूर्ण नाव, सध्याचा पत्त, वय, मोबाईल क्रमांक <br>Name, Address & Mobile No. of Owner</td>
 			<?php 
                         
 						$sql=mysqli_query($conn,"select * from owner where document_no= '$fid'");
@@ -64,7 +83,7 @@ th {
 		</tr>
 		<tr>
 			<td>२</td>
-			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्त, वय, मोबाईल क्रमांक<br><br>Pancard No and Aadhar Card No of Owner</td>
+			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्त, वय, मोबाईल क्रमांक<br>Pancard No and Aadhar Card No of Owner</td>
 			<td  colspan="3"><label><?php echo $arr['pan_card'];?></label></br>
                             <label><?php echo $arr['aadhaar'];?></label></td>
 		</tr>
@@ -76,14 +95,14 @@ th {
 						while($arr=mysqli_fetch_array($sql)){
 						?>
 			<td>३</td>
-			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्त, वय, मोबाईल क्रमांक<br><br>Name, Previous Address & Mobile No. of Tenant</td>
+			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्त, वय, मोबाईल क्रमांक<br>Name, Previous Address & Mobile No. of Tenant</td>
 			<td  colspan="3"><label><?php echo $arr['fullname'];?></label></br>
 						<label><?php echo $arr['address'];?></label></br>
 						<label><?php echo $arr['mobile'];?></label></td>
 		</tr>
 		<tr>
 			<td>४</td>
-			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्त, वय, मोबाईल क्रमांक<br><br>Pancard No and Aadhar Card No of Tenant</td>
+			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्त, वय, मोबाईल क्रमांक<br>Pancard No and Aadhar Card No of Tenant</td>
 			<td  colspan="3"><label><?php echo $arr['pan_card'];?></label></br>
                             <label><?php echo $arr['aadhaar'];?></label></br></td>
 		</tr>
@@ -91,7 +110,7 @@ th {
 
 		<tr>
 			<td>५</td>
-			<td>भाडेकरुचे मूळ गावचा पत्ता, फोन नंबर<br><br> Permanent Address of Tenant</td>
+			<td>भाडेकरुचे मूळ गावचा पत्ता, फोन नंबर<br> Permanent Address of Tenant</td>
 			<td  colspan="3"><?php echo $arr['permanent_address'];?></td>
 		</tr>
 		<?php } ?>
@@ -102,7 +121,7 @@ th {
                         while($arr=mysqli_fetch_array($sql)){
                         ?>
 			<td>६</td>
-			<td>भाड्याने देण्यात येणाऱ्या जागेचा पत्ता <br><br>Address of Rental Room</td>
+			<td>भाड्याने देण्यात येणाऱ्या जागेचा पत्ता <br>Address of Rental Room</td>
 			<td colspan="3"><label><?php echo $arr['address'];?></label></td>
 			<?php } ?>
 		</tr>	
@@ -114,17 +133,42 @@ th {
                         while($arr=mysqli_fetch_array($sql)){
                         ?>
 			<td>७</td>
-			<td>एजंटचे नाव, पत्ता, मोबाईल क्रमांक<br><br>Name of Agent, Address & Mobile No.</td>
+			<td>एजंटचे नाव, पत्ता, मोबाईल क्रमांक<br>Name of Agent, Address & Mobile No.</td>
 			<td colspan="3"><label><?php echo $arr['agent_name'];?></label><br>
 			<label><?php echo $arr['office_address'];?></label><br>
 			<?php echo $arr['mobile_no'];?></label><br></td>
 			<?php } ?>
 
 		</tr>		
-		
+		</tbody>
+</table>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<table width="100%">
+	<tbody>
 		<tr>
 			<td rowspan="2">८</td>
-			<td rowspan="2">भाडेकरुचे परिवारातील सदस्यांची संख्या <br><br> No. of Family Members</td>
+			<td rowspan="2">भाडेकरुचे परिवारातील सदस्यांची संख्या <br> No. of Family Members</td>
 			<td>पुरुष</td>
 			<td>स्त्रिया</td>
 			<td>लहान मुले</td>
@@ -141,29 +185,29 @@ th {
 						while($arr=mysqli_fetch_array($sql)){
 						?>
 			<td>९</td>
-			<td>ई-मेल आयडी<br><br>E-mail ID of Tenant</td>
+			<td>ई-मेल आयडी<br>E-mail ID of Tenant</td>
 			<td colspan="3"><label><?php echo $arr['email'];?></label></td>
 		</tr>
 		<tr>
 			<td>१०</td>
-			<td>पासपोर्ट नंबर <br><br> Passport No. of Tenant</td>
+			<td>पासपोर्ट नंबर <br> Passport No. of Tenant</td>
 			<td colspan="3"><label><?php echo $arr['passport'];?></label></td>
 		</tr>
 		<tr>
 			<td>११</td>
-			<td>कामाचे स्वरूप [पुराव्यासह]<br><br>Nature of Work & Proof</td>
+			<td>कामाचे स्वरूप [पुराव्यासह]<br>Nature of Work & Proof</td>
 			<td colspan="3"><label><?php echo $arr['occupation'];?></label></td>
 		</tr>
 		<tr>
 			<td>१२</td>
-			<td>काम करत असलेल्या कार्यालयाचे नाव, पत्ता, फोन नंबर <br><br> Office Name, Address & Phone No.</td>
+			<td>काम करत असलेल्या कार्यालयाचे नाव, पत्ता, फोन नंबर <br>Office Name, Address & Phone No.</td>
 			<td colspan="3"><?php echo $arr['office_name'];?></label><br>
 			<?php echo $arr['office_addres'];?></label><br>
 			<?php echo $arr['office_phone'];?></label></td>
 		</tr>		
 		<tr>
 			<td>१३</td>
-			<td>भाडेकरुला ओळखणाऱ्या दोन व्यक्तीचे संपूर्ण नाव, पत्ता, मोबाईल क्रमांक <br><br>Two persons reference with Address & Mobile No.</td>
+			<td>भाडेकरुला ओळखणाऱ्या दोन व्यक्तीचे संपूर्ण नाव, पत्ता, मोबाईल क्रमांक <br>Two persons reference with Address & Mobile No.</td>
 			<td colspan="3"><label><?php echo $arr['name1'];?></label><br>
 			<label><?php echo $arr['name2'];?></label></td>
 		</tr>	
@@ -175,7 +219,7 @@ th {
 						while($arr=mysqli_fetch_array($sql)){
 						?>
 			<td>१४</td>
-			<td>करार केल्याची तारीक व कराराचा कालावधी <br><br>Date of Agreement & Period</td>
+			<td>करार केल्याची तारीक व कराराचा कालावधी <br>Date of Agreement & Period</td>
 			<td colspan="3">	<label><?php echo $arr['date_of_agreement'];?></label></br>
 			<label><?php echo $arr['no_of_month'];?>&nbsp;		Months</label></td>
 			<?php } ?>	
@@ -200,9 +244,7 @@ th {
 			<h4 class="bluediv" align="center">भाडेकरूची स्वाक्षरी&nbsp;&nbsp;Signature of Tenant</h4>
         </div>
     </div>
-	
-	
-	
+
 	<h4 align="center">घोषणापत्र</h4>
 	<p align="center">वरील भरुन दिलेली माहिती ही खरी असून त्यामध्ये काही खोटे आढळल्यास भी कायदेशीर कार्यवाहीस पात्र राहिन.</p>
 	<p align="center">टिप:- सदर माहितीचा / फॉर्मचा उपयोग केवळ पोलीसांच्या रेकॉर्डसाठी असून अन्य कोणत्याही कारणासाठी पुरवा म्हणून वापरता येणार नाही. </p>
