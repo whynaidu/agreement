@@ -120,7 +120,7 @@ if(isset($_GET['delid'])){
                     <div class="form-group row">
                       <label for="exampleage" class="col-sm-3 col-form-label-sm">Age</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control"name="age"required>
+                        <input type="number" class="form-control"name="age"  required>
                       </div>
                     </div>
 					</div>
@@ -138,7 +138,7 @@ if(isset($_GET['delid'])){
 						</div>
 					<div class="col" align="right">
 					<a href="witness.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue" ><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-						<button type="submit" class="btn btn-primary  btn-lg" name="submit"style="color: aliceblue" >Add</button>
+						<button type="submit" class="btn btn-primary  btn-lg" name="submit"style="color: aliceblue">Add</button>
                     <a href="amenities.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue" >Next<i class="mdi mdi-chevron-right"></i></button></a>
 					</div>
                   </form>
@@ -205,10 +205,11 @@ if(isset($_GET['delid'])){
 <!-- container-scroller -->
 
 <!-- plugins:js -->
-<script>
-document.title="Family Details";
+                
+<script>document.title="Family Details";
 document.getElementById("welcome").innerHTML = document.title;
 </script>
+
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->

@@ -47,6 +47,30 @@ if(isset($_POST['submit'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+
+
+<style type="text/css">
+
+                .PAN
+                {
+                    text-transform: uppercase;
+                }
+                .error
+                {
+                    color: Red;
+                    visibility: hidden;
+            }
+            input[type=button] {
+            width: 30%;
+            background-color: rgb(248, 164, 128);
+            margin: 13px 35%;
+            padding: 10px 10px;
+            border-radius: 10px;
+            border: 2px solid rgb(18, 17, 17);
+            }
+       
+   
+</style>
 </head>
 <body>
   <div class="container-scroller">
@@ -115,7 +139,8 @@ if(isset($_POST['submit'])){
                  
                       <label for="examplepan" class="col-sm-2 col-form-label">Pancard</label>
                       <div class="col-sm-4">
-                        <input type="text" name="pancard" class="form-control" required>
+                        <input type="text" name="pancard"  id="txtPANCard" class="form-control pan"placeholder="enter your pan number" required/>
+                        <span id="spanPANCard" class="error">Invalid PAN Number</span>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -126,7 +151,7 @@ if(isset($_POST['submit'])){
                     </div>
                    
 					<div class="col" align="right">
-                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue" name="submit">Next<i class="mdi mdi-chevron-right"></i></button>
+                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue"  name="submit" onclick="ValidatePAN()"> Next<i class="mdi mdi-chevron-right"></i></button>
 					</div>
                   </form>
                 </div>
@@ -152,7 +177,30 @@ if(isset($_POST['submit'])){
   <!-- container-scroller -->
 
   <!-- plugins:js -->
+  <script type="text/javascript">
+    
+</script>
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+
+  
+
   <script>
+  function ValidatePAN() {
+        var txtPANCard = document.getElementById("txtPANCard");
+        var lblPANCard = document.getElementById("spanPANCard")
+        var regex = /([A-Z]){5}([0-9]){4}([A-Z]){1}$/;
+        if (regex.test(txtPANCard.value.toUpperCase())) {
+            lblPANCard.style.visibility = "hidden";
+            return true;
+        } else {
+            lblPANCard.style.visibility = "visible";
+            return false;
+        }
+        
+    }
+  
+
+
       document.title="Owner Details";
       document.getElementById("welcome").innerHTML = document.title;
     </script>

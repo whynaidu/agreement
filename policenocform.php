@@ -44,7 +44,7 @@ th {
 	<h2 align="center">भाडेकरु माहिती फॉर्म</h2>
 	<p class="ex1">रजिस्टर नंबर :-</p>
 	<p class="ex1">दिनांक :-</p>
-	<div class="row" style="padding:10px;text-align:center;">
+<!--	<div class="row" style="padding:10px;text-align:center;">
 <div class="row" style="display:flex;">
                 <div class="" style="padding-top:10px;" >
 				<img alt="Image html" style="max-height:800px;max-width:150px;" src="images/Shape 1.svg"height="100%">
@@ -62,7 +62,8 @@ th {
 				<img alt="Image html" style="max-height:600px;max-width:120px;" src="images/Shape 1.svg" width="90%" height="100%">
                 </div>						
                 </div>
-	</div>
+	</div> -->
+	<img src="images/photo001.jpg" width="1000px" height="200px" >
 	<table width="100%">
 	<tbody>
 	
@@ -140,32 +141,6 @@ th {
 			<?php } ?>
 
 		</tr>		
-		</tbody>
-</table>
-<br>
-<br>
-
-<br>
-<br>
-<br>
-
-<br>
-<br>
-<br>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<table width="100%">
-	<tbody>
 		<tr>
 			<td rowspan="2">८</td>
 			<td rowspan="2">भाडेकरुचे परिवारातील सदस्यांची संख्या <br> No. of Family Members</td>
