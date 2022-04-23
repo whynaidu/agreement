@@ -105,7 +105,7 @@ if(isset($_GET['delid'])){
                             <td><?php echo $row["doa"]; ?> </td>
                             <td> May 15, 2015 </td>
                             <td>
-				    <a href="agreement.php?id=<?php echo $fid; ?>"<button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+				    <a href="agreement.php?id=<?php echo $row['did']; ?>"<button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
                             <a class="btn btn-danger btn-rounded btn-icon" href="listofagreement.php?delid=<?php echo $row['did']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
                           <i class="mdi mdi-delete"></i>
                           </a></td>
