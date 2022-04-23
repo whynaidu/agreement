@@ -174,7 +174,7 @@ if(isset($_POST['submit'])){
       </div>
 
   <script>
-      document.title="Witness Details";
+      document.title="New Agreement";
       document.getElementById("welcome").innerHTML = document.title;
     </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
