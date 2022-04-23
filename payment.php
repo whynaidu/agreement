@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
 	$sql=mysqli_query($conn,"INSERT INTO `payment`(`document_no`,`security_deposit`,`rent_amount`,`bank`,`method`,`date`,`tid`) VALUES 
   ('$fid','$security_deposit','$rent_amount','$bank','$method','$date','$tid')");
 	if($sql==1){	
-    header("location:policeform.php?id=".$fid);
+    header("location:agreement.php?id=".$fid);
   	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
