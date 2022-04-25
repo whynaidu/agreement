@@ -104,7 +104,7 @@ include("include/configure.inc.php");
                             <td> <?php echo $arr['doa'];?> </td>
                             <td>
                             <a href="policenocform.php?id=<?php echo $arr['docno'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
-                              <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button></td>
+                              <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
                           </tr>
                         </tbody>
                         <?php $count++;} ?>
