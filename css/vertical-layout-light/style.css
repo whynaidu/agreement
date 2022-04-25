@@ -28559,6 +28559,10 @@ div.tagsinput span.tag a {
   box-sizing: border-box;
 }
 
+.err{
+  padding-top:50px;
+}
+
 .wysi-editor textarea {
   height: 280px;
   border: 1px solid #dee2e6;
@@ -28864,7 +28868,6 @@ div.tagsinput span.tag a {
   flex-direction: row;
   padding-left: 0;
   padding-right: 0;
-  padding-top: 97px;
 }
 
 .page-body-wrapper.full-page-wrapper {
