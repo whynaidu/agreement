@@ -50,6 +50,35 @@ if(isset($_POST['submit'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+  <style type="text/css">
+
+                .PAN
+                {
+                    text-transform: uppercase;
+                }
+                .error
+                {
+                    color: Red;
+                    visibility: hidden;
+            }
+            input[type=button] {
+            width: 30%;
+            background-color: rgb(248, 164, 128);
+            margin: 13px 35%;
+            padding: 10px 10px;
+            border-radius: 10px;
+            border: 2px solid rgb(18, 17, 17);
+            }
+            
+            textarea{
+                
+                border: 1px solid #DEE2E6;
+                border-radius: 4px;
+                
+            }
+           
+   
+</style>
 </head>
 <body>
 <div class="container-scroller">
@@ -86,9 +115,10 @@ if(isset($_POST['submit'])){
                   <h4 class="card-title">Tenant Details</h4>
                   <form class="forms-sample"method="post">
                     <div class="form-group row">
-                     <label for="examplename" class="col-sm-2 col-form-label">Full Name</label>	
+                     <label for="examplename" class="col-sm-2 col-form-label">Full Name<label style="color:Red">*</label></label>	
 					 <div class="col-sm-2">
                       <select class="form-control" id="exampleSelectGender" name="abbreviation"required>
+                      <option value="" disabled selected hidden>select</option>
                           <option>Mr.</option>
                           <option>Mrs.</option>
                         </select>  
@@ -98,12 +128,12 @@ if(isset($_POST['submit'])){
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputMobile" class="col-sm-2 col-form-label">Mobile No.</label>
+                      <label for="exampleInputMobile" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="tel"class="form-control" id="phone" name="mobile" placeholder="Mobile Number" required>
+                        <input type="tel" class="form-control" id="phone" name="mobile" placeholder="Mobile Number" minlength="10" maxlength="10" required>
                       </div>
                 
-                      <label for="exampleaadhaar" class="col-sm-2 col-  form-label">E-mail ID</label>
+                      <label for="exampleaadhaar" class="col-sm-2 col-  form-label">E-mail ID<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
                         <input type="email" class="form-control"name="email"required>
                       </div>
@@ -111,42 +141,47 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Passport No</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control"name="passport"required>
+                        <input type="text" class="form-control"name="passport">
                       </div>
  
-                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar No.</label>
+                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar No.<label style="color:Red">*</label></label>
+                      
                       <div class="col-sm-4">
-                        <input type="text" class="form-control"name="aadhaar"required>
+                        <input type="text" class="form-control"name="aadhaar" id="txtAadhar"  onblur="AadharValidate()" required>
+                        <span id="spanAadharCard" class="error">Invalid Adhar Number</span>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleaddress" class="col-sm-2 col-form-label">Age</label>
+                      <label for="exampleaddress" class="col-sm-2 col-form-label">Age<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="text"  class="form-control" name="age"required>
+                        <input type="number"  class="form-control" name="age" min="18" max="100" onblur="myFunction()" id="id1" required>
+                        <p id="demo"></p>
                       </div>
  
-                      <label for="examplepan" class="col-sm-2 col-form-label">Pancard</label>
+
+                      <label for="examplepan" class="col-sm-2 col-form-label">Pancard<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control"name="pancard"required>
+                        <input type="text" class="form-control"name="pancard" id="txtPANCard" required>
+                        <span id="spanPANCard" class="error">Invalid PAN Number</span>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address</label>
+                      <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                      <textarea class="form-control" name="address"required></textarea> 
+                      <textarea name="address" cols="73" rows="4" required></textarea> 
                       </div>
                     </div>
 					          <div class="form-group row">
-                      <label for="examplepreaddress" class="col-sm-2 col-form-label">Present Address</label>
+                      <label for="examplepreaddress" class="col-sm-2 col-form-label">Present Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <textarea class="form-control"name="permanent_address"required></textarea>  
+                        <textarea name="permanent_address" cols="73" rows="4"required></textarea>  
                       </div>
                     </div>
                
 					<div class="col" align="right">
           
 						 <a href="owner.php?id=<?php echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue" name="submit">Next<i class="mdi mdi-chevron-right"></i></button>
+                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue" name="submit" onclick="ValidatePAN()">Next<i class="mdi mdi-chevron-right"></i></button>
 					</div>
                   </form>
                		 </div>
@@ -172,6 +207,51 @@ if(isset($_POST['submit'])){
   <!-- container-scroller -->
 
   <!-- plugins:js -->
+  <script>
+  function ValidatePAN() {
+        var txtPANCard = document.getElementById("txtPANCard");
+        var lblPANCard = document.getElementById("spanPANCard")
+        var regex = /([A-Z]){5}([0-9]){4}([A-Z]){1}$/;
+        if (regex.test(txtPANCard.value.toUpperCase())) {
+            lblPANCard.style.visibility = "hidden";
+            return true;
+        } else {
+            lblPANCard.style.visibility = "visible";
+            return false;
+        }
+
+    }
+    </script>
+
+
+    <script>
+      function myFunction() {
+      const inpObj = document.getElementById("id1");
+      if (!inpObj.checkValidity()) {
+        document.getElementById("demo").innerHTML = inpObj.validationMessage;
+      } else {
+        return true;
+      } 
+    } 
+    </script>
+    
+<script>
+  function AadharValidate() {
+    var aadhar = document.getElementById("txtAadhar").value;
+        var lblAadharCard = document.getElementById("spanAadharCard")
+        var adharcardTwelveDigit = /^\d{12}$/;
+        
+        if (aadhar.match(adharcardTwelveDigit)) {
+          lblAadharCard.style.visibility = "hidden";
+            return true;
+        } else {
+          lblAadharCard.style.visibility = "visible";
+            return false;
+        }
+
+    }
+  
+    </script>
   <script>
       document.title="Tenant Details";
       document.getElementById("welcome").innerHTML = document.title;

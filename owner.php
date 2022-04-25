@@ -68,8 +68,13 @@ if(isset($_POST['submit'])){
             border-radius: 10px;
             border: 2px solid rgb(18, 17, 17);
             }
-       
-   
+            
+            textarea{
+                
+                border: 1px solid #DEE2E6;
+                border-radius: 4px;
+                
+            }
 </style>
 </head>
 <body>
@@ -109,11 +114,12 @@ if(isset($_POST['submit'])){
                   <h4 class="card-title">Owner Details</h4>
                   <form class="forms-sample" method="post">
                     <div class="form-group row">
-                     <label for="examplename" class="col-sm-2 col-form-label">Full Name</label>	
+                     <label for="examplename" class="col-sm-2 col-form-label">Full Name<label style="color:Red">*</label> </label>	
 					 <div class="col-sm-2">
                       <select class="form-control" name="abbreviation" id="exampleSelectGender" required>
-                          <option>Mr.</option>
-                          <option>Mrs.</option>
+                      <option value="" disabled selected hidden>select</option>
+                          <option value="mr.">Mr.</option>
+                          <option value="mrs.">Mrs.</option>
                         </select>  
                       </div>
                       <div class="col-sm-8">
@@ -121,32 +127,34 @@ if(isset($_POST['submit'])){
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleaddress" class="col-sm-2 col-form-label">Age</label>
+                      <label for="exampleaddress" class="col-sm-2 col-form-label">Age<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="number" name="age" class="form-control" required>
+                        <input type="number" name="age" class="form-control" id="id1"  min="18" max="100"  onblur="myFunction()" required>
+                        <p id="demo"></p>
                       </div>
                  
-                      <label for="exampleInputMobile" class="col-sm-2 col-form-label">Mobile No.</label>
+                      <label for="exampleInputMobile" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
                         <input type="tel" name="mobile" class="form-control"  minlength="10" maxlength="10" required>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar No.</label>
+                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar No.<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="text" name="aadhaar" class="form-control" required>
+                        <input type="number" name="aadhaar" class="form-control" id="txtAadhar"  onblur="AadharValidate()" required>
+                        <span id="spanAadharCard" class="error">Invalid Adhar Number</span>
                       </div>
                  
-                      <label for="examplepan" class="col-sm-2 col-form-label">Pancard</label>
+                      <label for="examplepan" class="col-sm-2 col-form-label">Pancard<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
                         <input type="text" name="pancard"  id="txtPANCard" class="form-control pan"placeholder="enter your pan number" required/>
                         <span id="spanPANCard" class="error">Invalid PAN Number</span>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address</label>
+                    <div class="form-group row"> 
+                      <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <textarea name="address" class="form-control" required></textarea>
+                        <textarea name="address" cols="73" rows="4" required></textarea>
                       </div>
                     </div>
                    
@@ -182,7 +190,40 @@ if(isset($_POST['submit'])){
 </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
 
+      <script>
+      function myFunction() {
+      const inpObj = document.getElementById("id1");
+      if (!inpObj.checkValidity()) {
+        document.getElementById("demo").innerHTML = inpObj.validationMessage;
+      } else {
+        return true;
+      } 
+    } 
+    </script>
+
   
+
+
+
+<script>
+  function AadharValidate() {
+    var aadhar = document.getElementById("txtAadhar").value;
+        var lblAadharCard = document.getElementById("spanAadharCard")
+        var adharcardTwelveDigit = /^\d{12}$/;
+        
+        if (aadhar.match(adharcardTwelveDigit)) {
+          lblAadharCard.style.visibility = "hidden";
+            return true;
+        } else {
+          lblAadharCard.style.visibility = "visible";
+            return false;
+        }
+
+    }
+  
+    </script>
+
+</html>
 
   <script>
   function ValidatePAN() {

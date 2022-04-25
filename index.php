@@ -89,7 +89,7 @@ if(isset($_POST['submit'])){
 					  <div class="row">
 					  <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Document No.</label>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Document No.<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
 					  <?php $sql=mysqli_query($conn,"select documentid from new_agreement order by documentid desc") or die( mysqli_error($conn));;
                       $row=mysqli_fetch_array($sql);
@@ -108,7 +108,7 @@ if(isset($_POST['submit'])){
 						</div> 
 					  <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampledate" class="col-sm-3 col-form-label">Date of Aggrement</label>
+                      <label for="exampledate" class="col-sm-3 col-form-label">Date of Aggrement<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                         <input type="date" name="date" class="form-control" id="exampledate" required>
                       </div>
@@ -116,9 +116,10 @@ if(isset($_POST['submit'])){
 						</div> 
 					   <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-3 col-form-label">Property Type</label>
+                      <label for="exampleprop" class="col-sm-3 col-form-label">Property Type<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                         <select class="form-control" name="type" id="exampleSelectGender" required>
+                        <option value="" disabled selected hidden>select</option>
                           <option>Flat</option>
                           <option>Shop</option>
                         </select>
@@ -127,9 +128,10 @@ if(isset($_POST['submit'])){
 						</div>
 						 <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-3 col-form-label">Total no of months</label>
+                      <label for="exampleprop" class="col-sm-3 col-form-label">Total no of months<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                         <select required class="form-control" name="month" id="exampleSelectGender">
+                        <option value="" disabled selected hidden>select</option>
                           <option>11</option>
                           <option>22</option>
 						              <option>36</option>
@@ -140,7 +142,7 @@ if(isset($_POST['submit'])){
 						</div>
             <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-3 col-form-label">Place of Agreement</label>
+                      <label for="exampleprop" class="col-sm-3 col-form-label">Place of Agreement<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                       <input type="TEXT" name="place" class="form-control" id="exampledate" required>
 

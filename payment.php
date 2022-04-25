@@ -86,7 +86,7 @@ if(isset($_POST['submit'])){
 					  <div class="row">
 						  <div class="col-sm-6">
                     <div class="form-group row">
-                      <label for="examplename" class="col-sm-3 col-form-label-sm">Security Deposit</label>
+                      <label for="examplename" class="col-sm-3 col-form-label-sm">Security Deposit<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control"name="security_deposit">
                       </div>
@@ -95,7 +95,7 @@ if(isset($_POST['submit'])){
 					</div>
 					<div class="col-sm-6">
                      <div class="form-group row">
-                      <label for="exampleage" class="col-sm-3 col-form-label-sm">Monthly Rent</label>
+                      <label for="exampleage" class="col-sm-3 col-form-label-sm">Monthly Rent<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control"name="rent_amount">
                       </div>
@@ -106,9 +106,10 @@ if(isset($_POST['submit'])){
             <h4 class="card-title">Deposit Payment Details</h4>
 
                    <div class="form-group row">
-                     <label for="examplename" class="col-sm-2 col-form-label">Payment Methods</label>	
+                     <label for="examplename" class="col-sm-2 col-form-label">Payment Methods<label style="color:Red">*</label></label>	
 					 <div class="col-sm-10">
                       <select class="form-control" id="exampleSelecthod" name="method">
+                      <option value="" disabled selected hidden>select</option>
                           <option>Cash</option>
                               <option>Cheque</option>
 						                  <option>UPI</option>
@@ -118,19 +119,19 @@ if(isset($_POST['submit'])){
                       </div>
 					   </div>
              <div class="form-group row">
-                      <label for="exampldate" class="col-sm-2 col-form-label">Bank </label>
+                      <label for="exampldate" class="col-sm-2 col-form-label">Bank <label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" name="bank">
                       </div>
                     </div>
 					  <div class="form-group row">
-                      <label for="exampldate" class="col-sm-2 col-form-label">Date of Payment</label>
+                      <label for="exampldate" class="col-sm-2 col-form-label">Date of Payment<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="date" class="form-control" name="date">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Transaction ID</label>
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Transaction ID<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" name="tid">
                       </div>

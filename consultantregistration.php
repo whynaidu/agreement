@@ -57,6 +57,18 @@ if(isset($_POST['submit'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+  <style type="text/css">
+
+               
+            textarea{
+                
+                border: 1px solid #DEE2E6;
+                border-radius: 4px;
+                
+            }
+           
+   
+</style>
 </head>
 <body>
   <div class="container-scroller">
@@ -88,7 +100,7 @@ if(isset($_POST['submit'])){
                   <form class="forms-sample">
             
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-2 col-form-label">Document No.</label>
+                      <label for="exampledno" class="col-sm-2 col-form-label">Document No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
 					  <?php $sql=mysqli_query($conn,"select documentid from new_agreement order by documentid desc") or die( mysqli_error($conn));;
                       $row=mysqli_fetch_array($sql);
@@ -107,43 +119,43 @@ if(isset($_POST['submit'])){
 						
                    
                     <div class="form-group row">
-                      <label for="exampleaddress" class="col-sm-2 col-form-label">Consultant Name</label>
+                      <label for="exampleaddress" class="col-sm-2 col-form-label">Consultant Name<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office Address</label>
+                      <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control">
+                      <textarea name="address" cols="73" rows="4" required></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.</label>
+                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control">
                       </div>
                     </div>
 					  <div class="form-group row">
-                      <label for="exampleemail" class="col-sm-2 col-form-label">Email ID</label>
+                      <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="email" class="form-control">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
+                      <label for="examplepan" class="col-sm-2 col-form-label">Rera No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control">
                       </div>
                     </div>
 					  <div class="form-group row">
-                      <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix</label>
+                      <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" placeholder="TECT-00001">
                       </div>
                     </div>
 					  <div class="form-group row">
-                      <label for="examplepan" class="col-sm-2 col-form-label">Photo</label>
+                      <label for="examplepan" class="col-sm-2 col-form-label">Photo<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="file">
                           Upload
