@@ -8,13 +8,9 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
 include("include/configure.inc.php");
 $fid=$_GET['id'];
 
-if(isset($_GET['delid'])){
-  $id=mysqli_real_escape_string($conn,$_GET['delid']);
-  $sql=mysqli_query($conn,"delete new_agreement.*,tenant.*,owner.*,property_details.*,amenities.*, family_members.*,payment.* from new_agreement inner join tenant on new_agreement.document_no=tenant.document_no inner join owner on new_agreement.document_no=owner.document_no inner join property_details on new_agreement.document_no=property_details.document_no 
-  inner join amenities on new_agreement.document_no=amenities.document_no inner 
-  join family_members on new_agreement.document_no=family_members.document_no 
-  inner join payment on new_agreement.document_no=payment.document_no where 
-  new_agreement.document_no='$id'");
+if(isset($_GET['gen'])){
+  $id=mysqli_real_escape_string($conn,$_GET['gen']);
+  $sql=mysqli_query($conn,"update noc set `status`='1' where document_no='$fid'");
   if($sql=1){
    header("location:listofagreement.php");
   }
@@ -93,7 +89,7 @@ if(isset($_GET['delid'])){
                         </thead>
 
                         <?php                 
-      $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile from new_agreement inner join tenant on tenant.document_no=new_agreement.document_no");
+    $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus from new_agreement inner join tenant on new_agreement.document_no=tenant.document_no inner join noc on new_agreement.document_no=noc.document_no where noc.status='0'");
       $count=1;
       while($row = mysqli_fetch_array($sql)) {
       ?>
@@ -105,9 +101,13 @@ if(isset($_GET['delid'])){
                             <td><?php echo $row["doa"]; ?> </td>
                             <td> May 15, 2015 </td>
                             <td>
-				    <a href="agreement.php?id=<?php echo $row['did']; ?>"<button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
-                            <a class="btn btn-danger btn-rounded btn-icon" href="listofagreement.php?delid=<?php echo $row['did']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
+				    <a href="agreement.php?id=<?php echo $row['did']; ?>"> <button type="btn-icon" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+                            <!-- <a class="btn btn-danger btn-rounded btn-icon" href="listofagreement.php?delid=<?php echo $row['did']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
                           <i class="mdi mdi-delete"></i>
+                          </a>  -->
+                          <a href="agreement.php?id=<?php echo $row['did']; ?>"> <button type="btn-icon" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class=" mdi mdi-pen "></i> </button></a>
+
+                          <a href="listofagreement.php?delid=<?php echo $row['did']; ?>" ><button type="submit" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> Generate NOC</button>
                           </a></td>
                           </tr>
                         </tbody>

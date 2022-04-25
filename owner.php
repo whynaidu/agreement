@@ -146,7 +146,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address</label>
                       <div class="col-sm-10">
-                        <textarea type="text" rows="4" cols="50" name="address" class="form-control" required></textarea>
+                        <textarea name="address" class="form-control" required></textarea>
                       </div>
                     </div>
                    
@@ -196,7 +196,7 @@ if(isset($_POST['submit'])){
             lblPANCard.style.visibility = "visible";
             return false;
         }
-        
+
     }
   
 
