@@ -55,6 +55,16 @@ if(isset($_GET['delid'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+  <style type="text/css">
+
+
+.error
+{
+    color: Red;
+    visibility: hidden;
+}
+
+</style>
 </head>
 <body>
 <div class="container-scroller">
@@ -62,7 +72,7 @@ if(isset($_GET['delid'])){
     <?php include("partials/header.php");?>
 
     <!-- partial -->
-    <div class="container-fluid page-body-wrapper" style="padding-top: 50px;">
+    <div class="container-fluid page-body-wrapper" >
       <!-- partial:partials/_settings-panel.html -->
   
       <!-- partial -->
@@ -76,13 +86,7 @@ if(isset($_GET['delid'])){
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
                 
-                  <div>
-                    <div class="btn-wrapper">
-                      <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
-                      <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
-                      <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
-                    </div>
-                  </div>
+                  
                 </div>
                 <div class="tab-content tab-content-basic">
 				<div class="row" >
@@ -90,26 +94,28 @@ if(isset($_GET['delid'])){
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Staying with the License</h4>
-                  <form class="forms-sample" method="post">
+                  <form class="forms-sample" id="basic-form" method="post">
 					  <div class="row">
 						  <div class="col-sm-6">
                     <div class="form-group row">
-                      <label for="examplename" class="col-sm-3 col-form-label-sm">Name</label>
+                      <label for="examplename" class="col-sm-3 col-form-label-sm">Name<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control"name="name"required>
+                        <input type="text" class="form-control"  name="name"  id="txtname" required>
+                        <span id="spanname"></span>
                       </div>
                     </div>
 					</div>
 					<div class="col-sm-6">
                     <div class="form-group row">
-                      <label for="examplerel" class="col-sm-3 col-form-label-sm">Relation</label>
+                      <label for="examplerel" class="col-sm-3 col-form-label-sm">Relation<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                         <select class="form-control" id="exampleSelectrelation"name="relation"required>
+                          <option value="" disabled selected hidden>Select</option>
                           <option>Child</option>
                           <option>Father</option>
-						  <option>Mother</option>
+						              <option>Mother</option>
                           <option>Wife</option>
-						  <option>Husband</option>
+						              <option>Husband</option>
                         </select> 
                       </div>
                     </div>
@@ -118,17 +124,18 @@ if(isset($_GET['delid'])){
 					  <div class="row">
 						  <div class="col-sm-6">
                     <div class="form-group row">
-                      <label for="exampleage" class="col-sm-3 col-form-label-sm">Age</label>
+                      <label for="exampleage" class="col-sm-3 col-form-label-sm">Age<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="number" class="form-control"name="age"  required>
+                        <input type="number" class="form-control"name="age" id="age" required>
                       </div>
                     </div>
 					</div>
 					<div class="col-sm-6">
                     <div class="form-group row">
-                      <label for="examplearea" class="col-sm-3 col-form-label-sm">Gender</label>
+                      <label for="examplearea" class="col-sm-3 col-form-label-sm">Gender<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <select class="form-control" id="exampleSelectgender"name="gender"required>
+                        <select class="form-control" id="exampleSelectgender"name="gender" required>
+                        <option value="" disabled selected hidden>select</option>
                           <option>Male</option>
                           <option>Female</option>
                         </select> 
@@ -138,10 +145,11 @@ if(isset($_GET['delid'])){
 						</div>
 					<div class="col" align="right">
 					<a href="witness.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue" ><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-						<button type="submit" class="btn btn-primary  btn-lg" name="submit"style="color: aliceblue">Add</button>
+						<button type="submit" class="btn btn-primary  btn-lg" name="submit"  style="color: aliceblue" id="sub" >Add</button>
                     <a href="amenities.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue" >Next<i class="mdi mdi-chevron-right"></i></button></a>
 					</div>
                   </form>
+                
                 </div>
               </div>
             </div>
@@ -163,7 +171,7 @@ if(isset($_GET['delid'])){
                         <tbody>
                         <?php $sql=mysqli_query($conn,"select * from family_members where document_no= '$fid'");
                     $count=1;
-                    while($arr=mysqli_fetch_array($sql)){
+                    while($arr=mysqli_fetch_array($sql)){           
                     ?>
                           <tr>
                             <td> <?php echo $count;?></td>
@@ -205,6 +213,27 @@ if(isset($_GET['delid'])){
 <!-- container-scroller -->
 
 <!-- plugins:js -->
+
+
+
+<!-- <script>
+  function lettersOnlyCheck() {
+        var x = document.getElementById("txtname");
+        var y = document.getElementById("spanname")
+        var regEx = /^[A-Za-z]+$/;
+        
+        if(x.value.match(regEx)) {
+            y.style.visibility = "hidden";
+            return true;
+        } else {
+            y.style.visibility = "visible";
+            return false;
+        }
+    }
+    </script> -->
+                
+
+
                 
 <script>document.title="Family Details";
 document.getElementById("welcome").innerHTML = document.title;
@@ -230,6 +259,41 @@ document.getElementById("welcome").innerHTML = document.title;
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  <script>
+  $(document).ready(function(){
+//TEXT VALIDATION
+$("#spanname").hide();
+	    $("#txtname").keyup(function(){
+	     txt_check();
+	   });
+	   function txt_check(){
+		   let txt=$("#txtname").val();
+		   let vali =/^[A-Za-z]+$/;
+		   if(!vali.test(txt)){
+			    $("#spanname").show().html("Enter Alphabets only").css("color","red").focus();
+			 txt_err=false;
+			 return false;
+		   }
+		   else{
+		       $("#spanname").hide();
+		       
+		   }
+	   }
+
+	   $("#sub").click(function(){
+      txt_err = true;
+             txt_check();
+			   
+			   if((txt_err==true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
+    });
+    </script>
+
+
 </body>
 
 </html>

@@ -48,6 +48,12 @@ if(isset($_POST['submit'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+  <style>
+    body {
+  font-family: "Open Sans", 
+  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}
+    </style>
 </head>
 <body>
 <div class="container-scroller">
@@ -68,13 +74,7 @@ if(isset($_POST['submit'])){
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
-                  <div>
-                    <div class="btn-wrapper">
-                      <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
-                      <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
-                      <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
-                    </div>
-                  </div>
+                  
                 </div>
                 <div class="tab-content tab-content-basic">
 				<div class="row" >
@@ -86,18 +86,18 @@ if(isset($_POST['submit'])){
 					  <div class="row">
 						  <div class="col-sm-6">
                     <div class="form-group row">
-                      <label for="examplename" class="col-sm-3 col-form-label-sm">Security Deposit</label>
+                      <label for="examplename" class="col-sm-3 col-form-label-sm">Security Deposit<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control"name="security_deposit">
+                        <input type="text" class="form-control"name="security_deposit" required>
                       </div>
                     </div>
                 
 					</div>
 					<div class="col-sm-6">
                      <div class="form-group row">
-                      <label for="exampleage" class="col-sm-3 col-form-label-sm">Monthly Rent</label>
+                      <label for="exampleage" class="col-sm-3 col-form-label-sm">Monthly Rent<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control"name="rent_amount">
+                        <input type="text" class="form-control"name="rent_amount" required>
                       </div>
                     </div>     
 					  </div>
@@ -106,9 +106,10 @@ if(isset($_POST['submit'])){
             <h4 class="card-title">Deposit Payment Details</h4>
 
                    <div class="form-group row">
-                     <label for="examplename" class="col-sm-2 col-form-label">Payment Methods</label>	
+                     <label for="examplename" class="col-sm-2 col-form-label">Payment Methods<label style="color:Red">*</label></label>	
 					 <div class="col-sm-10">
-                      <select class="form-control" id="exampleSelecthod" name="method">
+                      <select class="form-control" id="exampleSelecthod" name="method" required>
+                      <option value="" disabled selected hidden>select</option>
                           <option>Cash</option>
                               <option>Cheque</option>
 						                  <option>UPI</option>
@@ -118,30 +119,28 @@ if(isset($_POST['submit'])){
                       </div>
 					   </div>
              <div class="form-group row">
-                      <label for="exampldate" class="col-sm-2 col-form-label">Bank </label>
+                      <label for="exampldate" class="col-sm-2 col-form-label">Bank <label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="bank">
+                        <input type="text" class="form-control" name="bank" required>
                       </div>
                     </div>
 					  <div class="form-group row">
-                      <label for="exampldate" class="col-sm-2 col-form-label">Date of Payment</label>
+                      <label for="exampldate" class="col-sm-2 col-form-label">Date of Payment<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="date" class="form-control" name="date">
+                        <input type="date" class="form-control" name="date" required>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Transaction ID</label>
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Transaction ID<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="tid">
+                        <input type="text" class="form-control" name="tid" required>
                       </div>
                     </div>
 				
                     <div class="col" align="right">
 					<a href="amenities.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-					<button type="submit" name="submit" class="btn btn-primary btn-lg" style="color: aliceblue">Submit</button>
+					<button type="submit" name="submit" onclick="sweetalert()" id="submitForm" class="btn btn-primary btn-lg" style="color: aliceblue" >Submit</button>
 					</div>
-               
-
                   </form>
                 </div>
               </div>
@@ -164,13 +163,14 @@ if(isset($_POST['submit'])){
       document.getElementById("welcome").innerHTML = document.title;
     </script>
   <script> 
+function sweetalert() {
   swal({
   title: "Good job!",
   text: "You clicked the button!",
   icon: "success",
-  button: "Aww yiss!",
+  button: "OK",
 });
-
+}
 </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->

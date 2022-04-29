@@ -51,6 +51,11 @@ include("include/configure.inc.php");
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
+<<<<<<< HEAD
+=======
+                  
+                  
+>>>>>>> f7bed5e5c91e6ba453997719ec822d249a855ce8
                 </div>
                 <div class="tab-content tab-content-basic">
 				<div class="row" >

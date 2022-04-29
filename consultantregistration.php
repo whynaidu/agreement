@@ -117,6 +117,18 @@ if(isset($_POST['sub'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+  <style type="text/css">
+
+               
+            textarea{
+                
+                border: 1px solid #DEE2E6;
+                border-radius: 4px;
+                
+            }
+           
+   
+</style>
 </head>
 <body>
   <div class="container-scroller">
@@ -148,7 +160,7 @@ if(isset($_POST['sub'])){
                   <form class="forms-sample" method="post">
             
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-2 col-form-label">Document No.</label>
+                      <label for="exampledno" class="col-sm-2 col-form-label">Document No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
 					  <?php $sql=mysqli_query($conn,"select user_id from agent_details order by user_id desc") or die( mysqli_error($conn));;
                       $row=mysqli_fetch_array($sql);
@@ -167,45 +179,73 @@ if(isset($_POST['sub'])){
 						
                    
                     <div class="form-group row">
-                      <label for="exampleaddress" class="col-sm-2 col-form-label">Consultant Name</label>
+                      <label for="exampleaddress" class="col-sm-2 col-form-label">Consultant Name<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
+<<<<<<< HEAD
                         <input type="text" class="form-control"name="name">
+=======
+                        <input type="text" class="form-control" required>
+>>>>>>> f7bed5e5c91e6ba453997719ec822d249a855ce8
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office Address</label>
+                      <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
+<<<<<<< HEAD
                         <input type="text" class="form-control"name="office_address">
+=======
+                      <textarea name="address" cols="73" rows="4" required></textarea>
+>>>>>>> f7bed5e5c91e6ba453997719ec822d249a855ce8
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.</label>
+                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
+<<<<<<< HEAD
                         <input type="text" class="form-control"name="mobile_no">
+=======
+                        <input type="number" class="form-control" minlength="10" maxlength="10"  required>
+>>>>>>> f7bed5e5c91e6ba453997719ec822d249a855ce8
                       </div>
                     </div>
 					  <div class="form-group row">
-                      <label for="exampleemail" class="col-sm-2 col-form-label">Email ID</label>
+                      <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
+<<<<<<< HEAD
                         <input type="email" class="form-control"name="email">
+=======
+                        <input type="email" class="form-control" required>
+>>>>>>> f7bed5e5c91e6ba453997719ec822d249a855ce8
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
+                      <label for="examplepan" class="col-sm-2 col-form-label">Rera No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
+<<<<<<< HEAD
                         <input type="text" class="form-control"name="rera">
+=======
+                        <input type="text" class="form-control" required>
+>>>>>>> f7bed5e5c91e6ba453997719ec822d249a855ce8
                       </div>
                     </div>
 					  <div class="form-group row">
-                      <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix</label>
+                      <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
+<<<<<<< HEAD
                         <input type="text" class="form-control" placeholder="TECT-00001" name="prefix">
+=======
+                        <input type="text" class="form-control" placeholder="TECT-00001" required>
+>>>>>>> f7bed5e5c91e6ba453997719ec822d249a855ce8
                       </div>
                     </div>
 					  <div class="form-group row">
-                      <label for="examplepan" class="col-sm-2 col-form-label">Photo</label>
+                      <label for="examplepan" class="col-sm-2 col-form-label">Photo<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
+<<<<<<< HEAD
                         <input type="file" name="file">
+=======
+                        <input type="file" required> 
+>>>>>>> f7bed5e5c91e6ba453997719ec822d249a855ce8
                           Upload
                       </div>
                     </div>
