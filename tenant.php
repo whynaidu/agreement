@@ -99,13 +99,7 @@ if(isset($_POST['submit'])){
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
-                  <div>
-                    <div class="btn-wrapper">
-                      <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
-                      <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
-                      <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
-                    </div>
-                  </div>
+                 
                 </div>
                 <div class="tab-content tab-content-basic">
 				<div class="row" >
@@ -124,7 +118,8 @@ if(isset($_POST['submit'])){
                         </select>  
                       </div>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="name" required>
+                        <input type="text" class="form-control" name="name"  id="txtname" required>
+                        <span id="spanname"></span>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -145,16 +140,16 @@ if(isset($_POST['submit'])){
                       </div>
  
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar No.<label style="color:Red">*</label></label>
-                      
                       <div class="col-sm-4">
-                        <input type="text" class="form-control"name="aadhaar" id="txtAadhar"  onblur="AadharValidate()" required>
-                        <span id="spanAadharCard" class="error">Invalid Adhar Number</span>
+                        <input type="text" class="form-control"name="aadhaar" id="txtAadhar" required>
+                        <span id="spanAadharCard" ></span>
                       </div>
                     </div>
+
                     <div class="form-group row">
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Age<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="number"  class="form-control" name="age" min="18" max="100" onblur="myFunction()" id="id1" required>
+                        <input type="number"  class="form-control" name="age" min="18" max="100"  id="id1" required>
                         <p id="demo"></p>
                       </div>
  
@@ -162,7 +157,7 @@ if(isset($_POST['submit'])){
                       <label for="examplepan" class="col-sm-2 col-form-label">Pancard<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
                         <input type="text" class="form-control"name="pancard" id="txtPANCard" required>
-                        <span id="spanPANCard" class="error">Invalid PAN Number</span>
+                        <span id="spanCard"></span>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -181,7 +176,7 @@ if(isset($_POST['submit'])){
 					<div class="col" align="right">
           
 						 <a href="owner.php?id=<?php echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue" name="submit" onclick="ValidatePAN()">Next<i class="mdi mdi-chevron-right"></i></button>
+                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></button>
 					</div>
                   </form>
                		 </div>
@@ -208,51 +203,6 @@ if(isset($_POST['submit'])){
 
   <!-- plugins:js -->
   <script>
-  function ValidatePAN() {
-        var txtPANCard = document.getElementById("txtPANCard");
-        var lblPANCard = document.getElementById("spanPANCard")
-        var regex = /([A-Z]){5}([0-9]){4}([A-Z]){1}$/;
-        if (regex.test(txtPANCard.value.toUpperCase())) {
-            lblPANCard.style.visibility = "hidden";
-            return true;
-        } else {
-            lblPANCard.style.visibility = "visible";
-            return false;
-        }
-
-    }
-    </script>
-
-
-    <script>
-      function myFunction() {
-      const inpObj = document.getElementById("id1");
-      if (!inpObj.checkValidity()) {
-        document.getElementById("demo").innerHTML = inpObj.validationMessage;
-      } else {
-        return true;
-      } 
-    } 
-    </script>
-    
-<script>
-  function AadharValidate() {
-    var aadhar = document.getElementById("txtAadhar").value;
-        var lblAadharCard = document.getElementById("spanAadharCard")
-        var adharcardTwelveDigit = /^\d{12}$/;
-        
-        if (aadhar.match(adharcardTwelveDigit)) {
-          lblAadharCard.style.visibility = "hidden";
-            return true;
-        } else {
-          lblAadharCard.style.visibility = "visible";
-            return false;
-        }
-
-    }
-  
-    </script>
-  <script>
       document.title="Tenant Details";
       document.getElementById("welcome").innerHTML = document.title;
     </script>
@@ -275,6 +225,133 @@ if(isset($_POST['submit'])){
   <script src="js/jquery.cookie.js" type="text/javascript"></script>
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
+  <script>
+  $(document).ready(function(){
+//TEXT VALIDATION
+$("#spanname").hide();
+	    $("#txtname").keyup(function(){
+	     txt_check();
+	   });
+	   function txt_check(){
+		   let txt=$("#txtname").val();
+		   let vali =/^[A-Za-z]+$/;
+		   if(!vali.test(txt)){
+			    $("#spanname").show().html("Enter Alphabets only").css("color","red").focus();
+			 txt_err=false;
+			 return false;
+		   }
+		   else{
+		       $("#spanname").hide();
+		       
+		   }
+	   }
+
+	   $("#sub").click(function(){
+      txt_err = true;
+             txt_check();
+			   
+			   if((txt_err==true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
+
+
+      //PAN card validation
+	   $("#spanCard").hide();
+	    $("#txtPANCard").keyup(function(){
+	     pan_check();
+	   });
+	   function pan_check(){
+		   let pancard=$("#txtPANCard").val();
+		   let vali =/([A-Z]){5}([0-9]){4}([A-Z]){1}$/;  
+		   if(!vali.test(pancard)){
+			    $("#spanCard").show().html("**Invalid Pan No").css("color","red").focus();
+			 pan_err=false;
+			 return false;
+		   }
+		   else{
+		       $("#spanCard").hide();
+		   }
+	   }
+
+	   $("#sub").click(function(){
+	           pan_err = true;
+		       pan_check();
+			   
+			   if((pan_err==true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
+
+
+      //AADHAR CARD VALIDATION
+      $("#spanAadharCard").hide();
+	    $("#txtAadhar").keyup(function(){
+	     aadhar_check();
+	   });
+	   function aadhar_check(){
+		   let aadharcard=$("#txtAadhar").val();
+		   let vali =/^\d{12}$/; 
+		   if(!vali.test(aadharcard)){
+			    $("#spanAadharCard").show().html("**Invalid Aadhar No").css("color","red").focus();
+          aadhar_err=false;
+			 return false;
+		   }
+		   else{
+		       $("#spanAadharCard").hide();
+		       
+		   }
+	   }
+
+	   $("#sub").click(function(){
+	           aadhar_err = true;
+             aadhar_check();
+			   
+			   if((aadhar_err==true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
+
+
+      //age validation
+      $("#demo").hide();
+	    $("#id1").keyup(function(){
+	     age_check();
+	   });
+	   function age_check(){
+		   let age=$("#id1").val();
+        let vali =/^(1[89]|[2-9]\d)$/;
+        
+        
+       if(!vali.test(age)){
+            $("#demo").show().html("**Age should be between 18 to 100").css("color","red").focus();
+            age_err=false;
+            return false;
+        }
+        else{
+            $("#demo").hide();
+        }
+      }
+
+	   $("#sub").click(function(){
+      age_err = true;
+      age_check();
+			   
+			   if((age_err==true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
+
+
+
+ });
+</script>
+
+
   <!-- End custom js for this page-->
 </body>
 

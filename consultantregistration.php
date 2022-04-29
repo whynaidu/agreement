@@ -121,7 +121,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Consultant Name<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" required>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -133,31 +133,31 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control">
+                        <input type="number" class="form-control" minlength="10" maxlength="10"  required>
                       </div>
                     </div>
 					  <div class="form-group row">
                       <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" required>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Rera No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" required>
                       </div>
                     </div>
 					  <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="TECT-00001">
+                        <input type="text" class="form-control" placeholder="TECT-00001" required>
                       </div>
                     </div>
 					  <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Photo<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="file">
+                        <input type="file" required> 
                           Upload
                       </div>
                     </div>
