@@ -1,39 +1,94 @@
+<style>
+  .side{
+    
+    font-size: 12px;
+    display: inline-block;
+    color: #333;
+    border-radius: 30px;
+    font-weight: 600;
+}
+</style>
+
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
   
    <li class="nav-item">
    <a class="nav-link active" href="index.php" aria-expanded="false" aria-controls="ui-basic">
-
-   <i class="menu-icon  mdi mdi-home-modern"></i>
-   <span class="menu-title">Home</span>
+   <i class="menu-icon  mdi mdi-view-dashboard "></i>
+   <span class="menu-title">Dashboard</span></li>
    </a>
-   </li>
-    <li class="nav-item">
-      <a class="nav-link active" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-        <i class="menu-icon mdi mdi-floor-plan"></i>
-        <span class="menu-title">Rent Agreement</span>
-      </a>
-      <div class="collapse" id="ui-basic">
-        <ul class="nav flex-column sub-menu">
+
+   <li class="nav-item nav-category side"><span class="menu-title">LEADS</span></li>
+          <li class="nav-item">
+          <a class="nav-link active" href="policenoc.php" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon  mdi mdi-tablet-android "></i>
+              <span class="menu-title">Social Media Leads</span>
+              
+            </a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link active" href="policenoc.php" aria-expanded="false" aria-controls="ui-basic">
+            
+              <i class="menu-icon  mdi mdi-checkbox-marked-circle-outline "></i>
+              <span class="menu-title">PaidLeads&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #ff008059; border-radius: 30px;">&nbsp&nbsp&nbsp New &nbsp&nbsp&nbsp</span></span>
+              
+            </a>
+          </li>
+      <li class="nav-item nav-category side">Rent Agreement
+     
+      <!-- <ul class="nav flex-column sub-menu">
   <li class="nav-item"> <a class="nav-link " href="index.php">New Agreement</a></li>
   <li class="nav-item"> <a class="nav-link" href="listofagreement.php">List of Agreement</a></li>
   <li class="nav-item"> <a class="nav-link" href="policenoc.php">Police NOC</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="nav-item">
-   <a class="nav-link active" href="leads.php" aria-expanded="false" aria-controls="ui-basic">
+        </ul> -->
 
-   <i class="menu-icon  mdi mdi-trending-up"></i>
-   <span class="menu-title">Leads</span>
-   </a>
-   </li>
+        <li class="nav-item">
+            <!-- <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements"> -->
+            <a class="nav-link active" href="index.php" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon   mdi mdi-note-text  "></i>
+              <span class="menu-title">New Agreement</span>
+            </a>
+</li>
+<li class="nav-item">
+<a class="nav-link active" href="listofagreement.php" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon   mdi mdi-view-list  "></i>
+              <span class="menu-title">List Of Agreement</span>
+            </a>
+            </li>
+            <!-- <a class="nav-link" href="policenoc.php" aria-expanded="false" aria-controls="ui-basic"> -->
+            <li class="nav-item">
+            <a class="nav-link active" href="policenoc.php" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-label-outline"></i>
+              <span class="menu-title">Police Noc</span>
+            </a>
+          </li>
+        </li> 
+        <li class="nav-item nav-category side">other
+     
     <li class="nav-item">
-   <a class="nav-link active" href="logout.php" aria-expanded="false" aria-controls="ui-basic">
-
-   <i class="menu-icon mdi mdi-logout"></i>
-   <span class="menu-title">Logout</span>
-   </a>
-   </li>
+    <a class="nav-link active" href="todo.php" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon md mdi mdi-pencil-box "></i>
+              <span class="menu-title">To Do</span>
+            </a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link active" href="addnewenquiry.php" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon  mdi mdi-comment-question-outline  "></i>
+              <span class="menu-title">Enquiry</span>
+            </a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link active" href="profile.php" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon md mdi mdi-account "></i>
+              <span class="menu-title">Profile</span>
+            </a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link active" href="logout.php" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon md mdi mdi-logout "></i>
+              <span class="menu-title">logout</span>
+              
+            </a>
+          </li></li>
   </ul>
 </nav>
