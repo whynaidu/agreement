@@ -5,30 +5,90 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
+if(!isset($_SESSION['username'])){
+ //header("location:../samples/login.php");
+}
 
-if(isset($_POST['submit'])){
-	$no=$_POST['no'];
-	$date=$_POST['date'];
-	$type=$_POST['type'];
-	$month=$_POST['month'];
-  $place=$_POST['place'];
+	//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
 	
-	$sql=mysqli_query($conn,"INSERT INTO `consaltant`(`consaltant_no`, `consaltant_name`, `Office_address`, `mobile_no`,`email`, `rera_no`, `prefix`, `image`) VALUES ('$no','$type','$date','$month','$place')");
-	if($sql==1){
-		$sql=mysqli_query($conn,"select id from consaltant order by id desc") or die( mysqli_error($conn));;
+
+if(isset($_POST['sub'])){
+
+  $user_id=$_POST['no'];
+  $agent_name=$_POST['name'];
+   $mobile_no=$_POST['mobile_no'];
+  $office_address=$_POST['office_address'];
+   $email=$_POST['email'];
+      $rera=$_POST['rera'];
+      $prefix=$_POST['prefix'];
+   $status=1;
+   $pass= rand(100000, 999999);
+
+
+   $to=$email_no;
+   $sub="Password";
+ 
+ $mail = new PHPMailer(true);
+ try {
+  //Server settings
+  $mail->SMTPDebug = SMTP::DEBUG_SERVER;    
+  $mail->isSMTP();                             
+  $mail->Host       = 'smtp.hostinger.com';      
+  $mail->SMTPAuth   = true;                             
+  $mail->Username   = "vedant.naidu@tectignis.in";           
+  $mail->Password   = 'Vedant@123';                          
+  $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
+  $mail->Port       = 465;                             
+
+  //Recipients
+  $mail->setFrom('vedant.naidu@tectignis.in', 'Tectignis It Solution');
+  $mail->addAddress($email, $agent_name);    
+  
+  //Content
+  $mail->isHTML(true);                               
+  $mail->Subject = 'Password';
+  $mail->Body    = 'Login Detail '.$email.' and '.$pass;
+  $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+  if($mail->send()){
+    $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
+
+    $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
+    VALUES ('$user_id','$agent_name','$email','$passwordhash','$rera','$office_address','$mobile_no','$status')");
+    if($sql=1){
+      $sql=mysqli_query($conn,"select user_id from agent_details order by user_id desc") or die( mysqli_error($conn));;
                       $row=mysqli_fetch_array($sql);
-                      $lastid=$row['consaltant_no'];
+                      $lastid=$row['user_id'];
                       if(empty($lastid)){
 						  $number=001;
 					  }else{
 						  $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
 						  $number=$id;
 					  }	
- $last_id = mysqli_insert_id($conn);					  
-		header("location:owner.php?id=".$no);
-	}else{
-		echo "<script>alert('Something went wrong');</script>";
-	}
+      $last_id = mysqli_insert_id($conn);
+      header("location:consultantregistration.php");
+    }
+    else{
+      echo "<script>alert('Something Wrong');</script>";
+    }
+  
+  }
+  
+} catch (Exception $e) {
+  echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+
+
+  
 }
 
 ?>
@@ -85,14 +145,14 @@ if(isset($_POST['submit'])){
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Consultant Registration</h4>
-                  <form class="forms-sample">
+                  <form class="forms-sample" method="post">
             
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-2 col-form-label">Document No.</label>
                       <div class="col-sm-10">
-					  <?php $sql=mysqli_query($conn,"select documentid from new_agreement order by documentid desc") or die( mysqli_error($conn));;
+					  <?php $sql=mysqli_query($conn,"select user_id from agent_details order by user_id desc") or die( mysqli_error($conn));;
                       $row=mysqli_fetch_array($sql);
-                      $lastid=$row['documentid'];
+                      $lastid=$row['user_id'];
                       if(empty($lastid)){
 						  $number="001";
 					  }else{
@@ -109,48 +169,48 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Consultant Name</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control"name="name">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office Address</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control"name="office_address">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control"name="mobile_no">
                       </div>
                     </div>
 					  <div class="form-group row">
                       <label for="exampleemail" class="col-sm-2 col-form-label">Email ID</label>
                       <div class="col-sm-10">
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control"name="email">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control"name="rera">
                       </div>
                     </div>
 					  <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="TECT-00001">
+                        <input type="text" class="form-control" placeholder="TECT-00001" name="prefix">
                       </div>
                     </div>
 					  <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Photo</label>
                       <div class="col-sm-10">
-                        <input type="file">
+                        <input type="file" name="file">
                           Upload
                       </div>
                     </div>
 					<div class="col" align="right">
-                    <button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>
+                    <button type="submit" name="sub"class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>
 					</div>
                   </form>
                 </div>

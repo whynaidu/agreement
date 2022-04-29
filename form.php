@@ -1,30 +1,24 @@
 <?php
-session_start();
 include("include/configure.inc.php");
 if(isset($_POST["login"])){
+	$name=$_POST["name"];
 	$email=$_POST["email"];
-	$password=$_POST["password"];
+  $mob_no=$_POST["mob_no"];
+  $description=$_POST["description"];
+  
+  
 
-	$sql = mysqli_query($conn,"SELECT * FROM agent_details WHERE email='$email'") ;
-	if(mysqli_num_rows($sql)>0){
-		$row=mysqli_fetch_assoc($sql); 
-		$verify=password_verify($password,$row['password']);
-	
+	$sql = mysqli_query($conn,"INSERT INTO `enquiry`( `name`, `email`, `mob_no`, `description`) VALUES ('$name','$email','$mob_no','$description')") ;
+  if($sql==1){
+    echo "<script>alert('Register successfully'),window.location='form.php';</script>";
+   
 
-		if($verify==1){
-			echo"<script>alert('Login Sucessful'),window.location='index.php';</script>";
-			$_SESSION['email']=$row['email'];
-      $_SESSION['name']=$row['agent_name'];
-      $_SESSION['id']=$row['user_id'];
-				
-		}
-		else{
-			echo"<script>alert('Invalid Password'),window.location='login.php';</script>";
-		}
-	}else{
-		echo"<script>alert('Wrong email'),window.location='login.php';</script>";
-	}
-	}
+  }else{
+    echo "<script>alert('something went wrong');</script>";
+  }
+
+  }
+  
 
 ?>
 
@@ -57,21 +51,28 @@ if(isset($_POST["login"])){
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-center auth px-0">
         <div class="row w-100 mx-0">
-          <div class="col-lg-4 mx-auto">
+          <div class="col-lg-6 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
                 <img src="images/logo.svg" alt="logo">
               </div>
               <h4>Hello! let's get started</h4>
               <form class="pt-3"method="post">
-                <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" name="email" id="exampleInputEmail1" placeholder="Username">
+              <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Enter Your Name">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" name="password" id="exampleInputPassword1" placeholder="Password">
+                  <input type="email" class="form-control form-control-lg" name="email" id="exampleInputEmail1" placeholder="Enter Your Email">
                 </div>
+                <div class="form-group">
+                  <input type="tel" class="form-control form-control-lg" name="mob_no" id="exampleInputPassword1" placeholder="Enter Your Mobile No">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control form-control-lg" name="description" id="exampleInputPassword1" placeholder="Description"></textarea>
+                </div>
+                
                 <div class="mt-6">
-                  <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="LOGIN IN" name="login">
+                  <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="Register" name="login">
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   

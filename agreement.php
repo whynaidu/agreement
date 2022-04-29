@@ -130,7 +130,8 @@ th {
 <p>iii) The photograph of the LICENSOR and LICENSEE is a appended in appropriate place.</p>
 <?php 
 	
-	$sql=mysqli_query($conn,"select * from payment where document_no='$fid'");
+	$sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.no_of_month as dno, payment.* from new_agreement inner join payment on new_agreement.document_no=payment.document_no where new_agreement.document_no='$fid'");
+	 while($arr=mysqli_fetch_array($sql)){
 	
 	while($arr=mysqli_fetch_array($sql)){
 		$amt_words=$arr['rent_amount'];
@@ -142,8 +143,8 @@ th {
 <p>1.	The owner do hereby grants to the LICENSEE his/her permission to enter upon, occupy and look after, temporarily, the said premises for a certain period of        MONTHS,  which shall commence from DAY of ___________________. And shall expire on this day of _________________</p>
 <p>2.	The LICENSEE convents with the owenr that LICENSEE  shall observe and perform the following terms and conditions:</p>
 <p>b)     To pay a Monthly compensation of sum of <b>Rs.<?php echo $arr['rent_amount'];?>/- </b> (<u><?php echo $get_amount;?></u> ONLY.) as per English calendar month, in advance and thereafter on the 10th of each ensuring month.</p>
-<p>C)     The Electricity, water and any others applicable service charges shall be regularly paid by the LICENSEE, where                                      society maintenance charges and Lease Tax , property TAX , if any shall be paid by the OWNER/LICENSOR.</p>
-<p>d)     To use the said premise for RESIDENTIAL/BUSINESS purpose only . Note to cause ,permit or suffer anything in any                          way which may become a nuisance  or annoyance or cause damage/ loss to the said premises or to the neighbor ‘s property.</p>
+<p>C)     The Electricity, water and any others applicable service charges shall be regularly paid by the LICENSEE, where society maintenance charges and Lease Tax , property TAX , if any shall be paid by the OWNER/LICENSOR.</p>
+<p>d)To use the said premise for RESIDENTIAL/BUSINESS purpose only . Note to cause ,permit or suffer anything in any way which may become a nuisance  or annoyance or cause damage/ loss to the said premises or to the neighbor's property.</p>
 <p>e)     Not to sublet, transfer or otherwise part with the possession of the said premises or any part thereof to anyone.</p>
 <p>f)      TO permit the owner and facilitate him/her to inspect the said premises at any reasonable time during the period of this Agreement.</p>
 <?php } ?>
@@ -223,6 +224,7 @@ th {
 <p>1.<?php echo $arr['name1'];?></p>
 <p>2.<?php echo $arr['name2'];?></p>
 <?php } ?>
+
 <?php 
 	
 	$sql=mysqli_query($conn,"select * from tenant where document_no='$fid'");
@@ -236,8 +238,5 @@ th {
 <p>1.<?php echo $arr['name1'];?></p>
 <p>2.<?php echo $arr['name2'];?></p>
 <?php } ?>
-
-
-	
 </body>
 </html>

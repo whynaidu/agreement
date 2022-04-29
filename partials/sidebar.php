@@ -5,8 +5,9 @@
    <a class="nav-link active" href="index.php" aria-expanded="false" aria-controls="ui-basic">
 
    <i class="menu-icon  mdi mdi-home-modern"></i>
-   <span class="menu-title">Home</span></li>
+   <span class="menu-title">Home</span>
    </a>
+   </li>
     <li class="nav-item">
       <a class="nav-link active" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -20,5 +21,19 @@
         </ul>
       </div>
     </li>
+    <li class="nav-item">
+   <a class="nav-link active" href="leads.php" aria-expanded="false" aria-controls="ui-basic">
+
+   <i class="menu-icon  mdi mdi-trending-up"></i>
+   <span class="menu-title">Leads</span>
+   </a>
+   </li>
+    <li class="nav-item">
+   <a class="nav-link active" href="logout.php" aria-expanded="false" aria-controls="ui-basic">
+
+   <i class="menu-icon mdi mdi-logout"></i>
+   <span class="menu-title">Logout</span>
+   </a>
+   </li>
   </ul>
 </nav>
