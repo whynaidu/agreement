@@ -20,14 +20,14 @@
 
    <li class="nav-item nav-category side"><span class="menu-title">LEADS</span></li>
           <li class="nav-item">
-          <a class="nav-link active" href="policenoc.php" aria-expanded="false" aria-controls="ui-basic">
+          <a class="nav-link active" href="socialmedialeads.php" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon  mdi mdi-tablet-android "></i>
               <span class="menu-title">Social Media Leads</span>
               
             </a>
           </li>
           <li class="nav-item">
-          <a class="nav-link active" href="policenoc.php" aria-expanded="false" aria-controls="ui-basic">
+          <a class="nav-link active" href="paidleads.php" aria-expanded="false" aria-controls="ui-basic">
             
               <i class="menu-icon  mdi mdi-checkbox-marked-circle-outline "></i>
               <span class="menu-title">PaidLeads&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #ff008059; border-radius: 30px;">&nbsp&nbsp&nbsp New &nbsp&nbsp&nbsp</span></span>

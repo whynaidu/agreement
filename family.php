@@ -1,5 +1,4 @@
 <?php 
-session_start();
 if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
@@ -84,10 +83,7 @@ if(isset($_GET['delid'])){
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
-                <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
-                
-                  
-                </div>
+               
                 <div class="tab-content tab-content-basic">
 				<div class="row" >
 				 <div class="col-md-12 grid-margin stretch-card">

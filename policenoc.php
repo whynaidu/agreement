@@ -50,10 +50,6 @@ include("include/configure.inc.php");
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
-                <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
-              
-                  
-                </div>
                 <div class="tab-content tab-content-basic">
 				 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">

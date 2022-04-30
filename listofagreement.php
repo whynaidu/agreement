@@ -6,8 +6,6 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
-$fid=$_GET['id'];
-
 if(isset($_GET['gen'])){
   $id=mysqli_real_escape_string($conn,$_GET['gen']);
   $sql=mysqli_query($conn,"update noc set `status`='1' where document_no='$fid'");
@@ -60,10 +58,7 @@ if(isset($_GET['gen'])){
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
-                <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
-                 
-                 
-                </div>
+               
                 <div class="tab-content tab-content-basic">
 				  <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">

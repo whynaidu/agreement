@@ -7,7 +7,6 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("include/configure.inc.php");
 
-$id=$_GET['id'];
 if(isset($_GET['delid'])){
   $id=mysqli_real_escape_string($conn,$_GET['delid']);
   $sql=mysqli_query($conn,"delete from leads where id='$id'");
@@ -59,17 +58,8 @@ if(isset($_GET['delid'])){
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
-                <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
-              
-                  <div>
-                    <div class="btn-wrapper">
-                      <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
-                      <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
-                      <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
-                    </div>
-                  </div>
-                </div>
-    12Z#Z            <div class="tab-content tab-content-basic">
+                  
+              <div class="tab-content tab-content-basic">
 				 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -113,7 +103,8 @@ if(isset($_GET['delid'])){
                             <td>
    <a class="btn btn-danger btn-rounded btn-icon" href="leads.php?delid=<?php echo $arr['id']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
                           <i class="mdi mdi-delete"></i>
-                          </a>                              <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
+                          </a>      
+                         </td>                        <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
                           </tr>
                         </tbody>
                         <?php $count++;} ?>

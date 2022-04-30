@@ -8,9 +8,9 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 include("include/configure.inc.php");
 if(isset($_GET['delid'])){
   $id=mysqli_real_escape_string($conn,$_GET['delid']);
-  $sql=mysqli_query($conn,"delete from newsletter where id='$id'");
+  $sql=mysqli_query($conn,"delete from paidleads where id='$id'");
   if($sql=1){
-    header("location:newsletter.php");
+   header("location:leads.php");
   }
 }
 ?>
@@ -45,7 +45,7 @@ if(isset($_GET['delid'])){
     <?php include("partials/header.php"); ?>
 
 <!-- partial -->
-<div class="container-fluid page-body-wrapper" style="padding-top: 50px;">
+<div class="container-fluid page-body-wrapper">
   <!-- partial:partials/_settings-panel.html -->
 
   <!-- partial -->
@@ -57,13 +57,14 @@ if(isset($_GET['delid'])){
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
+              
                 <div class="tab-content tab-content-basic">
 				 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
 					<div class="row">
 						<div class="col-9">
-					 <h4 class="card-title">News letter</h4>
+					 <h4 class="card-title">Paid Leads</h4>
 						</div>
 						<div class="col-3">
 					 <div class="input-group">
@@ -78,28 +79,33 @@ if(isset($_GET['delid'])){
                       <table class="table table-bordered">
                         <thead>
                           <tr>
-                            <th>Sr.No</th>
-						              	<th>Email id</th>
-                            <th>Date</th>
-                        
-                           
-                            <th> Action </th>
+                           <th>Sr.No</th>
+						              	<th>Client No</th>
+                            <th>Mobile No</th>
+                            <th>Property Type</th>
+                            <th>Area</th> 
+                            <th>Requirement</th> 
+                            <th>Location</th>
+                             <th>Action</th>
                           </tr>
                         </thead>
                         <?php 
                         
-                        $sql=mysqli_query($conn,"select * from newsletter");
+                        $sql=mysqli_query($conn,"select * from `paidleads` where user_id='".$_SESSION['id']."'");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                         <tbody>
                           <tr>
-                            <td> <?php echo $count;?></td>
-                            <td> <?php echo $arr['email'];?> </td>
-                            <td> <?php echo $arr['date'];?></td>
-                            
+                             <td> <?php echo $count;?></td>
+                            <td> <?php echo $arr['client_name'];?> </td>
+                            <td> <?php echo $arr['mobile'];?></td>
+                            <td> <?php echo $arr['type'];?></td>
+                            <td> <?php echo $arr['area'];?> </td>
+                                <td> <?php echo $arr['requirement'];?></td>
+                            <td> <?php echo $arr['location'];?> </td>
                             <td>
-                            <a href="newsletter.php?delid=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button></a>
+                            <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" onclick="ConfirmDelete()" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button></a>
                               <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
                           </tr>
                         </tbody>
@@ -121,14 +127,19 @@ if(isset($_GET['delid'])){
         <?php include("partials/footer.php"); ?>
 
         <!-- partial -->
-        </div>
-      <!-- main-panel ends -->
       </div>
+      <!-- main-panel ends -->
+
     <!-- page-body-wrapper ends -->
-   </div>
   <!-- container-scroller -->
   <script>
-      document.title="News Letter";
+    function ConfirmDelete()
+    {
+      return confirm("Are you sure you want to delete?");
+    }
+</script>  
+  <script>
+      document.title="Paid Leads";
       document.getElementById("welcome").innerHTML = document.title;
     </script>
   <!-- plugins:js -->
