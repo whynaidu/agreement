@@ -1,6 +1,6 @@
 <?php  
 session_start();
-if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
 }
@@ -130,7 +130,7 @@ th {
 		<tr>
 		<?php 
                         
-                        $sql=mysqli_query($conn,"select * from agent_details");
+                        $sql=mysqli_query($conn,"select * from agent_details where user_id='$_SESSION[id]'");
                         while($arr=mysqli_fetch_array($sql)){
                         ?>
 			<td>७</td>
