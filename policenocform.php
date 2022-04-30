@@ -143,15 +143,28 @@ th {
 		</tr>		
 		<tr>
 			<td rowspan="2">८</td>
-			<td rowspan="2">भाडेकरुचे परिवारातील सदस्यांची संख्या <br> No. of Family Members</td>
-			<td>पुरुष</td>
-			<td>स्त्रिया</td>
-			<td>लहान मुले</td>
+			<td rowspan="2">भाडेकरुचे परिवारातील सदस्यांची संख्या <br> No. of Family Members</td>    
+			
+			<td align="center">पुरुष</td>
+			<td align="center">स्त्रिया</td>
+			<td align="center">लहान मुले</td>
 		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
+		<tr >
+		    <?php 
+		    $sql=mysqli_query($conn,"select * from family_members where gender='male' and age>18 and document_no= '$fid'");
+		    $res=mysqli_num_rows($sql);
+		    ?>
+			<td align="center"><?php echo $res ?></td>
+			<?php 
+		    $sql1=mysqli_query($conn,"select * from family_members where gender='female' and age>18 and document_no= '$fid'");
+		    $res1=mysqli_num_rows($sql1);
+		    ?>
+			<td align="center"><?php echo $res1 ?></td>
+			<?php 
+		    $sql2=mysqli_query($conn,"select * from family_members where age<18 and document_no= '$fid'");
+		    $res2=mysqli_num_rows($sql2);
+		    ?>
+			<td align="center"><?php echo $res2 ?></td>
 		</tr>
 		<tr>
 		<?php 
