@@ -44,7 +44,7 @@
 
         <li class="nav-item">
             <!-- <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements"> -->
-            <a class="nav-link active" href="index.php" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link active" href="new_agreement.php" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon   mdi mdi-note-text  "></i>
               <span class="menu-title">New Agreement</span>
             </a>

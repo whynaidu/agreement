@@ -203,13 +203,16 @@ th {
 		<tr>
 		<?php 
                         
-						$sql=mysqli_query($conn,"select * from new_agreement where document_no= '$fid'");
+						$sql=mysqli_query($conn,"select * ,date_add(date_of_agreement, INTERVAL no_of_month month)as Enddate from new_agreement Where document_no='$fid'");
 						while($arr=mysqli_fetch_array($sql)){
 						?>
 			<td>१४</td>
 			<td>करार केल्याची तारीक व कराराचा कालावधी <br>Date of Agreement & Period</td>
-			<td colspan="3">	<label><?php echo $arr['date_of_agreement'];?></label></br>
-			<label><?php echo $arr['no_of_month'];?>&nbsp;		Months</label></td>
+			<td colspan="3">Start Date:-<label><?php echo $arr['date_of_agreement'];?></label>&nbsp;&nbsp;&nbsp;
+							End Date:-<label><?php echo $arr['Enddate'];?></label></br>
+										
+
+			<label><?php echo $arr['no_of_month'];?>&nbsp;Months</label></td>
 			<?php } ?>	
 
 		</tr>

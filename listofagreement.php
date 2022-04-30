@@ -78,7 +78,7 @@ if(isset($_GET['gen'])){
                         </thead>
 
                         <?php                 
-    $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus from new_agreement inner join tenant on new_agreement.document_no=tenant.document_no inner join noc on new_agreement.document_no=noc.document_no");
+    $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, date_add(date_of_agreement, INTERVAL no_of_month month)as Enddate, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus from new_agreement inner join tenant on new_agreement.document_no=tenant.document_no inner join noc on new_agreement.document_no=noc.document_no;");
       $count=1;
       while($row = mysqli_fetch_array($sql)) {
       ?>
@@ -88,7 +88,7 @@ if(isset($_GET['gen'])){
                             <td> <?php echo $row["tname"]; ?> </td>
                             <td><?php echo $row["tmobile"]; ?> </td>
                             <td><?php echo $row["doa"]; ?> </td>
-                            <td> May 15, 2015 </td>
+                            <td><?php echo $row["Enddate"]; ?> </td>
                             <td>
 				                   <a href="agreement.php?id=<?php echo $row['did']; ?>"> <button type="btn-icon" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
                             <!-- <a class="btn btn-danger btn-rounded btn-icon" href="listofagreement.php?delid=<?php echo $row['did']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
