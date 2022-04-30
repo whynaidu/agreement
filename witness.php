@@ -79,13 +79,13 @@ if(isset($_POST['submit'])){
                   <div class="form-group row">
                       <label for="exampleInputtran" class="col-sm-2 col-form-label">Name<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control " name="owitness1" required>
-                        
+                        <input type="text" class="form-control " name="owitness1" txtname required>
+                        </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleInputtran" class="col-sm-2 col-form-label">Name<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control " name="owitness2"required>
+                        <input type="text" class="form-control txtname" name="owitness2" required>
                         
                         
                       </div>
@@ -94,21 +94,21 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleInputtran" class="col-sm-2 col-form-label">Name<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control " name="twitness1"   required>
+                        <input type="text" class="form-control " name="twitness1"  txtname required>
                        
                       </div>
                     </div> 
                     <div class="form-group row">
                       <label for="exampleInputtran" class="col-sm-2 col-form-label">Name<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control " name="twitness2"  required>
+                        <input type="text" class="form-control " name="twitness2" txtname required>
                         
                       </div>
                     </div>
 					<div class="col" align="right">
           <a href="property.php?id=<?php echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
 
-                    <button type="submit" name="submit"class="btn btn-primary  btn-lg" style="color: aliceblue" >Submit</button>
+                    <button type="submit" name="submit"class="btn btn-primary  btn-lg" style="color: aliceblue" id="sub">Submit</button>
 					</div>
                   </form>
                 </div>
@@ -151,6 +151,7 @@ if(isset($_POST['submit'])){
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
 
 
 </body>

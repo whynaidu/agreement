@@ -100,7 +100,7 @@ if(isset($_GET['delid'])){
                     <div class="form-group row">
                       <label for="examplename" class="col-sm-3 col-form-label-sm">Name<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control"  name="name"  id="txtname" required>
+                        <input type="text" class="form-control"id="txtname"  name="name"  required>
                         <span id="spanname"></span>
                       </div>
                     </div>
@@ -145,7 +145,7 @@ if(isset($_GET['delid'])){
 						</div>
 					<div class="col" align="right">
 					<a href="witness.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue" ><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-						<button type="submit" class="btn btn-primary  btn-lg" name="submit"  style="color: aliceblue" id="sub" >Add</button>
+						<button type="submit" class="btn btn-primary  btn-lg" name="submit"  style="color: aliceblue">Add</button>
                     <a href="amenities.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue" >Next<i class="mdi mdi-chevron-right"></i></button></a>
 					</div>
                   </form>

@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="examplename" class="col-sm-3 col-form-label-sm">Security Deposit<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control"name="security_deposit" required>
+                        <input type="text" id="deposit" class="form-control"name="security_deposit" required>
                       </div>
                     </div>
                 
@@ -97,7 +97,7 @@ if(isset($_POST['submit'])){
                      <div class="form-group row">
                       <label for="exampleage" class="col-sm-3 col-form-label-sm">Monthly Rent<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control"name="rent_amount" required>
+                        <input type="text" id="rent" class="form-control"name="rent_amount" required>
                       </div>
                     </div>     
 					  </div>
@@ -121,25 +121,25 @@ if(isset($_POST['submit'])){
              <div class="form-group row">
                       <label for="exampldate" class="col-sm-2 col-form-label">Bank <label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="bank" required>
+                        <input type="text" class="form-control" name="bank" id="bank" required>
                       </div>
                     </div>
 					  <div class="form-group row">
                       <label for="exampldate" class="col-sm-2 col-form-label">Date of Payment<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="date" class="form-control" name="date" required>
+                        <input type="date" class="form-control" name="date" id="date" required>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleInputtran" class="col-sm-2 col-form-label">Transaction ID<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="tid" required>
+                        <input type="text" class="form-control" name="tid"  id="tid" required>
                       </div>
                     </div>
 				
                     <div class="col" align="right">
 					<a href="amenities.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-					<button type="submit" name="submit" onclick="sweetalert()" id="submitForm" class="btn btn-primary btn-lg" style="color: aliceblue" >Submit</button>
+					<button type="submit" name="submit"  id="submitForm" class="btn btn-primary btn-lg" style="color: aliceblue" >Submit</button>
 					</div>
                   </form>
                 </div>
@@ -158,19 +158,16 @@ if(isset($_POST['submit'])){
         <?php include("partials/footer.php"); ?>
       </div>
 
+<script> 
+
+</script>
+
+
   <script>
       document.title="Payment Details";
       document.getElementById("welcome").innerHTML = document.title;
     </script>
-  <script> 
-function sweetalert() {
-  swal({
-  title: "Good job!",
-  text: "You clicked the button!",
-  icon: "success",
-  button: "OK",
-});
-}
+
 </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
@@ -193,6 +190,24 @@ function sweetalert() {
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+<script>
+$(document).ready(function(){
+  $("#submitForm").click(function(){
+    var deposit = $("#deposit").val();
+    var rent = $("#rent").val();
+    var method = $("#exampleSelecthod").val();
+    var bank = $("#bank").val();
+    var date = $("#date").val();
+    var tid = $("#tid").val();
+    if(deposit == "" || rent == "" || method == "" || bank == "" || date == "" || tid == ""){
+      swal("Oops...", "Please fill all the fields", "error");
+    }
+    else{
+      swal("Good job!", "You clicked the button!", "success");
+    }
+  });
+});
+</script>
 </body>
 
 </html>

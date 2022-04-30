@@ -69,8 +69,6 @@ if(isset($_POST['submit'])){
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom" style="flex-direction: row-reverse;">
-                
-                 
                 </div>
                 <div class="tab-content tab-content-basic">
 <?php
@@ -128,7 +126,7 @@ if (mysqli_num_rows($doctors)>0){
                     <div class="form-group row">
                       <label for="examplecid" class="col-sm-4 col-form-label">CIDCO</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control"name="cidco" required>
+                        <input type="text" class="form-control"name="cidco">
                       </div>
                     </div>
 					</div>

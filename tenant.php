@@ -300,8 +300,7 @@ $("#spanname").hide();
 			 return false;
 		   }
 		   else{
-		       $("#spanAadharCard").hide();
-		       
+		       $("#spanAadharCard").hide(); 
 		   }
 	   }
 

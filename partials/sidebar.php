@@ -72,7 +72,7 @@
             </a>
           </li>
           <li class="nav-item">
-          <a class="nav-link active" href="addnewenquiry.php" aria-expanded="false" aria-controls="ui-basic">
+          <a class="nav-link active" href="addnewenquire.php" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon  mdi mdi-comment-question-outline  "></i>
               <span class="menu-title">Enquiry</span>
             </a>
