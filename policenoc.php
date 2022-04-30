@@ -81,15 +81,15 @@ include("include/configure.inc.php");
                         </thead>
                         <?php 
                         
-                        $sql=mysqli_query($conn,"select new_agreement.document_no as docno,new_agreement.date_of_agreement as doa, owner.fullname as name, tenant.fullname as tname from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on new_agreement.document_no=tenant.document_no");
+                        $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus, noc.document_no as nodc, owner.fullname as oname, owner.mobile as omobile from new_agreement inner join tenant on tenant.document_no=new_agreement.document_no inner join owner on owner.document_no=new_agreement.document_no inner join noc on noc.document_no=new_agreement.document_no Where noc.status='1'");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                         <tbody>
                           <tr>
                             <td> <?php echo $count;?></td>
-                            <td> <?php echo $arr['docno'];?> </td>
-                            <td> <?php echo $arr['name'];?></td>
+                            <td> <?php echo $arr['did'];?> </td>
+                            <td> <?php echo $arr['oname'];?></td>
                             <td> <?php echo $arr['tname'];?></td>
                             <td> <?php echo $arr['doa'];?> </td>
                             <td>
