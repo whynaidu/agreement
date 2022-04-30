@@ -1,5 +1,10 @@
 <?php
 session_start();
+if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+ header("Location:index.php"); 
+}
+
 include("include/configure.inc.php");
 if(isset($_POST["login"])){
 	$email=$_POST["email"];

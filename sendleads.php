@@ -6,16 +6,18 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("include/configure.inc.php");
 if(isset($_POST['submit'])){
+  	$agent_id=$_POST['agent_id'];
+
 	$name=$_POST['client_name'];
 	$address=$_POST['address'];
 	$mobile=$_POST['mobile_no'];
 	$requirement=$_POST['requirement'];
 	$location=$_POST['location'];
   $type=$_POST['type'];
-$from=$_POST['from'];
+
   $area=$_POST['area'];
 	
-	$sql=mysqli_query($conn,"INSERT INTO `leads`(`user_id`, `from`,`client_name`, `mobile`,`type`, `requirement`, `area`, `location`) VALUES ('".$_SESSION['id']."','$from','$name','$mobile','$type','$requirement','$area','$location')");
+	$sql=mysqli_query($conn,"INSERT INTO `paidleads`(`user_id`, `client_name`, `mobile`,`type`, `requirement`, `area`, `location`) VALUES ('$agent_id','$name','$mobile','$type','$requirement','$area','$location')");
 	if($sql==1){	
     header("location:addnewenquire.php");
 	}else{
@@ -71,28 +73,27 @@ $from=$_POST['from'];
               <div class="card">
                 <div class="card-body">
 					<div>
-          <h4 class="card-title card-title-dash">New Enquire</h4>
+                        <h4 class="card-title card-title-dash">New Enquire</h4>
 					</div>
                   <form class="forms-sample" method="post">
 					  <div class="row">
-              	  <div class="col-md-12 ">
-              
+               <div class="col-md-12 ">
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-2 col-form-label">From Name</label>
+                      <label for="exampledno" class="col-sm-2 col-form-label">Client Name</label>
                       <div class="col-sm-10">
-                        <Select class="form-control" id="exampledno" name="from" required>
+                        <Select class="form-control" id="exampledno" name="agent_id" required>
                           <option selected>Select  </option>
-                          <option value="facebook">FaceBook </option>
-                          <option value="instagram">Instagram </option>
-                          <option value="walkin">Walkin </option>
-                        </select>
-
+                          <?php $sql=mysqli_query($conn,"select * from agent_details");
+                        $count=1;
+                         while($arr=mysqli_fetch_array($sql)){
+                           ?>
+                          <option value="<?php echo $arr["user_id"]; ?>"><?php echo $arr["agent_name"]; ?> </option>
+                          <?php } ?>
+                        </select>                      
                       </div>
                     </div>
-						</div>	
-              
+                  </div>
 					  <div class="col-md-6 ">
-              
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Client Name</label>
                       <div class="col-sm-9">
