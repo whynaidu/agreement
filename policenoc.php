@@ -55,18 +55,20 @@ include("include/configure.inc.php");
               <div class="card">
                 <div class="card-body">
 					<div class="row">
-						<div class="col-9">
+						<div class="col-8">
 					 <h4 class="card-title">Police NOC</h4>
 						</div>
-						<div class="col-3">
-					 <div class="input-group">
-                      <input type="text" class="form-control">
+            <form class="col-4" method="post">
+						<div>
+					     <div class="input-group">
+                      <input type="text" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="form-control">&nbsp;&nbsp;
                       <div class="input-group-append">
-                        <button class="btn btn-sm btn-primary" type="button" style="color: aliceblue">Search</button>
+                        <button class="btn btn-sm btn-primary" type="submit" style="color: aliceblue" name="">Search</button>
                       </div>
                     </div>
 						</div>
 					</div>
+          </form>
                   <div class="table-responsive pt-3">
                       <table class="table table-bordered">
                         <thead>
@@ -79,7 +81,14 @@ include("include/configure.inc.php");
                             <th> Action </th>
                           </tr>
                         </thead>
+
+
                         <?php 
+
+                        if(isset($_GET['search'])){
+
+                          $filterval =  $_GET['search'];
+                        }
                         
                         $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus, noc.document_no as nodc, owner.fullname as oname, owner.mobile as omobile from new_agreement inner join tenant on tenant.document_no=new_agreement.document_no inner join owner on owner.document_no=new_agreement.document_no inner join noc on noc.document_no=new_agreement.document_no Where noc.status='1'");
                         $count=1;
@@ -93,7 +102,7 @@ include("include/configure.inc.php");
                             <td> <?php echo $arr['tname'];?></td>
                             <td> <?php echo $arr['doa'];?> </td>
                             <td>
-                            <a href="policenocform.php?id=<?php echo $arr['docno'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+                            <a href="policenocform.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
                               <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
                           </tr>
                         </tbody>

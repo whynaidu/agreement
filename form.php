@@ -11,8 +11,7 @@ if(isset($_POST["login"])){
 	$sql = mysqli_query($conn,"INSERT INTO `enquiry`( `name`, `email`, `mob_no`, `description`) VALUES ('$name','$email','$mob_no','$description')") ;
   if($sql==1){
     echo "<script>alert('Register successfully'),window.location='form.php';</script>";
-   
-
+  
   }else{
     echo "<script>alert('something went wrong');</script>";
   }
@@ -57,7 +56,7 @@ if(isset($_POST["login"])){
                 <img src="images/logo.svg" alt="logo">
               </div>
               <h4>Hello! let's get started</h4>
-              <form class="pt-3"method="post">
+              <form class="pt-3"   method="post">
               <div class="form-group">
                   <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Enter Your Name">
                 </div>

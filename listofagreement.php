@@ -73,6 +73,7 @@ if(isset($_GET['gen'])){
                             <th>Mobile No.</th>
                             <th>Date of Aggrement</th>
                             <th>Date of Expiry</th>
+                          
 							<th>Action</th>
                           </tr>
                         </thead>
