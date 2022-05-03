@@ -63,6 +63,25 @@
             </a>
           </li>
         </li> 
+
+        
+        <li class="nav-item nav-category side">Consultant registration
+     
+     <!-- <li class="nav-item">
+     <a class="nav-link active" href="todo.php" aria-expanded="false" aria-controls="ui-basic">
+               <i class="menu-icon md mdi mdi-pencil-box "></i>
+               <span class="menu-title">To Do</span>
+             </a> -->
+           </li>
+           <li class="nav-item">
+           <a class="nav-link active" href="consultantregistration.php" aria-expanded="false" aria-controls="ui-basic">
+               <i class="menu-icon mdi mdi-face  "></i>
+               <span class="menu-title">Consultant</span>
+             </a>
+           </li>
+</li>
+
+
         <li class="nav-item nav-category side">other
      
     <li class="nav-item">
@@ -76,13 +95,52 @@
               <i class="menu-icon  mdi mdi-comment-question-outline  "></i>
               <span class="menu-title">Enquiry</span>
             </a>
+
+            <li class="nav-item">
+          <a class="nav-link active" href="newsletter.php" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon md mdi mdi-account "></i>
+              <span class="menu-title">News Letter</span>
+            </a>
           </li>
+
+
+          </li>
+          
+
+
+          <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-headphones"></i>
+        <span class="menu-title">Support</span>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+  <li class="nav-item"> <a class="nav-link " href="addticket.php">Add Ticket</a></li>
+     </ul>
+      </div>
+    </li>
+
+  
+
+
+         
+
+
+
+          <!-- <li class="nav-item">
+          <a class="nav-link active" href="addticket.php" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-headphones"></i>
+              <span class="menu-title">Add tickets</span>
+            </a>
+          </li> -->
+
           <li class="nav-item">
           <a class="nav-link active" href="profile.php" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon md mdi mdi-account "></i>
               <span class="menu-title">Profile</span>
             </a>
           </li>
+
           <li class="nav-item">
           <a class="nav-link active" href="logout.php" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon md mdi mdi-logout "></i>
