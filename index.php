@@ -71,9 +71,9 @@ include("include/configure.inc.php");
                           </div>
                           <div>
                             <?php
-                  $query=mysqli_query($conn,"select * from new_agreement where user_id='".$_SESSION['id']."'");
-                  $count1=mysqli_num_rows($query);
-                  ?>
+                               $query=mysqli_query($conn,"select * from new_agreement where user_id='".$_SESSION['id']."'");
+                                 $count1=mysqli_num_rows($query);
+                            ?>
                             <p class="statistics-title">No. of Agreement</p>
                             <h3 class="rate-percentage" align="center"><?php echo $count1 ?></h3>
                           </div>
@@ -124,14 +124,14 @@ include("include/configure.inc.php");
                                           <?php echo $arr['type'];?>
                                         </td>
                                         <td>
-										<?php echo $arr['requirement'];?>
-										  </td>                                        
-										  <td>
-										<?php echo $arr['location'];?>
-										  </td>
-									
-									  </tr>
-                    <?php }?>
+                                              <?php echo $arr['requirement'];?>
+                                                </td>                                        
+                                                <td>
+                                              <?php echo $arr['location'];?>
+                                                </td>
+                                            
+                                              </tr>
+                                              <?php }?>
                                 
                                     </tbody>
                                   </table>
@@ -153,56 +153,23 @@ include("include/configure.inc.php");
                                       <h4 class="card-title card-title-dash">Todo list</h4>
                                       <div class="add-items d-flex mb-0">
                                         <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
-                                        <button class="add btn btn-icons btn-rounded btn-primary todo-list-add-btn text-white me-0 pl-12p"><i class="mdi mdi-plus"></i></button>
+                                        <a href="todo.php"><button class="add btn btn-icons btn-rounded btn-primary todo-list-add-btn text-white me-0 pl-12p"><i class="mdi mdi-plus"></i></button></a>
                                       </div>
                                     </div>
                                     <div class="list-wrapper">
                                       <ul class="todo-list todo-list-rounded">
-                                        <li class="d-block">
-                                          <div class="form-check w-100">
-                                            <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                            </label>
-                                            <div class="d-flex mt-2">
-                                              <div class="ps-4 text-small me-3">24 June 2020</div>
-                                              <div class="badge badge-opacity-warning me-3">Due tomorrow</div>
-                                              <i class="mdi mdi-flag ms-2 flag-color"></i>
-                                            </div>
+                                              <?php 
+                                              $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1'");
+                                              while($arr=mysqli_fetch_array($sql)){
+                                              ?>
+                                         <li>
+                                          <div class="form-check"style="width: -webkit-fill-available;">
+                                          <label> <?php echo $arr['task'];?> <i class="input-helper"></i></label>
                                           </div>
-                                        </li>
-                                        <li class="d-block">
-                                          <div class="form-check w-100">
-                                            <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                            </label>
-                                            <div class="d-flex mt-2">
-                                              <div class="ps-4 text-small me-3">23 June 2020</div>
-                                              <div class="badge badge-opacity-success me-3">Done</div>
-                                            </div>
-                                          </div>
-                                        </li>
-                                        <li>
-                                          <div class="form-check w-100">
-                                            <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                            </label>
-                                            <div class="d-flex mt-2">
-                                              <div class="ps-4 text-small me-3">24 June 2020</div>
-                                              <div class="badge badge-opacity-success me-3">Done</div>
-                                            </div>
-                                          </div>
-                                        </li>
-                                        <li class="border-bottom-0">
-                                          <div class="form-check w-100">
-                                            <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                            </label>
-                                            <div class="d-flex mt-2">
-                                              <div class="ps-4 text-small me-3">24 June 2020</div>
-                                              <div class="badge badge-opacity-danger me-3">Expired</div>
-                                            </div>
-                                          </div>
-                                        </li>
+                                          <a href="todo.php?delid=<?php echo $arr['id'] ?>"><i class="remove mdi mdi-close-circle-outline"></i></a>
+                                          </li>
+                                       <?php } ?>
+
                                       </ul>
                                     </div>
                                   </div>

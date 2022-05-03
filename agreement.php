@@ -118,33 +118,28 @@ th {
  
 </table>
 </div><br>
- (hereinafter called and referred to as ‘‘ THE SAID FLAT / SHOP).<br>
+ hereinafter called and referred to as THE SAID FLAT / SHOP.<br>
 <p><b>AND WHERE AS:</b></p>
-<p>The owner who on account of certain personal reasons is not occupying the said premise; and the LICENSEE being temporarily in need of a RESIDENTIAL ACCOMODATION/BUSINESS PREMISES requested the owner to give  on ‘‘LEAVE & LICENSE BASIS , as a temporary facility, the use of the said premises, together with the fixtures and lying thereon, on the terms and conditions recorded hereinafter.</p>
+<p>The owner who on account of certain personal reasons is not occupying the said premise; and the LICENSEE being temporarily in need of a RESIDENTIAL ACCOMODATION/BUSINESS PREMISES requested the owner to give  on ''LEAVE & LICENSE BASIS , as a temporary facility, the use of the said premises, together with the fixtures and lying thereon, on the terms and conditions recorded hereinafter.</p>
 <p><b>AND WHERE AS:</b></p>
 <p>As per the recent orders from the Department of police,  the Licensee furnish the following details and further agrees to co-operate in getting No Objection Certificate from the local police by appearing personally as when called by the police under which jurisdiction the said premise is covered.</p>
-<p>i)	Permanent Native Address:</p>
-      
-<p>ii)	Present Address :</p>
+<p>iPermanent Native Address:</p>
+<p>iiPresent Address :</p>
 
-<p>iii) The photograph of the LICENSOR and LICENSEE is a appended in appropriate place.</p>
+<p>iiiThe photograph of the LICENSOR and LICENSEE is a appended in appropriate place.</p>
 <?php 
 	
 	$sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.no_of_month as dno, payment.* from new_agreement inner join payment on new_agreement.document_no=payment.document_no where new_agreement.document_no='$fid'");
 	 while($arr=mysqli_fetch_array($sql)){
-	
-	while($arr=mysqli_fetch_array($sql)){
 		$amt_words=$arr['rent_amount'];
-		$get_amount= AmountInWords($amt_words);
-		
-
+		$get_amount = AmountInWords($amt_words);
 	?>
 	<p><b>NOW THIS AGREEMENT WITNESSETH AS UNDER</b></p>
 <p>1.	The owner do hereby grants to the LICENSEE his/her permission to enter upon, occupy and look after, temporarily, the said premises for a certain period of        MONTHS,  which shall commence from DAY of ___________________. And shall expire on this day of _________________</p>
 <p>2.	The LICENSEE convents with the owenr that LICENSEE  shall observe and perform the following terms and conditions:</p>
-<p>b)     To pay a Monthly compensation of sum of <b>Rs.<?php echo $arr['rent_amount'];?>/- </b> (<u><?php echo $get_amount;?></u> ONLY.) as per English calendar month, in advance and thereafter on the 10th of each ensuring month.</p>
-<p>C)     The Electricity, water and any others applicable service charges shall be regularly paid by the LICENSEE, where society maintenance charges and Lease Tax , property TAX , if any shall be paid by the OWNER/LICENSOR.</p>
-<p>d)To use the said premise for RESIDENTIAL/BUSINESS purpose only . Note to cause ,permit or suffer anything in any way which may become a nuisance  or annoyance or cause damage/ loss to the said premises or to the neighbor's property.</p>
+<p>b    To pay a Monthly compensation of sum of <b>Rs.<?php echo $arr['rent_amount'];?>/- </b> (<u><?php echo $get_amount;?></u> ONLY.) as per English calendar month, in advance and thereafter on the 10th of each ensuring month.</p>
+<p>C   The Electricity, water and any others applicable service charges shall be regularly paid by the LICENSEE, where society maintenance charges and Lease Tax , property TAX , if any shall be paid by the OWNER/LICENSOR.</p>
+<p>dTo use the said premise for RESIDENTIAL/BUSINESS purpose only . Note to cause ,permit or suffer anything in any way which may become a nuisance  or annoyance or cause damage/ loss to the said premises or to the neighbor's property.</p>
 <p>e)     Not to sublet, transfer or otherwise part with the possession of the said premises or any part thereof to anyone.</p>
 <p>f)      TO permit the owner and facilitate him/her to inspect the said premises at any reasonable time during the period of this Agreement.</p>
 <?php } ?>

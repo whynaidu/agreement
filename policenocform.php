@@ -208,8 +208,10 @@ th {
 						?>
 			<td>१४</td>
 			<td>करार केल्याची तारीक व कराराचा कालावधी <br>Date of Agreement & Period</td>
-			<td colspan="3">Start Date:-<label><?php echo $arr['date_of_agreement'];?></label>&nbsp;&nbsp;&nbsp;
-							End Date:-<label><?php echo $arr['Enddate'];?></label></br>
+			<td colspan="3">Start Date:-&nbsp;<label><?php $input=$arr['date_of_agreement']; $date=strtotime($input);
+										echo date('d-m-Y',$date);?></label>&nbsp;&nbsp;&nbsp;
+							End Date:-&nbsp;<label><?php $input=$arr['Enddate'];$date=strtotime($input);
+										echo date('d-m-Y',$date);?></label></br>
 										
 
 			<label><?php echo $arr['no_of_month'];?>&nbsp;Months</label></td>
