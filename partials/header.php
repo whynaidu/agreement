@@ -23,8 +23,10 @@ $email=$_SESSION['email'];
       <div class="navbar-menu-wrapper d-flex align-items-top"> 
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h3 class="welcome-text text-black fw-bold"id="welcome">Tectignis It Solution</h3>
-            <p>ygdsoieriuqyewkuakrakwuytukwty</p>
+
+         
+            <h3 class="welcome-text text-black fw-bold"id="welcome"><?php echo $name;?></h3>
+            <p><?php echo $email;?></p>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">

@@ -96,7 +96,7 @@ $from=$_POST['from'];
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Client Name</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampledno" name="client_name">
+                        <input type="text" class="form-control" id="exampledno" name="client_name"  placeholder="Enter Name">
                       </div>
                     </div>
 						</div>					  
@@ -104,7 +104,7 @@ $from=$_POST['from'];
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Mobile No.</label>
                       <div class="col-sm-9">
-                        <input type="tel" class="form-control" id="examplemob" name="mobile_no">
+                        <input type="tel" class="form-control" id="examplemob" name="mobile_no"  placeholder="Enter Mobile No">
                       </div>
                     </div>
 						</div> 
@@ -123,7 +123,7 @@ $from=$_POST['from'];
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Requirement</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="examplereq" name="requirement">
+                        <input type="text" class="form-control" id="examplereq" name="requirement"  placeholder="Enter Requirement">
                       </div>
                     </div>
 					  </div>
@@ -131,7 +131,7 @@ $from=$_POST['from'];
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Area</label>
                       <div class="col-sm-9">
-                        <input type="number" class="form-control" id="examplearea"name="area">
+                        <input type="number" class="form-control" id="examplearea"name="area" placeholder="Enter Area">
                       </div>
                     </div>
 					  </div> 
@@ -140,7 +140,7 @@ $from=$_POST['from'];
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Location</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="examplelocation"name="location">
+                        <input type="text" class="form-control" id="examplelocation"name="location" placeholder="Enter Location">
                       </div>
                     </div>
 						</div> 
