@@ -75,13 +75,13 @@ if(isset($_POST['submit'])){
                   <h4 class="card-title">Owner Witness</h4>
                   <form class="forms-sample" method="post">
                   <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name<label style="color:Red">*</label></label>
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">1<sup>st</sup> Person<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control " name="owitness1" txtname required>
                         </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name<label style="color:Red">*</label></label>
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">2<sup>nd</sup>Person<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control txtname" name="owitness2" required>
                         
@@ -90,14 +90,14 @@ if(isset($_POST['submit'])){
                     </div>
 					  <h4 class="card-title">Tenant Witness </h4>					  
                     <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name<label style="color:Red">*</label></label>
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">1<sup>st</sup> Person<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control " name="twitness1"  txtname required>
                        
                       </div>
                     </div> 
                     <div class="form-group row">
-                      <label for="exampleInputtran" class="col-sm-2 col-form-label">Name<label style="color:Red">*</label></label>
+                      <label for="exampleInputtran" class="col-sm-2 col-form-label">2<sup>nd</sup>Person<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control " name="twitness2" txtname required>
                         

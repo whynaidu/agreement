@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
 }
@@ -12,16 +12,16 @@ if(isset($_POST['submit'])){
 	$month=$_POST['month'];
   $place=$_POST['place'];
 	
-	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('$no','$type','$date','$month','$place')");
+	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['id']."','$no','$type','$date','$month','$place')");
 	if($sql==1){
-		$sql=mysqli_query($conn,"select documentid from new_agreement order by documentid desc") or die( mysqli_error($conn));;
+		$sql=mysqli_query($conn,"select documentid from new_agreement where user_id='".$_SESSION['id']."' order by documentid desc") or die( mysqli_error($conn));;
                       $row=mysqli_fetch_array($sql);
                       $lastid=$row['documentid'];
                       if(empty($lastid)){
 						  $number=001;
 					  }else{
 						  $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
-						  $number=$id;
+						  $number='AR-'.$id;
 					  }	
  $last_id = mysqli_insert_id($conn);					  
 		header("location:owner.php?id=".$no);
@@ -80,18 +80,22 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Document No.<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-					  <?php $sql=mysqli_query($conn,"select documentid from new_agreement order by documentid desc") or die( mysqli_error($conn));;
+					  <?php $sql=mysqli_query($conn,"select document_no from new_agreement where user_id='".$_SESSION['id']."' order by document_no desc");
+                  $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
                       $row=mysqli_fetch_array($sql);
-                      $lastid=$row['documentid'];
+                      $lastid=$row['document_no'];
+                      $arr=mysqli_fetch_array($query);
+                      $name=$arr['agent_name'];
+                      $first=$name;
+                      $res= preg_replace('~\S\K\S*\s*~u', '', $first);
                       if(empty($lastid)){
-						  $number="001";
-					  }else{
-						  $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
-						  $number=$id;
-					  }					
+						           $number=$res."-001";
+					           }else{
+						          $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
+					        	  $number=$res."-$id";
+					            }					
                       					  ?>
-                        <input type="text" name="no" value="<?php echo $number; ?>" class="form-control" id="exampledno" readonly>
-							<?php   ?>
+                        <input type="text" name="no" value="<?php echo $number;?>" class="form-control" id="exampledno" readonly>
                       </div>
                     </div>
 						</div> 

@@ -1,6 +1,6 @@
 <?php  
 session_start();
-if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
 }
@@ -134,15 +134,17 @@ th {
 		$amt_words=$arr['rent_amount'];
 		$get_amount = AmountInWords($amt_words);
 	?>
+
+
 	<p><b>NOW THIS AGREEMENT WITNESSETH AS UNDER</b></p>
 <p>1.	The owner do hereby grants to the LICENSEE his/her permission to enter upon, occupy and look after, temporarily, the said premises for a certain period of        MONTHS,  which shall commence from DAY of ___________________. And shall expire on this day of _________________</p>
 <p>2.	The LICENSEE convents with the owenr that LICENSEE  shall observe and perform the following terms and conditions:</p>
 <p>b    To pay a Monthly compensation of sum of <b>Rs.<?php echo $arr['rent_amount'];?>/- </b> (<u><?php echo $get_amount;?></u> ONLY.) as per English calendar month, in advance and thereafter on the 10th of each ensuring month.</p>
 <p>C   The Electricity, water and any others applicable service charges shall be regularly paid by the LICENSEE, where society maintenance charges and Lease Tax , property TAX , if any shall be paid by the OWNER/LICENSOR.</p>
+	<?php } ?>
 <p>dTo use the said premise for RESIDENTIAL/BUSINESS purpose only . Note to cause ,permit or suffer anything in any way which may become a nuisance  or annoyance or cause damage/ loss to the said premises or to the neighbor's property.</p>
 <p>e)     Not to sublet, transfer or otherwise part with the possession of the said premises or any part thereof to anyone.</p>
 <p>f)      TO permit the owner and facilitate him/her to inspect the said premises at any reasonable time during the period of this Agreement.</p>
-<?php } ?>
 <p>3.      It is hereby expressly agreed and declared that neither this  Agreement nor anything contained herein shall be deemed to create any interest or estate in favor of the LICENSEE in the said premise and that relationship of the two parties shall always be that of LICENSOR and LICENSEE only.</p>
 <p>4) The LICENSEE  is entitled to surrender the said premises by giving the LICENSOR, one calendar month’s notice, in writing  or his intention and at the expiry of the said notice period, this Agreement shall REVOKED and the LICENSEE shall be entitled to get the security Deposit amount refunded, against the delivery of the vacant possession.</p>
 <p>a) The LICENSOR may also give one calendar month’s  notice, in case the LICENSOR wish to terminate the Agreement entered in to between the parties, and is ready and willing to refund the security  deposit against delivery of the possession.</p>
@@ -207,12 +209,20 @@ th {
 </table>
 <?php 
 	
-	$sql=mysqli_query($conn,"select * from owner where document_no='$fid'");
+	$sql=mysqli_query($conn,"select * from agent_details where document_no='$fid' AND user_id='".$_SESSION['id']."'");
 	 while($arr=mysqli_fetch_array($sql)){
 	?>
 <p>IN CASE THE LEAVE & LICENSE AGREEMENT IS EXTENDED THEN THE LICENSEE SHALL PAY THE COMMISSION/BROKERAGE TO THE ESTATE AGENT_____________________________________  </p>                                                                                                                             
 <p>IN WITHNESS WHEREOF THE PARTIES HERETO HAVE EXECUTED THIS AGREEMENT IN THE MNNER HEREINAFTER APPEARING ON TH DAY AND THE YEAR FIRST HEREIN ABOVE WRI</p>
 	<p><b>Within named 'LICENSOR'</b></p>
+	<?php } ?>
+
+	
+	<?php 
+	
+	$sql=mysqli_query($conn,"select * from owner where document_no='$fid'");
+	 while($arr=mysqli_fetch_array($sql)){
+	?>
 <p><b><?php echo $arr['abbreviation'];?><u><?php echo $arr['fullname'];?> </b></u></p>
 <p>In the presence of ………</p>
 

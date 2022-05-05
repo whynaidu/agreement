@@ -71,7 +71,8 @@ if(isset($_POST['sub'])){
                       if(empty($lastid)){
 						  $number=001;
 					  }else{
-						  $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
+              
+						  $id=str_pad($lastid + 1, 3,0, STR_PAD_RIGHT);
 						  $number=$id;
 					  }	
       $last_id = mysqli_insert_id($conn);
@@ -158,7 +159,7 @@ if(isset($_POST['sub'])){
                   <form class="forms-sample" method="post">
             
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-2 col-form-label">Document No.<label style="color:Red">*</label></label>
+                      <label for="exampledno" class="col-sm-2 col-form-label">Code No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
 					  <?php $sql=mysqli_query($conn,"select user_id from agent_details order by user_id desc") or die( mysqli_error($conn));;
                       $row=mysqli_fetch_array($sql);
@@ -168,6 +169,7 @@ if(isset($_POST['sub'])){
 					  }else{
 						  $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
 						  $number=$id;
+              $number='AR-'.$id;
 					  }					
                       					  ?>
                         <input type="text" name="no" value="<?php echo $number; ?>" class="form-control" id="exampledno" readonly>

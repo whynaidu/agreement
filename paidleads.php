@@ -115,7 +115,7 @@ if(isset($_GET['delid'])){
                 </div>
               </div>
             </div>
-					</div>
+					</div> 
                 </div>
               </div>
             </div>

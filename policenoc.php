@@ -58,15 +58,15 @@ include("include/configure.inc.php");
 						<div class="col-8">
 					 <h4 class="card-title">Police NOC</h4>
 						</div>
-            <form class="col-4" method="post">
-						<div>
+            <form class="col-4" method="GET">
+				
 					     <div class="input-group">
-                      <input type="text" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="form-control">&nbsp;&nbsp;
+                      <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="form-control">&nbsp;&nbsp;
                       <div class="input-group-append">
                         <button class="btn btn-sm btn-primary" type="submit" style="color: aliceblue" name="">Search</button>
                       </div>
                     </div>
-						</div>
+						
 					</div>
           </form>
                   <div class="table-responsive pt-3">
@@ -81,32 +81,62 @@ include("include/configure.inc.php");
                             <th> Action </th>
                           </tr>
                         </thead>
+                        <tbody>
 
 
                         <?php 
-
+ 
                         if(isset($_GET['search'])){
 
                           $filterval =  $_GET['search'];
-                        }
+                          $sql = "select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus, noc.document_no as nodc, owner.fullname as oname, owner.mobile as omobile from new_agreement inner join tenant on tenant.document_no=new_agreement.document_no inner join owner on owner.document_no=new_agreement.document_no inner join noc on noc.document_no=new_agreement.document_no Where noc.status='1' AND CONCAT(new_agreement.document_no) LIKE '%$filterval%'";
+                          $count=1;
+                          
+                          $query_run = mysqli_query($conn, $sql);
+
+                                        if(mysqli_num_rows($query_run) > 0)
+                                        {
+                                            foreach($query_run as $items)
+                                            {
+                                                ?>
+                                                <tr>
+                                                   <td><?php echo $count; ?></td>
+                                                    <td><?= $items['did']; ?></td>
+                                                    <td><?= $items['oname']; ?></td>
+                                                    <td><?= $items['tname']; ?></td>
+                                                    <td><?= $items['doa']; ?></td>
+                                                    <td>
+                                          <a href="policenocform.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+                                          </td>
+                                        
+                                                              </tr>
+                                                <?php
+                                            }
+                                          }
+                                        }else
+                                        {
+                                            
+                                          $qer=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus, noc.document_no as nodc, owner.fullname as oname, owner.mobile as omobile from new_agreement inner join tenant on tenant.document_no=new_agreement.document_no inner join owner on owner.document_no=new_agreement.document_no inner join noc on noc.document_no=new_agreement.document_no Where noc.status='1'");
+                                          $count=1;
+                                          while($arr=mysqli_fetch_array($qer)){
+                                            ?>
+                                                <tr>
+                                                <td> <?php echo $count;?></td>
+                                                <td> <?php echo $arr['did'];?> </td>
+                                                <td> <?php echo $arr['oname'];?></td>
+                                                <td> <?php echo $arr['tname'];?></td>
+                                                <td> <?php echo $arr['doa'];?> </td>
+                                                <td>
+                                                <a href="policenocform.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+                                                  <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
+                                              </tr>
+                                    <?php
+                                              $count++;}
+                                        }
+                                
+                                ?>
                         
-                        $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus, noc.document_no as nodc, owner.fullname as oname, owner.mobile as omobile from new_agreement inner join tenant on tenant.document_no=new_agreement.document_no inner join owner on owner.document_no=new_agreement.document_no inner join noc on noc.document_no=new_agreement.document_no Where noc.status='1'");
-                        $count=1;
-                         while($arr=mysqli_fetch_array($sql)){
-                        ?>
-                        <tbody>
-                          <tr>
-                            <td> <?php echo $count;?></td>
-                            <td> <?php echo $arr['did'];?> </td>
-                            <td> <?php echo $arr['oname'];?></td>
-                            <td> <?php echo $arr['tname'];?></td>
-                            <td> <?php echo $arr['doa'];?> </td>
-                            <td>
-                            <a href="policenocform.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
-                              <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
-                          </tr>
-                        </tbody>
-                        <?php $count++;} ?>
+                                  </tbody>
                       </table>
                   </div>
                 </div>

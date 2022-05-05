@@ -86,7 +86,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="examplename" class="col-sm-3 col-form-label-sm">Security Deposit<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" id="deposit" class="form-control"name="security_deposit" required>
+                        <input type="number" id="deposit" class="form-control"name="security_deposit" required>
                       </div>
                     </div>
                 
@@ -95,7 +95,7 @@ if(isset($_POST['submit'])){
                      <div class="form-group row">
                       <label for="exampleage" class="col-sm-3 col-form-label-sm">Monthly Rent<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" id="rent" class="form-control"name="rent_amount" required>
+                        <input type="number" id="rent" class="form-control"name="rent_amount" required>
                       </div>
                     </div>     
 					  </div>
@@ -201,7 +201,7 @@ $(document).ready(function(){
       swal("Oops...", "Please fill all the fields", "error");
     }
     else{
-      swal("Good job!", "You clicked the button!", "success");
+      swal("Good job!", "Agreement Submitted", "success");
     }
   });
 });
