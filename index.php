@@ -5,6 +5,8 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
+error_reporting(0);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

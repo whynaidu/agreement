@@ -163,7 +163,7 @@ if(isset($_POST['submit'])){
 
   <script>
       document.title="Payment Details";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
 
 </script>

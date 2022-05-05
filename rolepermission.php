@@ -210,7 +210,7 @@ Delete<i class="input-helper"></i></label>
 <!-- plugins:js -->
                 
 <script>document.title="Roles and Permission";
-document.getElementById("welcome").innerHTML = document.title;
+// document.getElementById("welcome").innerHTML = document.title;
 </script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>

@@ -5,14 +5,17 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
+error_reporting(0);
 if(isset($_POST['submit'])){
 	$no=$_POST['no'];
 	$date=$_POST['date'];
 	$type=$_POST['type'];
 	$month=$_POST['month'];
   $place=$_POST['place'];
+  $status=0;
 	
 	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['id']."','$no','$type','$date','$month','$place')");
+  $query =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$no','$status')");
 	if($sql==1){
 		$sql=mysqli_query($conn,"select documentid from new_agreement where user_id='".$_SESSION['id']."' order by documentid desc") or die( mysqli_error($conn));;
                       $row=mysqli_fetch_array($sql);
@@ -166,7 +169,7 @@ if(isset($_POST['submit'])){
 
   <script>
       document.title="New Agreement";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->

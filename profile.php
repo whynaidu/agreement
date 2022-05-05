@@ -122,7 +122,7 @@ while($row = mysqli_fetch_array($doctors)) {
 
   <script>
       document.title="Agent Profile";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->

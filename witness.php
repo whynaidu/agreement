@@ -127,7 +127,7 @@ if(isset($_POST['submit'])){
 
   <script>
       document.title="Witness Details";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->

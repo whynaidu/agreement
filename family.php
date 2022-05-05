@@ -233,7 +233,7 @@ if(isset($_GET['delid'])){
 
                 
 <script>document.title="Family Details";
-document.getElementById("welcome").innerHTML = document.title;
+// document.getElementById("welcome").innerHTML = document.title;
 </script>
 
   <script src="vendors/js/vendor.bundle.base.js"></script>

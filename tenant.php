@@ -202,7 +202,7 @@ if(isset($_POST['submit'])){
   <!-- plugins:js -->
   <script>
       document.title="Tenant Details";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->

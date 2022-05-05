@@ -55,10 +55,13 @@ include("include/configure.inc.php");
               <div class="card">
                 <div class="card-body">
 					<div class="row">
-						<div class="col-8">
-					 <h4 class="card-title">Police NOC</h4>
+						<div class="col-10">
+					 <h4 class="card-title">List Of Users</h4>
 						</div>
-            <form class="col-4" method="post">
+            	<div class="col-2" style="flex-direction:row-reverse">
+<a href="userrole.php"><button class="btn btn-primary" style="color:white;">Add User</button></a>		
+				</div>
+            <!-- <form class="col-4" method="post">
 						<div>
 					     <div class="input-group">
                       <input type="text" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="form-control">&nbsp;&nbsp;
@@ -67,8 +70,8 @@ include("include/configure.inc.php");
                       </div>
                     </div>
 						</div>
-					</div>
-          </form>
+          </form> -->
+</div>
                   <div class="table-responsive pt-3">
                       <table class="table table-bordered">
                         <thead>
@@ -87,10 +90,10 @@ include("include/configure.inc.php");
 
                         <?php 
 
-                        if(isset($_GET['search'])){
+                        // if(isset($_GET['search'])){
 
-                          $filterval =  $_GET['search'];
-                        }
+                        //   $filterval =  $_GET['search'];
+                        // }
                         
                         $sql=mysqli_query($conn,"SELECT * FROM `user` where `user_id`='".$_SESSION['id']."'");
                         $count=1;
@@ -133,7 +136,7 @@ include("include/configure.inc.php");
   <!-- container-scroller -->
   <script>
       document.title="Police NOC List";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>

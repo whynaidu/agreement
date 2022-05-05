@@ -1,6 +1,6 @@
 
-<?php  
-session_start();
+<?php 
+session_start(); 
 if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
@@ -79,7 +79,8 @@ if(isset($_GET['gen'])){
                         </thead>
 
                         <?php                 
-    $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, date_add(date_of_agreement, INTERVAL no_of_month month)as Enddate, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus from new_agreement inner join tenant on new_agreement.document_no=tenant.document_no inner join noc on new_agreement.document_no=noc.document_no;");
+    $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, date_add(date_of_agreement, INTERVAL no_of_month month)as Enddate, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus from new_agreement inner join tenant on new_agreement.document_no=tenant.document_no inner join noc on 
+    new_agreement.document_no=noc.document_no");
       $count=1;
       while($row = mysqli_fetch_array($sql)) {
       ?>
@@ -141,7 +142,7 @@ elseif($status==0){
   <!-- container-scroller -->
   <script>
       document.title="List Of Agreements";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>

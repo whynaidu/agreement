@@ -5,6 +5,8 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
+error_reporting(0);
+
 if(!isset($_SESSION['username'])){
  //header("location:../samples/login.php");
 }
@@ -193,7 +195,7 @@ if(isset($_POST['sub'])){
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control"name="mobile_no"  placeholder="Enter Mobile ">
+                        <input type="tel" class="form-control"name="mobile_no"  placeholder="Enter Mobile ">
                       </div>
                     </div>
 					  <div class="form-group row">
@@ -209,7 +211,7 @@ if(isset($_POST['sub'])){
                         <input type="text" class="form-control"name="rera" placeholder="Enter No.">
                       </div>
                     </div>
-					  <div class="form-group row">
+					  <!-- <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" placeholder="TECT-00001" name="prefix">
@@ -221,7 +223,7 @@ if(isset($_POST['sub'])){
                         <input type="file" name="file">
                          <a href="upload_image.php" class="btn btn-success"> Upload</a>
                       </div>
-                    </div>
+                    </div> -->
 					<div class="col" align="right">
                     <button type="submit" name="sub"class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>
 					</div>
