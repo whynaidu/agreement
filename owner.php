@@ -115,32 +115,32 @@ if(isset($_POST['submit'])){
                         </select>  
                       </div>
                       <div class="col-sm-8">
-                        <input type="text" name="name" class="form-control" id="txtname" required>
+                        <input type="text" name="name" class="form-control" id="txtname" placeholder="Enter Name" required>
                         <span id="spanname"></span>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Age<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="number" name="age" class="form-control" id="id1" required>
+                        <input type="number" name="age" class="form-control" id="id1" placeholder="Enter Age" required>
                         <span id="demo"></span>
                       </div>
                  
                       <label for="exampleInputMobile" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="tel" name="mobile" class="form-control"  minlength="10" maxlength="10" required>
+                        <input type="tel" name="mobile" class="form-control"  minlength="10" maxlength="10" placeholder="Enter Mobile No" required>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar No.<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="number" name="aadhaar" class="form-control" id="txtAadhar"   required>
+                        <input type="number" name="aadhaar" class="form-control" id="txtAadhar" placeholder="Enter Aadhaar No"  required>
                         <span id="spanAadharCard"></span>
                       </div>
                  
                       <label for="examplepan" class="col-sm-2 col-form-label">Pancard<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="text" name="pancard"  id="txtPANCard" class="form-control"placeholder="enter your pan number" required/>
+                        <input type="text" name="pancard"  id="txtPANCard" class="form-control"placeholder="Enter your pan number" required/>
                         <span id="spanCard"></span>
                       </div>
                     </div>
@@ -185,7 +185,7 @@ if(isset($_POST['submit'])){
 
        <script>
       document.title="Owner Details";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script> -->
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
