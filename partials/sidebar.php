@@ -111,7 +111,7 @@
           <a class="nav-link active" href="roll.php" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-tie "></i>
               <span class="menu-title">Roll</span>
-            </a> +a
+            </a>
           </li>
 
           <li class="nav-item">
