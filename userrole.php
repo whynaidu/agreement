@@ -6,16 +6,12 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("include/configure.inc.php");
 if(isset($_POST['submit'])){
-	$name=$_POST['client_name'];
-	$address=$_POST['address'];
-	$mobile=$_POST['mobile_no'];
-	$requirement=$_POST['requirement'];
-	$location=$_POST['location'];
-  $type=$_POST['type'];
-$from=$_POST['from'];
-  $area=$_POST['area'];
-	
-	$sql=mysqli_query($conn,"INSERT INTO `leads`(`user_id`, `from`,`client_name`, `mobile`,`type`, `requirement`, `area`, `location`) VALUES ('".$_SESSION['id']."','$from','$name','$mobile','$type','$requirement','$area','$location')");
+	$name=$_POST['name'];
+	$email=$_POST['email'];
+	$role=$_POST['role'];
+
+
+	$sql=mysqli_query($conn,"INSERT INTO `user`(`user_id` ,`name`, `email`, `role`) VALUES ('".$_SESSION['id']."','$name','$email','$role')");
 	if($sql==1){
     	
     header("location:addnewenquire.php");
@@ -81,7 +77,7 @@ $from=$_POST['from'];
                     <div class="form-group row">
                       <label for="Name" class="col-sm-3 col-form-label"> Name</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampledno" name="client_name">
+                        <input type="text" class="form-control" id="exampledno" name="name">
                       </div>
                     </div>
 						</div>					  
@@ -89,26 +85,25 @@ $from=$_POST['from'];
                     <div class="form-group row">
                       <label for="Email" class="col-sm-3 col-form-label"> Email</label>
                       <div class="col-sm-9">
-                        <input type="tel" class="form-control" id="Email" name="Email">
+                        <input type="tel" class="form-control" id="Email" name="email">
                       </div>
                     </div>
 						</div> 
-            <div class="col-md-6 ">
-                    <div class="form-group row">
-                      <label for="Password" class="col-sm-3 col-form-label"> Password</label>
-                      <div class="col-sm-9">
-                        <input type="tel" class="form-control" id="Password" name="Password">
-                      </div>
-                    </div>
-						</div> 
-			
+      
+          
             <div class="col-md-6 ">
                     <div class="form-group row">
                       <label for="Role" class="col-sm-3 col-form-label">Role</label>
                       <div class="col-sm-9">
-                        <select class="form-control" id="exampleSelectProperty" name="type">
-                          <option>Admin</option>
-                          <option>Super Admin</option>
+                  
+                        <select class="form-control" id="exampleSelectProperty" name="role">
+                        <?php 
+                        $sql=mysqli_query($conn,"SELECT * FROM roles");
+                         while($arr=mysqli_fetch_array($sql)){
+                        ?>
+                          <option value="<?php echo $arr['roles'];?>"><?php echo $arr['roles'];?></option>
+                          <?php } ?>
+                        
                         </select>
                       </div>
                     </div>
