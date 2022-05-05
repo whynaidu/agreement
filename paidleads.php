@@ -89,12 +89,7 @@ if(isset($_GET['delid'])){
                              <th>Action</th>
                           </tr>
                         </thead>
-                        <?php 
-                        
-                        $sql=mysqli_query($conn,"select * from `paidleads` where user_id='".$_SESSION['id']."'");
-                        $count=1;
-                         while($arr=mysqli_fetch_array($sql)){
-                        ?>
+                       
                         <tbody>
                           <tr>
                              <td> <?php echo $count;?></td>

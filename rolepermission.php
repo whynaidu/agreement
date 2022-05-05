@@ -85,6 +85,23 @@ if(isset($_POST['submit'])){
 					<div>
                         <h4 class="card-title card-title-dash">Roles and Permission</h4>
 					</div>
+          <div class="col-md-6 ">
+                    <div class="form-group row">
+                      <label for="Role" class="col-sm-3 col-form-label">Role</label>
+                      <div class="col-sm-9">
+                   
+                        <select class="form-control" id="exampleSelectProperty" name="type">
+                        <?php 
+                        $sql=mysqli_query($conn,"SELECT * FROM roles");
+                         while($arr=mysqli_fetch_array($sql)){
+                        ?>
+                          <option><?php echo $arr['roles'];?></option>
+                          <?php } ?>
+                        
+                        </select>
+                      </div>
+                    </div>
+						</div>
                   <form class="forms-sample" method="post">
                   <div class="form-check">
                             <label class="form-check-label">

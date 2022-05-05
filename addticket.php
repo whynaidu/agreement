@@ -6,22 +6,23 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("include/configure.inc.php");
 if(isset($_POST['submit'])){
-	$name=$_POST['client_name'];
-	$address=$_POST['address'];
-	$mobile=$_POST['mobile_no'];
-	$requirement=$_POST['requirement'];
-	$location=$_POST['location'];
-  $type=$_POST['type'];
-$from=$_POST['from'];
-  $area=$_POST['area'];
+	$client_code=$_POST['client_code'];
+	$email=$_POST['email_id'];
+  $subject=$_POST['subject'];
+	$description=$_POST['description'];
+
 	
-	$sql=mysqli_query($conn,"INSERT INTO `leads`(`user_id`, `from`,`client_name`, `mobile`,`type`, `requirement`, `area`, `location`) VALUES ('".$_SESSION['id']."','$from','$name','$mobile','$type','$requirement','$area','$location')");
-	if($sql==1){	
-    header("location:addnewenquire.php");
-	}else{
-		echo "<script>alert('Something went wrong');</script>";
-	}
-}
+	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `client_code`, `email_id`, `subject`, `description`) VALUES ('	$client_code','$email', '$subject','$description')") ;
+  if($sql==1){
+    echo "<script>alert('Register successfully'),window.location='addticket.php';</script>";
+   
+
+  }else{
+    echo "<script>alert('something went wrong');</script>";
+  }
+
+  }
+  
 
 ?>
 <!DOCTYPE html>
@@ -73,64 +74,51 @@ $from=$_POST['from'];
 					<div>
           <h4 class="card-title card-title-dash">New Enquire</h4>
 					</div>
-              	
-              
-					  <div class="col-md-6 ">
+                  <form class="forms-sample" method="post">
+					  <div class="row">
+					  <div class="col-md-12 ">
               
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Client Name</label>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Client Code</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampledno" name="client_name"  placeholder="Enter Name">
+                        <input type="text" class="form-control" id="client_code" name="client_code" placeholder="Enter Code">
                       </div>
                     </div>
 						</div>					  
-						<div class="col-md-6 ">
+						<div class="col-md-12 ">
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Mobile No.</label>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Email</label>
                       <div class="col-sm-9">
-                        <input type="tel" class="form-control" id="examplemob" name="mobile_no"  placeholder="Enter Mobile No">
+                        <input type="email" class="form-control" id="email" name="email_id" placeholder="Enter Email">
                       </div>
                     </div>
 						</div> 
-					   <div class="col-md-6 ">
+					   <div class="col-md-12 ">
                     <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-3 col-form-label">Property Type</label>
+                      <label for="exampleprop" class="col-sm-3 col-form-label">subject</label>
                       <div class="col-sm-9">
-                        <select class="form-control" id="exampleSelectProperty" name="type">
+                        <select class="form-control" id="suject" name="subject" placeholder="Enter Subject">
                           <option>Flat</option>
                           <option>Shop</option>
                         </select>
                       </div>
                     </div>
 						</div>
-					  <div class="col-md-6 ">
+					  <div class="col-md-12 ">
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Requirement</label>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Description</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="examplereq" name="requirement"  placeholder="Enter Requirement">
+                      <textarea class="form-control" name="description" id="description" type="text"  style="height: 10rem" placeholder="Enter Description" data-sb-validations="required"></textarea>
                       </div>
                     </div>
 					  </div>
-					  <div class="col-md-6 ">
-                    <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Area</label>
-                      <div class="col-sm-9">
-                        <input type="number" class="form-control" id="examplearea"name="area" placeholder="Enter Area">
-                      </div>
-                    </div>
-					  </div> 
+					 
                    
-						<div class="col-md-6 ">
-                    <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Location</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="examplelocation"name="location" placeholder="Enter Location">
-                      </div>
-                    </div>
-						</div> 
+				
 					  </div>
 					  <div class="col" align="right">
-                    <button type="submit" name="submit" class="btn btn-primary  btn-lg" style="color: aliceblue">Submit<i class="mdi mdi-chevron-right"></i></button>
+            <button type="submit" name="submit" class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>        
+            <button type="submit" name="submit" class="btn btn-danger  btn-lg" style="color: aliceblue">Cancel</button>
                     </div>
                   </form>
                 </div>

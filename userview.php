@@ -1,19 +1,11 @@
 
 <?php  
 session_start();
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
-
-if(isset($_GET['delid'])){
-  $id=mysqli_real_escape_string($conn,$_GET['delid']);
-  $sql=mysqli_query($conn,"delete from leads where id='$id'");
-  if($sql=1){
-   header("location:leads.php");
-  }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,58 +50,62 @@ if(isset($_GET['delid'])){
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
-               
                 <div class="tab-content tab-content-basic">
 				 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
 					<div class="row">
-						<div class="col-9">
-					 <h4 class="card-title">Social Medka Leads</h4>
+						<div class="col-8">
+					 <h4 class="card-title">Police NOC</h4>
 						</div>
-						<div class="col-3">
-					 <div class="input-group">
-                      <input type="text" class="form-control">
+            <form class="col-4" method="post">
+						<div>
+					     <div class="input-group">
+                      <input type="text" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="form-control">&nbsp;&nbsp;
                       <div class="input-group-append">
-                        <button class="btn btn-sm btn-primary" type="button" style="color: aliceblue">Search</button>
+                        <button class="btn btn-sm btn-primary" type="submit" style="color: aliceblue" name="">Search</button>
                       </div>
                     </div>
 						</div>
 					</div>
+          </form>
                   <div class="table-responsive pt-3">
                       <table class="table table-bordered">
                         <thead>
                           <tr>
-                            <th>Sr.No</th>
-						              	<th>Source</th>
-                            <th>Clinet Name</th>
-                            <th>Mobile No</th>
-                            <th>Type</th> 
-                            <th> Requirements </th>
-                            <th>Area</th> 
-                            <th> Location </th>
+                            <th>
+                              Sr.No</th>
+                            <th>Emp_id</th>
+						              	<th> Name</th>
+                            <th>email</th>
+                            <th>Role</th>
+                            <th>action</th>
+                            
                           </tr>
                         </thead>
+
+
                         <?php 
+
+                        if(isset($_GET['search'])){
+
+                          $filterval =  $_GET['search'];
+                        }
                         
-                        $sql=mysqli_query($conn,"select * from leads where (source='facebook') OR (source='instagram')  AND user_id='".$_SESSION['id']."'");
+                        $sql=mysqli_query($conn,"SELECT * FROM `user` where `user_id`='".$_SESSION['id']."'");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                         <tbody>
                           <tr>
                             <td> <?php echo $count;?></td>
-                            <td> <?php echo $arr['source'];?> </td>
-                            <td> <?php echo $arr['client_name'];?></td>
-                            <td> <?php echo $arr['mobile'];?></td>
-                            <td> <?php echo $arr['type'];?> </td>
-                            <td> <?php echo $arr['requirement'];?> </td>
-                            <td> <?php echo $arr['area'];?> </td>
-                            <td> <?php echo $arr['location'];?> </td>
+                            <td> <?php echo $arr['emp_id'];?> </td>
+                            <td> <?php echo $arr['name'];?></td>
+                            <td> <?php echo $arr['email'];?></td>
+                            <td> <?php echo $arr['role'];?> </td>
                             <td>
-<a class="btn btn-danger btn-rounded btn-icon" href="leads.php?delid=<?php echo $arr['id']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
-                          <i class="mdi mdi-delete"></i>
-                          </a>                                    <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
+                            <a href="policenocform.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+                              <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
                           </tr>
                         </tbody>
                         <?php $count++;} ?>
@@ -136,8 +132,8 @@ if(isset($_GET['delid'])){
     <!-- page-body-wrapper ends -->
   <!-- container-scroller -->
   <script>
-      document.title="Social Medka | Leads";
-      // document.getElementById("welcome").innerHTML = document.title;
+      document.title="Police NOC List";
+      document.getElementById("welcome").innerHTML = document.title;
     </script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>
