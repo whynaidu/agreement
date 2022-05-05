@@ -108,10 +108,9 @@
 
 
           <li class="nav-item">
-          <a class="nav-link active" href="rolepermission.php" aria-expanded="false" aria-controls="ui-basic">
+          <a class="nav-link active" href="roll.php" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-tie "></i>
-              <span class="menu-title">rolepermission</span>
-            
+              <span class="menu-title">Roll</span>
             </a>
           </li>
 

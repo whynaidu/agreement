@@ -1,5 +1,6 @@
 <?php  
 session_start();
+$name=$_SESSION['name'];
 if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
@@ -16,7 +17,7 @@ include("include/configure.inc.php");
   <title></title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
-  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="veeandors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="vendors/typicons/typicons.css">
   <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
@@ -58,14 +59,13 @@ include("include/configure.inc.php");
                           <div class="col-8">
                             <h4 class="card-title">Police NOC</h4>
                           </div>
-                          <form class="col-4" method="post">
+                          <form class="col-6" method="post">
                             <div>
                               <div class="input-group">
-                                <input type="text" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>"
-                                  class="form-control">&nbsp;&nbsp;
+                                <input type="text" class="form-control">&nbsp;&nbsp;
                                 <div class="input-group-append">
-                                  <button class="btn btn-sm btn-primary" type="submit" style="color: aliceblue"
-                                    name="">Search</button>
+                                  <button class="btn btn-sm btn-primary" type="submit"
+                                    style="color: aliceblue">Search</button>
                                 </div>
                               </div>
                             </div>
@@ -76,42 +76,42 @@ include("include/configure.inc.php");
                             <thead>
                               <tr>
                                 <th>Sr.No</th>
-                                <th>Document No</th>
-                                <th>Owner Name</th>
-                                <th>Tenant Name</th>
-                                <th>Date of Agreement</th>
+                                <th>Complaint No</th>
+                                <th>Complaint Date</th>
+                                <th>Client NAme</th>
+                                <th>Email ID</th>
+                                <th>Description</th>
                                 <th> Action </th>
                               </tr>
                             </thead>
 
-
                             <?php 
-
-                        if(isset($_GET['search'])){
-
-                          $filterval =  $_GET['search'];
-                        }
                         
-                        $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus, noc.document_no as nodc, owner.fullname as oname, owner.mobile as omobile from new_agreement inner join tenant on tenant.document_no=new_agreement.document_no inner join owner on owner.document_no=new_agreement.document_no inner join noc on noc.document_no=new_agreement.document_no Where noc.status='1'");
+                        $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                             <tbody>
                               <tr>
                                 <td> <?php echo $count;?></td>
-                                <td> <?php echo $arr['did'];?> </td>
-                                <td> <?php echo $arr['oname'];?></td>
-                                <td> <?php echo $arr['tname'];?></td>
-                                <td> <?php echo $arr['doa'];?> </td>
+                                <td> <?php echo $arr['client_no'];?></td>
+
+                                <td> <?php echo $name;?> </td>
+                                <td> <?php echo $arr['email_id'];?></td>
+                                <td> <?php echo $arr['description'];?></td>
+
                                 <td>
-                                  <a href="policenocform.php?id=<?php echo $arr['did'] ?>"><button type="button"
-                                      class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i
-                                        class="mdi mdi-eye"></i> </button></a>
-                                  <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>-->
+                                  <a class="btn btn-danger btn-rounded btn-icon"
+                                    href="support.php?delid=<?php echo $arr['id']; ?>" onclick="return checkDelete()"
+                                    class="btn btn-primary btn-rounded btn-icon">
+                                    <i class="mdi mdi-delete"></i>
+                                  </a>
+                                </td>
+                                <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>-->
                                 </td>
                               </tr>
                             </tbody>
-                            <?php $count++;} ?>
+                            <?php $count++;}  ?>
                           </table>
                         </div>
                       </div>
@@ -159,6 +159,7 @@ include("include/configure.inc.php");
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+ </div>
 </body>
 
 </html>
