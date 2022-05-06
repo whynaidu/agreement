@@ -74,8 +74,29 @@ $from=$_POST['from'];
 					<div>
           <h4 class="card-title card-title-dash">New Enquire</h4>
 					</div>
+<<<<<<< HEAD
+                  <form class="forms-sample" method="post">
+					  <div class="row">
+              	  <div class="col-md-12 ">
+             
+                    <div class="form-group row">
+                      <label for="exampledno" class="col-sm-2 col-form-label">From Name</label>
+                      <div class="col-sm-10">
+                        <Select class="form-control" id="exampledno" name="from" required>
+                          <option selected>Select  </option>
+                          <option value="facebook">FaceBook </option>
+                          <option value="instagram">Instagram </option>
+                          <option value="walkin">Walkin </option>
+                        </select>
+
+                      </div>
+                    </div>
+						</div>	
+              
+=======
               	
               <form method="post">
+>>>>>>> 76ebdaad27e0c87affb6dc68dc33442c1f024441
 					  <div class="col-md-6 ">
               
                     <div class="form-group row">

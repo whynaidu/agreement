@@ -113,10 +113,10 @@ if(isset($_POST['submit'])){
                       <option value="" disabled selected hidden>select</option>
                           <option>Mr.</option>
                           <option>Mrs.</option>
-                        </select>  
+                        </select>
                       </div>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="name"  id="txtname" required>
+                        <input type="text" class="form-control" name="name"  id="txtname" placeholder="Name" required>
                         <span id="spanname"></span>
                       </div>
                     </div>
@@ -128,18 +128,18 @@ if(isset($_POST['submit'])){
                 
                       <label for="exampleaadhaar" class="col-sm-2 col-  form-label">E-mail ID<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="email" class="form-control"name="email"required>
+                        <input type="email" class="form-control"name="email" placeholder="Email" required>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Passport No</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control"name="passport">
+                        <input type="text" class="form-control"name="passport" placeholder="Passport Number">
                       </div>
  
-                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar No.<label style="color:Red">*</label></label>
+                      <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar Card No.<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control"name="aadhaar" id="txtAadhar" required>
+                        <input type="text" class="form-control"name="aadhaar" id="txtAadhar" placeholder="Aadhaar Card number" required>
                         <span id="spanAadharCard" ></span>
                       </div>
                     </div>
@@ -147,27 +147,27 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Age<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="number"  class="form-control" name="age" min="18" max="100"  id="id1" required>
+                        <input type="number"  class="form-control" name="age" min="18" max="100"  id="id1" placeholder="Age" required>
                         <p id="demo"></p>
                       </div>
  
 
-                      <label for="examplepan" class="col-sm-2 col-form-label">Pancard<label style="color:Red">*</label></label>
+                      <label for="examplepan" class="col-sm-2 col-form-label">Pancard No.<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control"name="pancard" id="txtPANCard" required>
+                        <input type="text" class="form-control"name="pancard" id="txtPANCard" placeholder="Pancard number" required>
                         <span id="spanCard"></span>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                      <textarea name="address" cols="73" rows="4" required></textarea> 
+                      <textarea name="address" cols="73" rows="4" placeholder=" Address" required></textarea> 
                       </div>
                     </div>
 					          <div class="form-group row">
                       <label for="examplepreaddress" class="col-sm-2 col-form-label">Present Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <textarea name="permanent_address" cols="73" rows="4"required></textarea>  
+                        <textarea name="permanent_address" cols="73" rows="4" placeholder="Address" required></textarea>  
                       </div>
                     </div>
                

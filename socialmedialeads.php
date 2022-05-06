@@ -64,7 +64,7 @@ if(isset($_GET['delid'])){
                 <div class="card-body">
 					<div class="row">
 						<div class="col-9">
-					 <h4 class="card-title">Social Medka Leads</h4>
+					 <h4 class="card-title">Social Media Leads</h4>
 						</div>
 						<div class="col-3">
 					 <div class="input-group">

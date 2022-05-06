@@ -66,16 +66,16 @@ if(isset($_GET['delid'])){
       <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Todo list </h3>
+              <h3 class="page-title"> To Do List </h3>
             </div>
             <div class="row">
               <div class="col-lg-12">
                 <div class="card px-3">
                   <div class="card-body">
-                    <h4 class="card-title">Todo list</h4>
+                    <h4 class="card-title">To Do List</h4>
                     <form method="post" action="todo.php">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Add todo</label>
+                        <label for="exampleInputEmail1">Add to do</label>
                         <input type="text" class="form-control" name="todo" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter todo">
                       </div>
                       <button type="submit" class="btn btn-primary" name="submit">Submit</button>
