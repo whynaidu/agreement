@@ -2,7 +2,7 @@
 
 if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
- header("Location:index.php"); 
+ header("Location:dashboard.php"); 
 }
 
 include("include/configure.inc.php");
@@ -17,7 +17,7 @@ if(isset($_POST["login"])){
 	
 
 		if($verify==1){
-			echo"<script>alert('Login Sucessful'),window.location='index.php';</script>";
+			echo"<script>alert('Login Sucessful'),window.location='dashboard.php';</script>";
 			$_SESSION['email']=$row['email'];
       $_SESSION['name']=$row['agent_name'];
       $_SESSION['id']=$row['user_id'];
