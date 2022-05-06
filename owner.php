@@ -115,39 +115,39 @@ if(isset($_POST['submit'])){
                         </select>  
                       </div>
                       <div class="col-sm-8">
-                        <input type="text" name="name" class="form-control" id="txtname" placeholder=" Name" required>
+                        <input type="text" name="name" class="form-control" id="txtname" placeholder="Enter Name" required>
                         <span id="spanname"></span>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Age<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="number" name="age" class="form-control" id="id1" placeholder=" Age" required>
+                        <input type="number" name="age" class="form-control" id="id1" placeholder="Enter Age" required>
                         <span id="demo"></span>
                       </div>
                  
                       <label for="exampleInputMobile" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="tel" name="mobile" class="form-control"  minlength="10" maxlength="10" placeholder=" Mobile Number" required>
+                        <input type="tel" name="mobile" class="form-control"  minlength="10" maxlength="10" placeholder="Enter Mobile Number" required>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar Card No.<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="number" name="aadhaar" class="form-control" id="txtAadhar" placeholder="Aadhaar card No"  required>
+                        <input type="number" name="aadhaar" class="form-control" id="txtAadhar" placeholder="Enter Aadhaar card No"  required>
                         <span id="spanAadharCard"></span>
                       </div>
                  
                       <label for="examplepan" class="col-sm-2 col-form-label">Pancard<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="text" name="pancard"  id="txtPANCard" class="form-control"placeholder="Pancard number" required/>
+                        <input type="text" name="pancard"  id="txtPANCard" class="form-control"placeholder="Enter Pancard number" required/>
                         <span id="spanCard"></span>
                       </div>
                     </div>
                     <div class="form-group row"> 
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <textarea name="address" cols="73" rows="4" placeholder="Address" Arequired></textarea>
+                        <textarea name="address" cols="73" rows="4" placeholder="Enter Address" Arequired></textarea>
                       </div>
                     </div>
                    

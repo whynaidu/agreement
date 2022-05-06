@@ -86,7 +86,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="examplename" class="col-sm-3 col-form-label-sm">Security Deposit<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="number" id="deposit" class="form-control"name="security_deposit" required>
+                        <input type="number" id="deposit" class="form-control"name="security_deposit" placeholder="Deposit" required>
                       </div>
                     </div>
                 
@@ -95,7 +95,7 @@ if(isset($_POST['submit'])){
                      <div class="form-group row">
                       <label for="exampleage" class="col-sm-3 col-form-label-sm">Monthly Rent<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="number" id="rent" class="form-control"name="rent_amount" required>
+                        <input type="number" id="rent" class="form-control"name="rent_amount" placeholder="Rent" required>
                       </div>
                     </div>     
 					  </div>
@@ -119,7 +119,7 @@ if(isset($_POST['submit'])){
              <div class="form-group row">
                       <label for="exampldate" class="col-sm-2 col-form-label">Bank <label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="bank" id="bank" required>
+                        <input type="text" class="form-control" name="bank" id="bank" placeholder="Enter Bank Name" required>
                       </div>
                     </div>
 					  <div class="form-group row">
@@ -131,7 +131,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleInputtran" class="col-sm-2 col-form-label">Transaction ID<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="tid"  id="tid" required>
+                        <input type="text" class="form-control" name="tid"  id="tid" placeholder="Enter Transaction ID" required>
                       </div>
                     </div>
 				

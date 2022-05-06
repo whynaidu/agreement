@@ -77,13 +77,13 @@ if(isset($_POST['submit'])){
                   <div class="form-group row">
                       <label for="exampleInputtran" class="col-sm-2 col-form-label">1<sup>st</sup> Person<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control " name="owitness1" placeholder="Name" txtname required>
+                        <input type="text" class="form-control " name="owitness1" placeholder="Enter Name" txtname required>
                         </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleInputtran" class="col-sm-2 col-form-label">2<sup>nd</sup>Person<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control txtname" name="owitness2" placeholder="Name" required>
+                        <input type="text" class="form-control txtname" name="owitness2" placeholder="Enter Name" required>
                         
                         
                       </div>
@@ -92,14 +92,14 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleInputtran" class="col-sm-2 col-form-label">1<sup>st</sup> Person<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control " name="twitness1" placeholder="Name" txtname required>
+                        <input type="text" class="form-control " name="twitness1" placeholder="Enter Name" txtname required>
                        
                       </div>
                     </div> 
                     <div class="form-group row">
                       <label for="exampleInputtran" class="col-sm-2 col-form-label">2<sup>nd</sup>Person<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control " name="twitness2" placeholder="Name" txtname required>
+                        <input type="text" class="form-control " name="twitness2" placeholder="Enter Name" txtname required>
                         
                       </div>
                     </div>
