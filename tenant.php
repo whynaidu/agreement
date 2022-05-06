@@ -202,7 +202,7 @@ if(isset($_POST['submit'])){
   <!-- plugins:js -->
   <script>
       document.title="Tenant Details";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
@@ -232,11 +232,11 @@ $("#spanname").hide();
 	   });
 	   function txt_check(){
 		   let txt=$("#txtname").val();
-		   let vali =/^[A-Za-z]+$/;
+		   let vali =/^[A-Za-z ]+$/;
 		   if(!vali.test(txt)){
-			    $("#spanname").show().html("Enter Alphabets only").css("color","red").focus();
-			 txt_err=false;
-			 return false;
+			  $("#spanname").show().html("Enter Alphabets only").css("color","red").focus();
+			  txt_err=false;
+			  return false;
 		   }
 		   else{
 		       $("#spanname").hide();
@@ -245,7 +245,7 @@ $("#spanname").hide();
 	   }
 
 	   $("#sub").click(function(){
-      txt_err = true;
+       txt_err = true;
              txt_check();
 			   
 			   if((txt_err==true)){

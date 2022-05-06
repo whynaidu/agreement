@@ -1,4 +1,3 @@
-
 <?php  
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
@@ -136,8 +135,8 @@ if(isset($_GET['delid'])){
     <!-- page-body-wrapper ends -->
   <!-- container-scroller -->
   <script>
-      document.title="Social Media Leads";
-      document.getElementById("welcome").innerHTML = document.title;
+      document.title="Social Medka | Leads";
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>

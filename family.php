@@ -1,4 +1,5 @@
 <?php 
+session_start();
 if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
@@ -232,7 +233,7 @@ if(isset($_GET['delid'])){
 
                 
 <script>document.title="Family Details";
-document.getElementById("welcome").innerHTML = document.title;
+// document.getElementById("welcome").innerHTML = document.title;
 </script>
 
   <script src="vendors/js/vendor.bundle.base.js"></script>
@@ -265,7 +266,7 @@ $("#spanname").hide();
 	   });
 	   function txt_check(){
 		   let txt=$("#txtname").val();
-		   let vali =/^[A-Za-z]+$/;
+		   let vali =/^[A-Za-z ]+$/;
 		   if(!vali.test(txt)){
 			    $("#spanname").show().html("Enter Alphabets only").css("color","red").focus();
 			 txt_err=false;

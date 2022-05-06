@@ -5,6 +5,8 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
+error_reporting(0);
+
 if(!isset($_SESSION['username'])){
  //header("location:../samples/login.php");
 }
@@ -71,7 +73,8 @@ if(isset($_POST['sub'])){
                       if(empty($lastid)){
 						  $number=001;
 					  }else{
-						  $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
+              
+						  $id=str_pad($lastid + 1, 3,0, STR_PAD_RIGHT);
 						  $number=$id;
 					  }	
       $last_id = mysqli_insert_id($conn);
@@ -158,7 +161,7 @@ if(isset($_POST['sub'])){
                   <form class="forms-sample" method="post" enctype="multipart/form-data">
             
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-2 col-form-label">Document No.<label style="color:Red">*</label></label>
+                      <label for="exampledno" class="col-sm-2 col-form-label">Code No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
 					  <?php $sql=mysqli_query($conn,"select user_id from agent_details order by user_id desc") or die( mysqli_error($conn));;
                       $row=mysqli_fetch_array($sql);
@@ -168,6 +171,7 @@ if(isset($_POST['sub'])){
 					  }else{
 						  $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
 						  $number=$id;
+              $number='AR-'.$id;
 					  }					
                       					  ?>
                         <input type="text" name="no" value="<?php echo $number; ?>" class="form-control" id="exampledno" readonly>
@@ -191,7 +195,11 @@ if(isset($_POST['sub'])){
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
+<<<<<<< HEAD
                         <input type="number" class="form-control"name="mobile_no"  placeholder=" Mobile Number">
+=======
+                        <input type="tel" class="form-control"name="mobile_no"  placeholder="Enter Mobile ">
+>>>>>>> 76ebdaad27e0c87affb6dc68dc33442c1f024441
                       </div>
                     </div>
 					  <div class="form-group row">
@@ -207,7 +215,7 @@ if(isset($_POST['sub'])){
                         <input type="text" class="form-control"name="rera" placeholder="Enter Number">
                       </div>
                     </div>
-					  <div class="form-group row">
+					  <!-- <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" placeholder="TECT-00001" name="prefix">
@@ -219,7 +227,7 @@ if(isset($_POST['sub'])){
                         <input type="file" name="file">
                          <a href="upload_image.php" class="btn btn-success"> Upload</a>
                       </div>
-                    </div>
+                    </div> -->
 					<div class="col" align="right">
                     <button type="submit" name="sub"class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>
 					</div>

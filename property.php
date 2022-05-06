@@ -173,7 +173,7 @@ if (mysqli_num_rows($doctors)>0){
 
   <script>
       document.title="Property Details";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->

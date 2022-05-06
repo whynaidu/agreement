@@ -6,14 +6,6 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
-
-if(isset($_GET['delid'])){
-  $id=mysqli_real_escape_string($conn,$_GET['delid']);
-  $sql=mysqli_query($conn,"delete from enquiry where id='$id'");
-  if($sql=1){
-    header("location:enquiry.php");
-  }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,51 +50,64 @@ if(isset($_GET['delid'])){
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
-               
                 <div class="tab-content tab-content-basic">
 				 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
 					<div class="row">
-						<div class="col-9">
-					 <h4 class="card-title">News letter</h4>
+						<div class="col-10">
+					 <h4 class="card-title">List Of Users</h4>
 						</div>
-						<div class="col-3">
-					 <div class="input-group">
-                      <input type="text" class="form-control">
+            	<div class="col-2" style="flex-direction:row-reverse">
+<a href="userrole.php"><button class="btn btn-primary" style="color:white;">Add User</button></a>		
+				</div>
+            <!-- <form class="col-4" method="post">
+						<div>
+					     <div class="input-group">
+                      <input type="text" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="form-control">&nbsp;&nbsp;
                       <div class="input-group-append">
-                        <button class="btn btn-sm btn-primary" type="button" style="color: aliceblue">Search</button>
+                        <button class="btn btn-sm btn-primary" type="submit" style="color: aliceblue" name="">Search</button>
                       </div>
                     </div>
 						</div>
-					</div>
+          </form> -->
+</div>
                   <div class="table-responsive pt-3">
                       <table class="table table-bordered">
                         <thead>
                           <tr>
-                            <th>Sr.No</th>
-                            <th>Name</th>
-                            <th>Moile No</th>
-						              	<th>Email id</th>
-                            <th>Description</th>
-                            <th> Action </th>
+                            <th>
+                              Sr.No</th>
+                            <th>Emp_id</th>
+						              	<th> Name</th>
+                            <th>email</th>
+                            <th>Role</th>
+                            <th>action</th>
+                            
                           </tr>
                         </thead>
+
+
                         <?php 
+
+                        // if(isset($_GET['search'])){
+
+                        //   $filterval =  $_GET['search'];
+                        // }
                         
-                        $sql=mysqli_query($conn,"select * from enquiry");
+                        $sql=mysqli_query($conn,"SELECT * FROM `user` where `user_id`='".$_SESSION['id']."'");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                         <tbody>
                           <tr>
                             <td> <?php echo $count;?></td>
-                            <td> <?php echo $arr['name'];?> </td>
-                            <td> <?php echo $arr['mob_no'];?> </td>
+                            <td> <?php echo $arr['emp_id'];?> </td>
+                            <td> <?php echo $arr['name'];?></td>
                             <td> <?php echo $arr['email'];?></td>
-                            <td> <?php echo $arr['description'];?></td>
+                            <td> <?php echo $arr['role'];?> </td>
                             <td>
-                            <a href="enquiry.php?delid=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button></a>
+                            <a href="policenocform.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
                               <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
                           </tr>
                         </tbody>
@@ -130,7 +135,7 @@ if(isset($_GET['delid'])){
     <!-- page-body-wrapper ends -->
   <!-- container-scroller -->
   <script>
-      document.title="News Letter";
+      document.title="Police NOC List";
       // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <!-- plugins:js -->

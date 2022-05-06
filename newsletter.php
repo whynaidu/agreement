@@ -129,7 +129,7 @@ if(isset($_GET['delid'])){
   <!-- container-scroller -->
   <script>
       document.title="News Letter";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>

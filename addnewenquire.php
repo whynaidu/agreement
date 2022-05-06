@@ -5,6 +5,7 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
+
 if(isset($_POST['submit'])){
 	$name=$_POST['client_name'];
 	$address=$_POST['address'];
@@ -15,7 +16,7 @@ if(isset($_POST['submit'])){
 $from=$_POST['from'];
   $area=$_POST['area'];
 	
-	$sql=mysqli_query($conn,"INSERT INTO `leads`(`user_id`, `from`,`client_name`, `mobile`,`type`, `requirement`, `area`, `location`) VALUES ('".$_SESSION['id']."','$from','$name','$mobile','$type','$requirement','$area','$location')");
+	$sql=mysqli_query($conn,"INSERT INTO `leads`(`user_id`,`client_name`, `mobile`,`type`, `requirement`, `area`, `location`) VALUES ('".$_SESSION['id']."','$name','$mobile','$type','$requirement','$area','$location')");
 	if($sql==1){	
     header("location:addnewenquire.php");
 	}else{
@@ -73,6 +74,7 @@ $from=$_POST['from'];
 					<div>
           <h4 class="card-title card-title-dash">New Enquire</h4>
 					</div>
+<<<<<<< HEAD
                   <form class="forms-sample" method="post">
 					  <div class="row">
               	  <div class="col-md-12 ">
@@ -91,6 +93,10 @@ $from=$_POST['from'];
                     </div>
 						</div>	
               
+=======
+              	
+              <form method="post">
+>>>>>>> 76ebdaad27e0c87affb6dc68dc33442c1f024441
 					  <div class="col-md-6 ">
               
                     <div class="form-group row">
@@ -146,8 +152,8 @@ $from=$_POST['from'];
 						</div> 
 					  </div>
 					  <div class="col" align="right">
-                    <button type="submit" name="submit" class="btn btn-primary  btn-lg" style="color: aliceblue">Submit<i class="mdi mdi-chevron-right"></i></button>
-                    </div>
+            <button type="submit" name="submit" class="btn btn-primary  btn-lg" style="color: aliceblue">Submit<i class="mdi mdi-chevron-right"></i></button>
+            </div>
                   </form>
                 </div>
               </div>
@@ -174,7 +180,7 @@ $from=$_POST['from'];
 <!-- plugins:js -->
                 
 <script>document.title="Add Enquiry";
-document.getElementById("welcome").innerHTML = document.title;
+// document.getElementById("welcome").innerHTML = document.title;
 </script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>

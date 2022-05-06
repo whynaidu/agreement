@@ -115,7 +115,7 @@ if(isset($_GET['delid'])){
                 </div>
               </div>
             </div>
-					</div>
+					</div> 
                 </div>
               </div>
             </div>
@@ -140,7 +140,7 @@ if(isset($_GET['delid'])){
 </script>  
   <script>
       document.title="Paid Leads";
-      document.getElementById("welcome").innerHTML = document.title;
+      // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>

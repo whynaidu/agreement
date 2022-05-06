@@ -91,7 +91,7 @@ if(isset($_GET['delid'])){
                     <div class="form-group row">
                       <label for="examplename" class="col-sm-3 col-form-label-sm">Name<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="txtname"  required>
+                        <input type="text" class="form-control" id="txtname" name="name"  required>
                         <span id="spanname" ></span>
                       </div>
                     </div>
@@ -136,8 +136,7 @@ if(isset($_GET['delid'])){
                             <td> <?php echo $count;?></td>
                             <td> <?php echo $arr['name'];?></td>
                             <td> <?php echo $arr['number'];?></td>
-                            <td><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button>
-                                               
+                            <td>             
                       <a class="btn btn-danger btn-rounded btn-icon" href="stage5.php?delid=<?php echo $arr['id']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
                           <i class="mdi mdi-delete"></i>
                           </a></td>
@@ -189,7 +188,7 @@ if(isset($_GET['delid'])){
 
 <script>
 document.title="Amenities Details";
-document.getElementById("welcome").innerHTML = document.title;
+// document.getElementById("welcome").innerHTML = document.title;
 </script>
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
@@ -220,7 +219,7 @@ document.getElementById("welcome").innerHTML = document.title;
 	   });
 	   function txt_check(){
 		   let txt=$("#txtname").val();
-		   let vali =/^[A-Za-z]+$/;
+		   let vali =/^[A-Za-z ]+$/;
 		   if(!vali.test(txt)){
 			    $("#spanname").show().html("Enter Alphabets only").css("color","red").focus();
 			 txt_err=false;
