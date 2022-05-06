@@ -91,7 +91,7 @@ if(isset($_GET['delid'])){
                     <div class="form-group row">
                       <label for="examplename" class="col-sm-3 col-form-label-sm">Name<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="txtname" name="name"  required>
+                        <input type="text" class="form-control" id="txtname" name="name" placeholder="Enter Name"  required>
                         <span id="spanname" ></span>
                       </div>
                     </div>
@@ -100,7 +100,7 @@ if(isset($_GET['delid'])){
                      <div class="form-group row">
                       <label for="exampleitem" class="col-sm-3 col-form-label-sm">Number of items<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="number" class="form-control"name="number"required>
+                        <input type="number" class="form-control"name="number"  placeholder="Enter Number of items" required>
                       </div>
                     </div>
 					  </div>
