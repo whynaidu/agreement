@@ -80,9 +80,9 @@ include("include/configure.inc.php");
                               Sr.No</th>
                             <th>Emp_id</th>
 						              	<th> Name</th>
-                            <th>email</th>
+                            <th>Email</th>
                             <th>Role</th>
-                            <th>action</th>
+                            <th>Action</th>
                             
                           </tr>
                         </thead>
@@ -119,6 +119,7 @@ include("include/configure.inc.php");
             </div>
 					</div>
                 </div>
+              
               </div>
             </div>
           </div>

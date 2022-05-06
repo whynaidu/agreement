@@ -1,4 +1,4 @@
-<<?php  
+<?php  
 session_start();
 if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
 {
@@ -7,7 +7,8 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
 include("include/configure.inc.php");
 $fid=$_GET['id'];
 
-?>!doctype html>
+?> 
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">

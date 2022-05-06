@@ -5,16 +5,20 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
+
 if(isset($_POST['submit'])){
-	$name=$_POST['name'];
-	$email=$_POST['email'];
-	$role=$_POST['role'];
+  $property=$_POST['Add_Property'];
+	$name=$_POST['client_name'];
+	$mobile=$_POST['mobile_no'];
+  $type=$_POST['type'];
+	$requirement=$_POST['requirement'];
+  $area=$_POST['area'];
+  $location=$_POST['location'];
 
-
-	$sql=mysqli_query($conn,"INSERT INTO `user`(`user_id` ,`name`, `email`, `role`) VALUES ('".$_SESSION['id']."','$name','$email','$role')");
-	if($sql==1){
-    	
-    header("location:addnewenquire.php");
+	$sql=mysqli_query($conn,"INSERT INTO `property`(`user_id`,`property_for`, `client_name`,`mobile_no`, `type`,`requirement`, `area`, `location`)
+   VALUES ('".$_SESSION['id']."','$property','$name','$mobile','$type','$requirement','$area','$location')");
+	if($sql==1){	
+    header("location:addproperty.php");
 	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
@@ -44,6 +48,19 @@ if(isset($_POST['submit'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+  <style>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
 </head>
 <body>
  <div class="container-scroller">
@@ -68,49 +85,79 @@ if(isset($_POST['submit'])){
               <div class="card">
                 <div class="card-body">
 					<div>
-          <h4 class="card-title card-title-dash">User role</h4>
+          <h4 class="card-title card-title-dash">Add Property</h4>
 					</div>
-                  <form class="forms-sample" method="post">
-              
+              	
+              <form method="post">
+              <div class="col-md-6 ">
+                    <div class="form-group row">
+                      <label for="exampleprop" class="col-sm-3 col-form-label">Add Property <label style="color:Red">*</label></label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="Add_Property" id="exampleSelectGender" required>
+                        <option value="" disabled selected hidden>select</option>
+                          <option>sale</option>
+                          <option> Rent</option>
+                        </select>
+                      </div>
+                    </div>
+						</div>
 					  <div class="col-md-6 ">
               
                     <div class="form-group row">
-                      <label for="Name" class="col-sm-3 col-form-label"> Name</label>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Client Name</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampledno" name="name">
+                        <input type="text" class="form-control" id="exampledno" name="client_name"  placeholder="Enter Name">
                       </div>
                     </div>
 						</div>					  
 						<div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="Email" class="col-sm-3 col-form-label"> Email</label>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Mobile No.</label>
                       <div class="col-sm-9">
-                        <input type="tel" class="form-control" id="Email" name="email">
+                        <input type="tel" class="form-control" id="examplemob" name="mobile_no"  placeholder="Enter Mobile No">
                       </div>
                     </div>
 						</div> 
-      
-          
-            <div class="col-md-6 ">
+					   <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="Role" class="col-sm-3 col-form-label">Role</label>
+                      <label for="exampleprop" class="col-sm-3 col-form-label">Property Type</label>
                       <div class="col-sm-9">
-                  
-                        <select class="form-control" id="exampleSelectProperty" name="role">
-                        <?php 
-                        $sql=mysqli_query($conn,"SELECT * FROM roles");
-                         while($arr=mysqli_fetch_array($sql)){
-                        ?>
-                          <option value="<?php echo $arr['roles'];?>"><?php echo $arr['roles'];?></option>
-                          <?php } ?>
-                        
+                        <select class="form-control" id="exampleSelectProperty" name="type">
+                          <option>Flat</option>
+                          <option>Shop</option>
                         </select>
                       </div>
                     </div>
 						</div>
-					  <div class="col" align="right">
-                    <button type="submit" name="submit" class="btn btn-primary  btn-lg" style="color: aliceblue">Submit<i class="mdi mdi-chevron-right"></i></button>
+					  <div class="col-md-6 ">
+                    <div class="form-group row">
+                      <label for="exampledno" class="col-sm-3 col-form-label">Requirement</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="examplereq" name="requirement"  placeholder="Enter Requirement">
+                      </div>
                     </div>
+					  </div>
+					  <div class="col-md-6 ">
+                    <div class="form-group row">
+                      <label for="exampledno" class="col-sm-3 col-form-label">Area</label>
+                      <div class="col-sm-9">
+                        <input type="number" class="form-control" id="examplearea"name="area" placeholder="Enter Area">
+                      </div>
+                    </div>
+					  </div> 
+                   
+						<div class="col-md-6 ">
+                    <div class="form-group row">
+                      <label for="exampledno" class="col-sm-3 col-form-label">Location</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="examplelocation"name="location" placeholder="Enter Location">
+                      </div>
+                    </div>
+						</div> 
+					  </div>
+					  <div class="col" align="right">
+            <button type="submit" name="submit" class="btn btn-primary  btn-lg" style="color: aliceblue">Submit<i class="mdi mdi-chevron-right"></i></button>
+            </div>
                   </form>
                 </div>
               </div>
@@ -136,8 +183,8 @@ if(isset($_POST['submit'])){
 
 <!-- plugins:js -->
                 
-<script>document.title="User Role";
-document.getElementById("welcome").innerHTML = document.title;
+<script>document.title="Add Enquiry";
+// document.getElementById("welcome").innerHTML = document.title;
 </script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>

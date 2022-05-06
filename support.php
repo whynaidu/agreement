@@ -78,7 +78,7 @@ include("include/configure.inc.php");
                                 <th>Sr.No</th>
                                 <th>Complaint No</th>
                                 <th>Complaint Date</th>
-                                <th>Client NAme</th>
+                                <th>Client Name</th>
                                 <th>Email ID</th>
                                 <th>Description</th>
                                 <th> Action </th>
