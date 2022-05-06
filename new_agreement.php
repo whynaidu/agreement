@@ -90,6 +90,7 @@ if(isset($_POST['submit'])){
                       $arr=mysqli_fetch_array($query);
                       $name=$arr['agent_name'];
                       $first=$name;
+                      
                       $res= preg_replace('~\S\K\S*\s*~u', '', $first);
                       if(empty($lastid)){
 						           $number=$res."-001";
