@@ -100,7 +100,7 @@ if (mysqli_num_rows($doctors)>0){
 ?>
             </div>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="address"required>
+                        <input type="text" class="form-control" name="address" placeholder="Sector" required>
                       </div>
                     </div>
 					  <div class="row">
@@ -108,7 +108,7 @@ if (mysqli_num_rows($doctors)>0){
                     <div class="form-group row">
                       <label for="examplesec" class="col-sm-4 col-form-label">Sector<label style="color:Red">*</label></label>
                       <div class="col-sm-8">
-                        <input type="number" class="form-control"name="sector"required>
+                        <input type="number" class="form-control"name="sector" placeholder="Sector" required>
                       </div>
                     </div>
 					</div>
@@ -116,7 +116,7 @@ if (mysqli_num_rows($doctors)>0){
                     <div class="form-group row">
                       <label for="exampleplot" class="col-sm-4 col-form-label">Plot No.<label style="color:Red">*</label></label>
                       <div class="col-sm-8">
-                        <input type="number" class="form-control"name="plotno" required>
+                        <input type="number" class="form-control"name="plotno" placeholder="Plot Number" required>
                       </div>
                     </div>
 					  </div>
@@ -126,7 +126,7 @@ if (mysqli_num_rows($doctors)>0){
                     <div class="form-group row">
                       <label for="examplecid" class="col-sm-4 col-form-label">CIDCO</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control"name="cidco">
+                        <input type="text" class="form-control"name="cidco" placeholder="CIDCO">
                       </div>
                     </div>
 					</div>
@@ -134,7 +134,7 @@ if (mysqli_num_rows($doctors)>0){
                     <div class="form-group row">
                       <label for="examplearea" class="col-sm-4 col-form-label">Area(in sq.ft)<label style="color:Red">*</label></label>
                       <div class="col-sm-8">
-                        <input type="number" class="form-control"name="area" required>
+                        <input type="number" class="form-control"name="area" placeholder="Area(in sq.ft)" required>
                       </div>
                     </div>
 					  </div>
@@ -142,13 +142,13 @@ if (mysqli_num_rows($doctors)>0){
                     <div class="form-group row">
                       <label for="examplecoop" class="col-sm-2 col-form-label">Co.op Housing Society<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control"name="chs" required>
+                        <input type="text" class="form-control"name="chs" placeholder="Co.op Housing Society" required>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="examplenode" class="col-sm-2 col-form-label">NODE</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control"name="node">
+                        <input type="text" class="form-control"name="node" placeholder="NODE" >
                       </div>
                     </div>
 					<div class="col" align="right">
