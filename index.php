@@ -1,10 +1,10 @@
 <?php
-// session_start();
-// if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
-// {
-//  header("Location:login.php"); 
-// }
-// include("include/configure.inc.php");
+session_start();
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+ header("Location:login.php"); 
+}
+include("include/configure.inc.php");
 error_reporting(0);
 
 ?>
