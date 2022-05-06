@@ -110,7 +110,7 @@
           <li class="nav-item">
           <a class="nav-link active" href="rolepermission.php" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-tie "></i>
-              <span class="menu-title">Rolls and Permission</span>
+              <span class="menu-title">Role and Permission</span>
             </a>
           </li>
 
