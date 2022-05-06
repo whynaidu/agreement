@@ -122,7 +122,7 @@
           </li>
 
           <li class="nav-item">
-          <a class="nav-link active" href="userview.php" aria-expanded="false" aria-controls="ui-basic">
+          <a class="nav-link active" href="categorylist.php" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-chart-bubble "></i>
               <span class="menu-title">Categories</span>
             </a>

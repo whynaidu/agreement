@@ -77,7 +77,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="Name" class="col-sm-3 col-form-label"> Name</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampledno" name="name">
+                        <input type="text" class="form-control" id="exampledno" name="name" placeholder="Enter Name">
                       </div>
                     </div>
 						</div>					  
@@ -85,7 +85,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="Email" class="col-sm-3 col-form-label"> Email</label>
                       <div class="col-sm-9">
-                        <input type="tel" class="form-control" id="Email" name="email">
+                        <input type="tel" class="form-control" id="Email" name="email"  placeholder="Enter Email">
                       </div>
                     </div>
 						</div> 
