@@ -77,7 +77,7 @@ if(isset($_POST['submit'])){
 					</div>
                   <form class="forms-sample" method="post">
 					  <div class="row">
-               <div class="col-md-12 ">
+               <div class="col-md-9 ">
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-2 col-form-label">Client Name</label>
                       <div class="col-sm-10">
