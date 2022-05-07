@@ -79,7 +79,7 @@ if(isset($_POST['submit'])){
 					  <div class="row">
                <div class="col-md-9 ">
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-2 col-form-label">Client Name</label>
+                      <label for="exampledno" class="col-sm-2 col-form-label">Client Name<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <Select class="form-control" id="exampledno" name="agent_id" required>
                           <option selected>Select  </option>
@@ -95,25 +95,28 @@ if(isset($_POST['submit'])){
                   </div>
 					  <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Client Name</label>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Client Name<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampledno" name="client_name">
+                        <input type="text" class="form-control" id="exampledno" name="client_name" required>
                       </div>
                     </div>
 						</div>					  
 						<div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Mobile No.</label>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="tel" class="form-control" id="examplemob" name="mobile_no">
+                        <input type="tel" class="form-control" id="examplemob" name="mobile_no" placeholder="Enter Mobile Number" minlength="10" maxlength="10" required>
                       </div>
                     </div>
-						</div> 
+						</div>
+
+
+
 					   <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-3 col-form-label">Property Type</label>
+                      <label for="exampleprop" class="col-sm-3 col-form-label">Property Type<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <select class="form-control" id="exampleSelectProperty" name="type">
+                        <select class="form-control" id="exampleSelectProperty" name="type" required>
                           <option>Flat</option>
                           <option>Shop</option>
                         </select>
@@ -122,26 +125,26 @@ if(isset($_POST['submit'])){
 						</div>
 					  <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Requirement</label>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Requirement<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="examplereq" name="requirement">
+                        <input type="text" class="form-control" id="examplereq" name="requirement" required>
                       </div>
                     </div>
 					  </div>
 					  <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Area</label>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Area<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="number" class="form-control" id="examplearea"name="area">
+                        <input type="number" class="form-control" id="examplearea"name="area" required>
                       </div>
                     </div>
 					  </div> 
                    
 						<div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Location</label>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Location<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="examplelocation"name="location">
+                        <input type="text" class="form-control" id="examplelocation"name="location" reqired>
                       </div>
                     </div>
 						</div> 
