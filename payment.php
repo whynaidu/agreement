@@ -123,7 +123,7 @@ if(isset($_POST['submit'])){
                       </div>
                     </div>
 					  <div class="form-group row">
-                      <label for="exampldate" class="col-sm-2 col-form-label">Date of Payment<label style="color:Red">*</label></label>
+                      <label for="exampldate" class="col-sm-2 col-form-label">Date Of Payment<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="date" class="form-control" name="date" id="date" required>
                       </div>

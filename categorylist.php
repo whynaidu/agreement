@@ -76,8 +76,8 @@ if(isset($_GET['delid'])){
                         <thead>
                           <tr>
                             <th>Sr.No</th>
-						              	<th>name </th>
-                            <th>link </th>
+						              	<th>Name </th>
+                            <th>Link </th>
                            
                              <th>Action</th>
                           </tr>

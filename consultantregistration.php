@@ -189,26 +189,26 @@ if(isset($_POST['sub'])){
                     <div class="form-group row">
                       <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control"name="office_address"  placeholder="Enter Address">
+                        <input type="text" class="form-control"name="office_address"  placeholder="Enter Address" required>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="tel" class="form-control"name="mobile_no"  placeholder="Enter Mobile Number ">
+                      <input type="tel" class="form-control" id="examplemob" name="mobile_no" placeholder="Enter Mobile Number" minlength="10" maxlength="10" required>
                       </div>
                     </div>
 					  <div class="form-group row">
                       <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="email" class="form-control"name="email"  placeholder="Enter Email ID">
+                        <input type="email" class="form-control"name="email"  placeholder="Enter Email ID" required>
                     
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="examplepan" class="col-sm-2 col-form-label">Rera No.<label style="color:Red">*</label></label>
+                      <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control"name="rera" placeholder="Enter Number">
+                        <input type="text" class="form-control"name="rera" placeholder="Enter Number" required>
                       </div>
                     </div>
 					  <!-- <div class="form-group row">

@@ -101,7 +101,7 @@ input[type=number] {
                         <input type="tel" class="form-control" id="examplemob" name="Link"  placeholder="Enter Link ">
                       </div>
                     </div>
-						</div> 3
+						</div> 
             <div class="col" align="right">
                     <button type="submit" name="sub"class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>
 					</div>
