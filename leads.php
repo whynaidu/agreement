@@ -65,10 +65,10 @@ if(isset($_GET['delid'])){
                 <div class="card-body">
 					<div class="row">
 						<div class="col-9">
-					 <h4 class="card-title">Leads</h4>
+					 <h4 class="card-title">Enquiry</h4>
 						</div>
 						<div class="col-3"style="text-align: end;">
-				<a href="addnewenquire.php"><button class="btn btn-primary text-white me-0">Add Leads</button></a>
+				<a href="addnewenquire.php"><button class="btn btn-primary text-white me-0">Add Enquiry</button></a>
 						</div>
 					</div>
                   <div class="table-responsive pt-3">

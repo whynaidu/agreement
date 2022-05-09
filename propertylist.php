@@ -10,13 +10,7 @@ include("include/configure.inc.php");
 if(isset($_GET['delid'])){
   $id=mysqli_real_escape_string($conn,$_GET['delid']);
   $sql=mysqli_query($conn,"delete from leads where id='$id'");
-  if($sql=1){
-   header("location:leads.php");
-  }
-}
-?>
-<!DOCTYPE html>
-<html lang="en">
+  if($sang="en">
 
 <head>
   <!-- Required meta tags -->
@@ -75,7 +69,9 @@ if(isset($_GET['delid'])){
                       <table class="table table-bordered">
                         <thead>
                           <tr>
-                            <th>Sr.No</th>
+                            <th>Sr.No</th>						              	
+                            <th>property for</th>
+
 						              	<th>Client No</th>
                             <th>Mobile No</th>
                             <th>Property Type</th>
@@ -87,15 +83,16 @@ if(isset($_GET['delid'])){
                         </thead>
                         <?php 
                         
-                        $sql=mysqli_query($conn,"select * from leads where user_id='".$_SESSION['id']."'");
+                        $sql=mysqli_query($conn,"select * from property where user_id='".$_SESSION['id']."'");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                         <tbody>
                           <tr>
                             <td> <?php echo $count;?></td>
+                            <td> <?php echo $arr['property_for'];?> </td>
                             <td> <?php echo $arr['client_name'];?> </td>
-                            <td> <?php echo $arr['mobile'];?></td>
+                            <td> <?php echo $arr['mobile_no'];?></td>
                             <td> <?php echo $arr['type'];?></td>
                             <td> <?php echo $arr['area'];?> </td>
                                 <td> <?php echo $arr['requirement'];?></td>

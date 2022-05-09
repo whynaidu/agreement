@@ -76,30 +76,24 @@ if(isset($_GET['delid'])){
                         <thead>
                           <tr>
                             <th>Sr.No</th>
-						              	<th>Client No</th>
-                            <th>Mobile No</th>
-                            <th>Property Type</th>
-                            <th>Area</th> 
-                            <th>Requirement</th> 
-                            <th>Location</th>
+						              	<th>name </th>
+                            <th>link </th>
+                           
                              <th>Action</th>
                           </tr>
                         </thead>
                         <?php 
                         
-                        $sql=mysqli_query($conn,"select * from leads where user_id='".$_SESSION['id']."'");
+                        $sql=mysqli_query($conn,"select * from category");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                         <tbody>
                           <tr>
                             <td> <?php echo $count;?></td>
-                            <td> <?php echo $arr['client_name'];?> </td>
-                            <td> <?php echo $arr['mobile'];?></td>
-                            <td> <?php echo $arr['type'];?></td>
-                            <td> <?php echo $arr['area'];?> </td>
-                                <td> <?php echo $arr['requirement'];?></td>
-                            <td> <?php echo $arr['location'];?> </td>
+                            <td> <?php echo $arr['name'];?> </td>
+                            <td> <?php echo $arr['url'];?></td>
+                          
                             <td>
    <a class="btn btn-danger btn-rounded btn-icon" href="leads.php?delid=<?php echo $arr['id']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
                           <i class="mdi mdi-delete"></i>

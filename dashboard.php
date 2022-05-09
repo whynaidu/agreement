@@ -1,9 +1,9 @@
 <?php
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
-// {
-//  header("Location:login.php"); 
-// }
+{
+ header("Location:login.php"); 
+}
 include("include/configure.inc.php");
 error_reporting(0);
 
@@ -56,28 +56,46 @@ error_reporting(0);
                       <div class="col-sm-12">
                         <div class="statistics-details d-flex align-items-center justify-content-between">
                           <div>
+                           <?php
+                               $guery=mysqli_query($conn,"select * from property where property_for='sale'And type='Flat'");
+                                 $count1=mysqli_num_rows($guery);
+                            ?>
+                          
                             <p class="statistics-title">Flats for Sale</p>
-                            <h3 class="rate-percentage" align="center">32</h3>
+                            <h3 class="rate-percentage" align="center"><?php echo $count1; ?></h3>
                           </div>                          
                           <div>
+                          <?php
+                               $guery=mysqli_query($conn,"select * from property where property_for='rent'And type='Flat'");
+                                 $count2=mysqli_num_rows($guery);
+                            ?>
+                          
                             <p class="statistics-title">Flats for Rent</p>
-                            <h3 class="rate-percentage" align="center">32</h3>
+                            <h3 class="rate-percentage" align="center"><?php echo $count2; ?></h3>
                           </div>                          
                           <div>
+                          <?php
+                               $guery=mysqli_query($conn,"select * from property where property_for='sale'And type='shop'");
+                                 $count3=mysqli_num_rows($guery);
+                            ?>
                             <p class="statistics-title">Shop for Sale</p>
-                            <h3 class="rate-percentage" align="center">32</h3>
+                            <h3 class="rate-percentage" align="center"><?php echo $count3; ?></h3>
                           </div>
                           <div>
+                          <?php
+                               $guery=mysqli_query($conn,"select * from property where property_for='rent'And type='shop'");
+                                 $count4=mysqli_num_rows($guery);
+                            ?>
                             <p class="statistics-title">Shop for Rent</p>
-                            <h3 class="rate-percentage" align="center">74</h3>
+                            <h3 class="rate-percentage" align="center"><?php echo $count4; ?></h3>
                           </div>
                           <div>
                             <?php
                                $query=mysqli_query($conn,"select * from new_agreement where user_id='".$_SESSION['id']."'");
-                                 $count1=mysqli_num_rows($query);
+                                 $count5=mysqli_num_rows($query);
                             ?>
                             <p class="statistics-title">No. of Agreement</p>
-                            <h3 class="rate-percentage" align="center"><?php echo $count1 ?></h3>
+                            <h3 class="rate-percentage" align="center"><?php echo $count5 ?></h3>
                           </div>
 
                           <div class="d-none d-md-block">
