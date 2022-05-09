@@ -1,8 +1,8 @@
 
 <?php
 include("include/configure.inc.php");
-if(isset($_POST["submit"])){
-	$client_code=$_POST["client_code"];
+if(isset($_POST["submit"])){h
+ 	$client_code=$_POST["client_code"];
 	$email=$_POST["email"];
   $subject=$_POST["subject"];
   $description=$_POST["description"];
