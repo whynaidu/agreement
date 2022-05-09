@@ -55,7 +55,7 @@ include("include/configure.inc.php");
 				<div class="row" >
 				 <div class="col-md-12 grid-margin stretch-card">
          <?php
-$selectquery="select * from agent_details where id='".$_SESSION['id']."'";
+$selectquery="select * from agent_details where user_id='".$_SESSION['id']."'";
 $doctors = mysqli_query($conn,$selectquery);
 if (mysqli_num_rows($doctors)>0){
 
