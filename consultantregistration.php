@@ -1,15 +1,14 @@
 <?php  
 session_start();
-if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
-error_reporting(0);
 
-if(!isset($_SESSION['username'])){
- //header("location:../samples/login.php");
-}
+// if(!isset($_SESSION['username'])){
+//  //header("location:../samples/login.php");
+// }
 
 	//Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
@@ -48,7 +47,7 @@ if(isset($_POST['sub'])){
   $mail->Host       = 'smtp.hostinger.com';      
   $mail->SMTPAuth   = true;                             
   $mail->Username   = "vedant.naidu@tectignis.in";           
-  $mail->Password   = 'Vedant@123';                          
+  $mail->Password   = 'Admin#2022';                          
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
   $mail->Port       = 465;                             
 
@@ -65,20 +64,19 @@ if(isset($_POST['sub'])){
   if($mail->send()){
     $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
-    $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
+   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
     VALUES ('$user_id','$agent_name','$email','$passwordhash','$rera','$office_address','$mobile_no','$status')");
     if($sql=1){
-      $sql=mysqli_query($conn,"select user_id from agent_details order by user_id desc") or die( mysqli_error($conn));;
-                      $row=mysqli_fetch_array($sql);
-                      $lastid=$row['user_id'];
-                      if(empty($lastid)){
-						  $number=001;
-					  }else{
-              
-						  $id=str_pad($lastid + 1, 3,0, STR_PAD_RIGHT);
-						  $number=$id;
-					  }	
-      $last_id = mysqli_insert_id($conn);
+      // $sql=mysqli_query($conn,"select user_id from agent_details order by user_id desc") or die( mysqli_error($conn));;
+      //                 $row=mysqli_fetch_array($sql);
+      //                 $lastid=$row['user_id'];
+      //                 if(empty($lastid)){
+      //                     $number=001;
+      //                   }else{
+      //                     $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
+      //                     $number=$id;
+      //                   }	
+      // $last_id = mysqli_insert_id($conn);
       header("location:consultantregistration.php");
     }
     else{
@@ -164,15 +162,14 @@ if(isset($_POST['sub'])){
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-2 col-form-label">Code No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-					  <?php $sql=mysqli_query($conn,"select user_id from agent_details order by user_id desc") or die( mysqli_error($conn));;
+					  <?php $sql=mysqli_query($conn,"select id from agent_details order by user_id desc") or die( mysqli_error($conn));;
                       $row=mysqli_fetch_array($sql);
-                      $lastid=$row['user_id'];
+                      $lastid=$row['id'];
                       if(empty($lastid)){
 						  $number="001";
 					  }else{
 						  $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
-						  $number=$id;
-              $number='AR-'.$id;
+						  $number="AR".$id;
 					  }					
                       					  ?>
                         <input type="text" name="no" value="<?php echo $number; ?>" class="form-control" id="exampledno" readonly>

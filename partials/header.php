@@ -1,8 +1,9 @@
 <?php
-session_start();
 $name=$_SESSION['name'];
 $email=$_SESSION['email'];
 $address=$_SESSION['address'];
+$id=$_SESSION['id'];
+
 ?>
 
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">

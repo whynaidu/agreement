@@ -17,16 +17,16 @@ if(isset($_POST['submit'])){
 	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['id']."','$no','$type','$date','$month','$place')");
   $query =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$no','$status')");
 	if($sql==1){
-		$sql=mysqli_query($conn,"select documentid from new_agreement where user_id='".$_SESSION['id']."' order by documentid desc") or die( mysqli_error($conn));;
-                      $row=mysqli_fetch_array($sql);
-                      $lastid=$row['documentid'];
-                      if(empty($lastid)){
-						  $number=001;
-					  }else{
-						  $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
-						  $number='AR-'.$id;
-					  }	
- $last_id = mysqli_insert_id($conn);					  
+// 	/*	$sql=mysqli_query($conn,"select documentid from new_agreement where user_id='".$_SESSION['id']."' order by documentid desc") or die( mysqli_error($conn));;
+//                       $row=mysqli_fetch_array($sql);
+//                       $lastid=$row['documentid'];
+//                       if(empty($lastid)){
+// 						  $number=001;
+// 					  }else{
+// 						  $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
+// 						  $number='AR-'.$id;
+// 					  }	
+//  $last_id = mysqli_insert_id($conn);	*/				  
 		header("location:owner.php?id=".$no);
 	}else{
 		echo "<script>alert('Something went wrong');</script>";
@@ -83,19 +83,19 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Document No.<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-					  <?php $sql=mysqli_query($conn,"select document_no from new_agreement where user_id='".$_SESSION['id']."' order by document_no desc");
-                  $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
-                      $row=mysqli_fetch_array($sql);
-                      $lastid=$row['document_no'];
+					  <?php $sql=mysqli_query($conn,"select * from new_agreement where user_id='".$_SESSION['id']."'");
+                            $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
+                      $dnk=mysqli_num_rows($sql);
+                      $lastid=$dnk+1;
                       $arr=mysqli_fetch_array($query);
                       $name=$arr['agent_name'];
                       $first=$name;
                       
                       $res= preg_replace('~\S\K\S*\s*~u', '', $first);
                       if(empty($lastid)){
-						           $number=$res."-001";
+						           $number=$res."-000";
 					           }else{
-						          $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
+						          $id=str_pad($lastid + 0, 3,0, STR_PAD_LEFT);
 					        	  $number=$res."-$id";
 					            }					
                       					  ?>
