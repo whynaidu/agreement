@@ -115,7 +115,7 @@ if(isset($_POST['submit'])){
                         </select>  
                       </div>
                       <div class="col-sm-8">
-                        <input type="text" name="name" class="form-control" id="txtname" placeholder="Enter Name" required>
+                        <input type="text" style="text-transform:uppercase" name="name" class="form-control" id="txtname" placeholder="Enter Name" required>
                         <span id="spanname"></span>
                       </div>
                     </div>
@@ -134,20 +134,20 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar Card No.<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="number" name="aadhaar" class="form-control" id="txtAadhar" placeholder="Enter Aadhaar card No"  required>
+                        <input type="number" name="aadhaar" class="form-control" id="txtAadhar" placeholder="Enter Aadhaar card No" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"maxlength = "12" required>
                         <span id="spanAadharCard"></span>
                       </div>
                  
                       <label for="examplepan" class="col-sm-2 col-form-label">Pancard<label style="color:Red">*</label></label>
                       <div class="col-sm-4">
-                        <input type="text" name="pancard"  id="txtPANCard" class="form-control"placeholder="Enter Pancard number" required/>
+                        <input type="text" style="text-transform:uppercase" name="pancard"  id="txtPANCard" class="form-control"placeholder="Enter Pancard number" required/>
                         <span id="spanCard"></span>
                       </div>
                     </div>
                     <div class="form-group row"> 
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <textarea name="address" cols="73" rows="4" placeholder="Enter Address" Arequired></textarea>
+                        <textarea name="address" cols="73" rows="4" placeholder="Enter Address" required></textarea>
                       </div>
                     </div>
                    
@@ -252,7 +252,7 @@ $("#spanname").hide();
 		   let pancard=$("#txtPANCard").val();
 		   let vali =/([A-Z]){5}([0-9]){4}([A-Z]){1}$/;  
 		   if(!vali.test(pancard)){
-			    $("#spanCard").show().html("**Invalid Pan No").css("color","red").focus();
+			    $("#spanCard").show().html("*Invalid Pan No").css("color","red").focus();
 			 pan_err=false;
 			 return false;
 		   }
@@ -281,7 +281,7 @@ $("#spanname").hide();
 		   let aadharcard=$("#txtAadhar").val();
 		   let vali =/^\d{12}$/; 
 		   if(!vali.test(aadharcard)){
-			    $("#spanAadharCard").show().html("**Invalid Aadhar No").css("color","red").focus();
+			    $("#spanAadharCard").show().html("*12 Number Only").css("color","red").focus();
           aadhar_err=false;
 			 return false;
 		   }
@@ -313,7 +313,7 @@ $("#spanname").hide();
         
         
        if(!vali.test(age)){
-            $("#demo").show().html("**Age should be between 18 to 100").css("color","red").focus();
+            $("#demo").show().html("*Age should be between 18 to 100").css("color","red").focus();
             age_err=false;
             return false;
         }

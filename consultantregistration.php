@@ -30,8 +30,9 @@ if(isset($_POST['sub'])){
    $mobile_no=$_POST['mobile_no'];
   $office_address=$_POST['office_address'];
    $email=$_POST['email'];
-      $rera=$_POST['rera'];
-      $prefix=$_POST['prefix'];
+    $rera=$_POST['rera'];
+    $prefix=$_POST['prefix'];
+    // $file=$_FILES['file'];
    $status=1;
    $pass= rand(100000, 999999);
 
@@ -158,7 +159,7 @@ if(isset($_POST['sub'])){
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Consultant Registration</h4>
-                  <form class="forms-sample" method="post" enctype="multipart/form-data">
+                  <form action="code.php" class="forms-sample" method="post" enctype="multipart/form-data">
             
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-2 col-form-label">Code No.<label style="color:Red">*</label></label>
@@ -211,19 +212,23 @@ if(isset($_POST['sub'])){
                         <input type="text" class="form-control"name="rera" placeholder="Enter Number" required>
                       </div>
                     </div>
-					  <!-- <div class="form-group row">
+					   <!-- <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" placeholder="TECT-00001" name="prefix">
                       </div>
-                    </div>
-					  <div class="form-group row">
+                    </div> -->
+
+
+					   <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Photo<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="file" name="file">
-                         <a href="upload_image.php" class="btn btn-success"> Upload</a>
+                        <input type="file" name="file"  >
+                          <!-- <a href="upload_image.php" class="btn btn-success"> Upload</a>  -->
                       </div>
-                    </div> -->
+                    </div> 
+
+
 					<div class="col" align="right">
                     <button type="submit" name="sub"class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>
 					</div>

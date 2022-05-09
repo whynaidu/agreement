@@ -64,7 +64,12 @@ if(isset($_GET['gen'])){
               <div class="card">
                 <div class="card-body">
 				<h4 class="card-title">List of Agreements</h4>
+        
                   <div class="table-responsive pt-3">
+                  <div class="row"><div class="col-sm-12 col-md-8"><div class="dataTables_length" id="order-listing_length"><label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="-1">All</option></select> entries</label></div></div>
+<!--                   
+                  <div class="col-sm-12 col-md-4"><div id="order-listing_filter" class="dataTables_filter"><label><input type="search" class="form-control" placeholder="Search" aria-controls="order-listing"></label></div></div> -->
+                </div>
                       <table class="table table-bordered">
                         <thead>
                           <tr>
@@ -119,6 +124,10 @@ elseif($status==0){
                         <?php $count++; } ?>  
 
                       </table>
+                      <div class="col" align="right">
+                      <button type="button" class="btn btn-primary btn-lg" style="color: aliceblue; margin-top:14px"><i class="mdi mdi-chevron-left"></i>Previous</button>
+                    <button type="submit" name="submit" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px">Next<i class="mdi mdi-chevron-right"></i></button>
+                    </div>
                   </div>
                 </div>
               </div>

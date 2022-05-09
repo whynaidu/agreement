@@ -141,7 +141,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleprop" class="col-sm-3 col-form-label">Place Of Agreement<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                      <input type="TEXT" name="place" class="form-control" id="exampledate" placeholder="Enter Place" required>
+                      <input type="TEXT" name="place" class="form-control" style="text-transform:uppercase" id="exampledate" placeholder="Enter Place" required>
 
                       </div>
                     </div>

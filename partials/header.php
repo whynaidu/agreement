@@ -2,6 +2,7 @@
 session_start();
 $name=$_SESSION['name'];
 $email=$_SESSION['email'];
+$address=$_SESSION['address'];
 ?>
 
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
@@ -26,7 +27,7 @@ $email=$_SESSION['email'];
 
          
             <h3 class="welcome-text text-black fw-bold"id="welcome"><?php echo $name;?></h3>
-            <p><?php echo $email;?></p>
+            <p><?php echo $address;?></p>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
