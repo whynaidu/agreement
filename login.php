@@ -20,7 +20,7 @@ if(isset($_POST["login"])){
 			$_SESSION['email']=$row['email'];
       $_SESSION['name']=$row['agent_name'];
       $_SESSION['id']=$row['user_id'];
-				
+      $_SESSION['address']=$row['office_address'];
 		}
 		else{
 			echo"<script>alert('Invalid Password'),window.location='login.php';</script>";

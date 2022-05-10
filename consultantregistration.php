@@ -153,7 +153,7 @@ Tectignis IT Solution<br>Aashiyana CHS Shop No 05,<br> Sector 11, Plot No 29, <b
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Consultant Registration</h4>
-                  <form class="forms-sample" method="post" enctype="multipart/form-data">
+                  <form action="code.php" class="forms-sample" method="post" enctype="multipart/form-data">
             
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-2 col-form-label">Code No.<label style="color:Red">*</label></label>
@@ -188,7 +188,7 @@ Tectignis IT Solution<br>Aashiyana CHS Shop No 05,<br> Sector 11, Plot No 29, <b
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="tel" class="form-control"name="mobile_no"  placeholder="Enter Mobile Number"required>
+                      <input type="tel" class="form-control" id="examplemob" name="mobile_no" placeholder="Enter Mobile Number" minlength="10" maxlength="10" required>
                       </div>
                     </div>
 					  <div class="form-group row">
@@ -201,22 +201,26 @@ Tectignis IT Solution<br>Aashiyana CHS Shop No 05,<br> Sector 11, Plot No 29, <b
                     <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control"name="rera" placeholder="Enter Number">
+                        <input type="text" class="form-control"name="rera" placeholder="Enter Number" required>
                       </div>
                     </div>
-					  <!-- <div class="form-group row">
+					   <!-- <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" placeholder="TECT-00001" name="prefix">
                       </div>
-                    </div>
-					  <div class="form-group row">
+                    </div> -->
+
+
+					   <div class="form-group row">
                       <label for="examplepan" class="col-sm-2 col-form-label">Photo<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="file" name="file">
-                         <a href="upload_image.php" class="btn btn-success"> Upload</a>
+                        <input type="file" name="file"  >
+                          <!-- <a href="upload_image.php" class="btn btn-success"> Upload</a>  -->
                       </div>
-                    </div> -->
+                    </div> 
+
+
 					<div class="col" align="right">
                     <button type="submit" name="sub"class="btn btn-primary  btn-lg" style="color: aliceblue">Submit</button>
 					</div>

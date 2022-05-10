@@ -146,7 +146,7 @@ if (mysqli_num_rows($doctors)>0){
                     <div class="form-group row">
                       <label for="examplecoop" class="col-sm-2 col-form-label">Co.op Housing Society<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control"name="chs" placeholder="Enter Co.op Housing Society" required>
+                        <input type="text" class="form-control"name="chs" style="text-transform:uppercase" placeholder="Enter Co.op Housing Society" required>
                       </div>
                     </div>
                     <div class="form-group row">

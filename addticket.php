@@ -115,7 +115,7 @@ if(isset($_POST['submit'])){
 						</div> 
 					   <div class="col-md-12 ">
                     <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-3 col-form-label">subject</label>
+                      <label for="exampleprop" class="col-sm-3 col-form-label">Subject</label>
                       <div class="col-sm-9">
                         <select class="form-control" id="suject" name="subject" placeholder="Enter Subject">
                           <option>Flat</option>

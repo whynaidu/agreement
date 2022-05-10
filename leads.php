@@ -71,6 +71,24 @@ if(isset($_GET['delid'])){
 				<a href="addnewenquire.php"><button class="btn btn-primary text-white me-0">Add Enquiry</button></a>
 						</div>
 					</div>
+
+          
+          <div class="row">
+            <div class="col-sm-12 col-md-9">
+              <div class="dataTables_length" id="order-listing_length">
+                <label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control">
+                  <option value="5">5</option><option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="-1">All</option></select> entries</label>
+                </div>
+              </div>
+              <!-- <div class="col-sm-12 col-md-3">
+                <div id="order-listing_filter" class="dataTables_filter"><label><input type="search" class="form-control" placeholder="Search" aria-controls="order-listing"></label>
+                
+              </div>
+            </div>   -->
+          </div>
+
                   <div class="table-responsive pt-3">
                       <table class="table table-bordered">
                         <thead>
@@ -109,6 +127,11 @@ if(isset($_GET['delid'])){
                         </tbody>
                         <?php $count++;} ?>
                       </table>
+                      <div class="col" style="align:right;">
+          
+						 <a href="owner.php?id=<?php echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
+                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></button>
+					</div>
                   </div>
                 </div>
               </div>

@@ -71,13 +71,17 @@ if(isset($_GET['delid'])){
 				<a href="addnewenquire.php"><button class="btn btn-primary text-white me-0">Add Leads</button></a>
 						</div>
 					</div>
+
+          <div class="table-responsive pt-3">
+                  <div class="row"><div class="col-sm-12 col-md-8"><div class="dataTables_length" id="order-listing_length"><label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="-1">All</option></select> entries</label></div></div>
+
                   <div class="table-responsive pt-3">
                       <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th>Sr.No</th>
-						              	<th>name </th>
-                            <th>link </th>
+						              	<th>Name </th>
+                            <th>Link </th>
                            
                              <th>Action</th>
                           </tr>
@@ -103,6 +107,11 @@ if(isset($_GET['delid'])){
                         </tbody>
                         <?php $count++;} ?>
                       </table>
+
+                      <div class="col" align="right">
+                          <button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
+                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></button>
+                         </div>
                   </div>
                 </div>
               </div>

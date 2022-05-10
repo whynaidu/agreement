@@ -111,11 +111,11 @@ if($_GET['id']==''){
                       <div class="col-sm-9">
                         <select class="form-control" id="exampleSelectrelation"name="relation"  required>
                           <option value="" disabled selected hidden>Select</option>
-                          <option>Child</option>
                           <option>Father</option>
-						              <option>Mother</option>
-                          <option>Wife</option>
+                          <option>Mother</option>
 						              <option>Husband</option>
+                          <option>Wife</option>
+						              <option>Child</option>
                         </select> 
                       </div>
                     </div>

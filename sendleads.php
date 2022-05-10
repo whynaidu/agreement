@@ -111,7 +111,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Client Name<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampledno" name="client_name" required>
+                        <input type="text" class="form-control" id="exampledno" name="client_name" placeholder="Enter Client Name" required>
                       </div>
                     </div>
 						</div>					  
@@ -141,7 +141,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Requirement<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="examplereq" name="requirement" required>
+                        <input type="text" class="form-control" id="examplereq" name="requirement" placeholder="Enter Requirement" required>
                       </div>
                     </div>
 					  </div>
@@ -149,7 +149,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Area<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="number" class="form-control" id="examplearea"name="area" required>
+                        <input type="number" class="form-control" id="examplearea"name="area" placeholder="Enter Area" required>
                       </div>
                     </div>
 					  </div> 
@@ -158,7 +158,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Location<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="examplelocation"name="location" reqired>
+                        <input type="text" class="form-control" id="examplelocation"name="location" placeholder="Enter Location" reqired>
                       </div>
                     </div>
 						</div> 

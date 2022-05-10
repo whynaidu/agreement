@@ -1,6 +1,7 @@
 <?php
 $name=$_SESSION['name'];
 $email=$_SESSION['email'];
+$address=$_SESSION['address'];
 $id=$_SESSION['id'];
 
 ?>
@@ -27,7 +28,7 @@ $id=$_SESSION['id'];
 
          
             <h3 class="welcome-text text-black fw-bold"id="welcome"><?php echo $name;?></h3>
-            <p><?php echo $email;?></p>
+            <p><?php echo $address;?></p>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">

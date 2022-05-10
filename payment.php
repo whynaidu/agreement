@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
 	if($sql==1){	
     header("location:agreement.php?id=".$fid);
   	}else{
-		echo "<script>alert('Something went wrong');</script>";
+		echo "<script> alert('Something went wrong');</script>";
 	}
 }
 if($_GET['id']==''){
@@ -44,6 +44,8 @@ if($_GET['id']==''){
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
   <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
   <link rel="stylesheet" href="js/select.dataTables.min.css">
   <!-- End plugin css for this page -->
@@ -108,7 +110,7 @@ if($_GET['id']==''){
 
                    <div class="form-group row">
                      <label for="examplename" class="col-sm-2 col-form-label">Payment Methods<label style="color:Red">*</label></label>	
-					 <div class="col-sm-10">
+					        <div class="col-sm-10">
                       <select class="form-control" id="exampleSelecthod" name="method" required>
                       <option value="" disabled selected hidden>select</option>
                           <option>Cash</option>
@@ -121,12 +123,24 @@ if($_GET['id']==''){
 					   </div>
              <div class="form-group row">
                       <label for="exampldate" class="col-sm-2 col-form-label">Bank <label style="color:Red">*</label></label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="bank" id="bank" placeholder="Enter Bank Name" required>
+                      <div class="col-sm-10 ">
+                       <select class="js-example-basic-single w-100 " data-select2-id="1" tabindex="-1" aria-hidden="true">
+                      <option value="AL" data-select2-id="3">SBI</option>
+                      <option value="RU">Bank Of Maharashtra</option>
+                      <option value="WY">Bank Of India</option>
+                      <option value="AM">HDFC Bank</option>
+                      <option value="CA">Axis Bank</option>
+                      <option value="RU">ICICI Bank</option>
+                      <option value="RU">Kotak Mahindra Bank</option>
+                      <option value="RU">IDBI Bank</option>
+                      <option value="RU">YES Bank</option>
+                    </select>
                       </div>
                     </div>
+
+  
 					  <div class="form-group row">
-                      <label for="exampldate" class="col-sm-2 col-form-label">Date of Payment<label style="color:Red">*</label></label>
+                      <label for="exampldate" class="col-sm-2 col-form-label">Date Of Payment<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
                         <input type="date" class="form-control" name="date" id="date" required>
                       </div>
@@ -174,6 +188,8 @@ if($_GET['id']==''){
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/select2/select2.min.js"></script>
+
   <script src="vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <script src="vendors/progressbar.js/progressbar.min.js"></script>
 
@@ -187,6 +203,10 @@ if($_GET['id']==''){
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+    <!-- Custom js for this page-->
+    <script src="js/file-upload.js"></script>
+  <script src="js/typeahead.js"></script>
+  <script src="js/select2.js"></script>
   <script src="js/jquery.cookie.js" type="text/javascript"></script>
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>

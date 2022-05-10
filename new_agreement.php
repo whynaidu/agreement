@@ -105,7 +105,7 @@ if(isset($_POST['submit'])){
 						</div> 
 					  <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampledate" class="col-sm-3 col-form-label">Date of Aggrement<label style="color:Red">*</label></label>
+                      <label for="exampledate" class="col-sm-3 col-form-label">Date Of Aggrement<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                         <input type="date" name="date" class="form-control" id="exampledate" required>
                       </div>
@@ -125,7 +125,7 @@ if(isset($_POST['submit'])){
 						</div>
 						 <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-3 col-form-label">Total no of months<label style="color:Red">*</label></label>
+                      <label for="exampleprop" class="col-sm-3 col-form-label">Total No Of Months<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                         <select required class="form-control" name="month" id="exampleSelectGender">
                         <option value="" disabled selected hidden>select</option>
@@ -139,9 +139,9 @@ if(isset($_POST['submit'])){
 						</div>
             <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-3 col-form-label">Place of Agreement<label style="color:Red">*</label></label>
+                      <label for="exampleprop" class="col-sm-3 col-form-label">Place Of Agreement<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                      <input type="TEXT" name="place" class="form-control" id="exampledate" placeholder="Enter Place" required>
+                      <input type="TEXT" name="place" class="form-control" style="text-transform:uppercase" id="exampledate" placeholder="Enter Place" required>
 
                       </div>
                     </div>
