@@ -7,8 +7,8 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
 }
 include("include/configure.inc.php");
 
-if(isset($_GET['delid'])){
-  $id=mysqli_real_escape_string($conn,$_GET['delid']);
+if(isset($_GET['edit'])){
+  $id=mysqli_real_escape_string($conn,$_GET['edit']);
   $sql=mysqli_query($conn,"delete from enquiry where id='$id'");
   if($sql=1){
     header("location:consultantregistration.php");
@@ -116,7 +116,7 @@ if(isset($_GET['delid'])){
                             <td> <?php echo $arr['mobile_no'];?></td>
                            
                             <td>
-                            <a href="agentprof.php?<?php echo $arr['id'] ?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"> <i class="mdi mdi-border-color"></i> </button></a>
+                            <a href="agentprof.php?edit=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"> <i class="mdi mdi-border-color"></i> </button></a>
                               <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
                           </tr>
                         </tbody>
