@@ -30,6 +30,9 @@ if(isset($_GET['delid'])){
    
   }
 }
+if($_GET['id']==''){
+    header('Location:new_agreement.php');
+    } 
 ?>
 <!DOCTYPE html>
 <html lang="en">

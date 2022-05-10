@@ -6,13 +6,13 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("include/configure.inc.php");
 if(isset($_POST['submit'])){
-	$client_code=$_POST['client_code'];
+	$client_code=$_POST['no'];
 	$email=$_POST['email_id'];
   $subject=$_POST['subject'];
 	$description=$_POST['description'];
 
 	
-	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `client_code`, `email_id`, `subject`, `description`) VALUES ('	$client_code','$email', '$subject','$description')") ;
+	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description', NOw())") ;
   if($sql==1){
     echo "<script>alert('Register successfully'),window.location='addticket.php';</script>";
    
@@ -77,11 +77,31 @@ if(isset($_POST['submit'])){
                   <form class="forms-sample" method="post">
 					  <div class="row">
 					  <div class="col-md-12 ">
-              
-                    <div class="form-group row">
-                      <label for="exampledno" class="col-sm-3 col-form-label">Client Code</label>
+               <div class="form-group row">
+                      <label for="exampledno" class="col-sm-3 col-form-label">Client ID</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="client_code" name="client_code" placeholder="Enter Code">
+                        <input type="text" value="<?php echo $_SESSION['id'];?>" class="form-control" id="client_code" name="client_code" placeholder="Enter Code" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="exampledno" class="col-sm-3 col-form-label">Complaint Code</label>
+                      <div class="col-sm-9"><?php $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
+                            $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
+                      $dnk=mysqli_num_rows($sql);
+                      $lastid=$dnk+1;
+                      $arr=mysqli_fetch_array($query);
+                      $name=$arr['agent_name'];
+                      $first=$name;
+                      
+                      $res= preg_replace('~\S\K\S*\s*~u', '', $first);
+                      if(empty($lastid)){
+						           $number=$res."-000";
+					           }else{
+						          $id=str_pad($lastid + 0, 3,0, STR_PAD_LEFT);
+					        	  $number=$res."CP"."-$id";
+					            }					
+                      					  ?>
+                        <input type="text" name="no" value="<?php echo $number;?>" class="form-control" id="exampledno" readonly>
                       </div>
                     </div>
 						</div>					  

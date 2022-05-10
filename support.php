@@ -6,6 +6,14 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
+
+if(isset($_GET['delid'])){
+  $id=mysqli_real_escape_string($conn,$_GET['delid']);
+  $sql=mysqli_query($conn,"delete from ticket where id='$id'");
+ if($sql=1){
+   header("location:support.php");
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,8 +102,8 @@ include("include/configure.inc.php");
                             <tbody>
                               <tr>
                                 <td> <?php echo $count;?></td>
-                                <td> <?php echo $arr['client_no'];?></td>
-
+                                <td> <?php echo $arr['complaint_code'];?></td>
+                                <td> <?php echo $arr['date'];?></td>
                                 <td> <?php echo $name;?> </td>
                                 <td> <?php echo $arr['email_id'];?></td>
                                 <td> <?php echo $arr['description'];?></td>

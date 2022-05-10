@@ -23,6 +23,9 @@ if(isset($_POST['submit'])){
 		echo "<script>alert('Something went wrong');</script>";
 	}
 }
+if($_GET['id']==''){
+    header('Location:new_agreement.php');
+    } 
 ?><!DOCTYPE html>
 <html lang="en">
 

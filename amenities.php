@@ -25,6 +25,9 @@ if(isset($_GET['delid'])){
     header("location:stage5.php?id=".$fid);
   }
 }
+if($_GET['id']==''){
+    header('Location:new_agreement.php');
+    } 
 ?><!DOCTYPE html>
 <html lang="en">
 

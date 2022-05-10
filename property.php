@@ -5,7 +5,7 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
-$id=$_GET['id'];
+$did=$_GET['id'];
 if(isset($_POST['submit'])){
 	$type=$_POST['type'];  
   $sector=$_POST['sector'];
@@ -17,13 +17,17 @@ if(isset($_POST['submit'])){
   $node=$_POST['node'];
 	
 	$sql=mysqli_query($conn,"INSERT INTO `property_details`(`document_no`,`property_type`, `address`, `sector`, `plot_no`,`cidco`, `area`, `chs`, `node`) VALUES 
-  ('$id','$type','$address','$sector','$plotno','$cidco','$area','$chs','$node')");
+  ('$did','$type','$address','$sector','$plotno','$cidco','$area','$chs','$node')");
 	if($sql==1){	
-    header("location:witness.php?id=".$id);
+    header("location:witness.php?id=".$did);
   	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
 }
+
+if($_GET['id']==''){
+    header('Location:new_agreement.php');
+    } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +76,7 @@ if(isset($_POST['submit'])){
                 </div>
                 <div class="tab-content tab-content-basic">
 <?php
-$selectquery="select * from new_agreement where document_no='$id'";
+$selectquery="select * from new_agreement where document_no='$did'";
 $doctors = mysqli_query($conn,$selectquery);  
 if (mysqli_num_rows($doctors)>0){
 
@@ -93,14 +97,14 @@ if (mysqli_num_rows($doctors)>0){
            <?php
                      while($row = mysqli_fetch_array($doctors)) {
 ?>
-           <label for="examplename" value="<?php echo $row["property_type"]; ?>" class="col-form-label"><b><?php echo $row["property_type"]; ?></b></label>	
+           <input type="text" for="examplename" name="type" value="<?php echo $row["property_type"]; ?>" class="form-control" readonly>
           
           <?php
           }
 ?>
             </div>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="address" placeholder="Enter Sector" required>
+                        <input type="text" class="form-control" name="address" placeholder="Enter Address" required>
                       </div>
                     </div>
 					  <div class="row">
@@ -152,7 +156,7 @@ if (mysqli_num_rows($doctors)>0){
                       </div>
                     </div>
 					<div class="col" align="right">
-					<a href="tenant.php?id=<?php echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
+					<a href="tenant.php?id=<?php echo $did;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
                     <button type="submit" name="submit"class="btn btn-primary  btn-lg" style="color: aliceblue">Next<i class="mdi mdi-chevron-right"></i></button>
 					</div>
                   </form>

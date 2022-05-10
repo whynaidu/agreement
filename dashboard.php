@@ -57,7 +57,7 @@ error_reporting(0);
                         <div class="statistics-details d-flex align-items-center justify-content-between">
                           <div>
                            <?php
-                               $guery=mysqli_query($conn,"select * from property where property_for='sale'And type='Flat'");
+                               $guery=mysqli_query($conn,"select * from property where property_for='sale'And type='Flat' AND user_id='".$_SESSION['id']."'");
                                  $count1=mysqli_num_rows($guery);
                             ?>
                           
@@ -66,7 +66,7 @@ error_reporting(0);
                           </div>                          
                           <div>
                           <?php
-                               $guery=mysqli_query($conn,"select * from property where property_for='rent'And type='Flat'");
+                               $guery=mysqli_query($conn,"select * from property where property_for='rent'And type='Flat'AND user_id='".$_SESSION['id']."'");
                                  $count2=mysqli_num_rows($guery);
                             ?>
                           
@@ -75,7 +75,7 @@ error_reporting(0);
                           </div>                          
                           <div>
                           <?php
-                               $guery=mysqli_query($conn,"select * from property where property_for='sale'And type='shop'");
+                               $guery=mysqli_query($conn,"select * from property where property_for='sale'And type='shop'AND user_id='".$_SESSION['id']."'");
                                  $count3=mysqli_num_rows($guery);
                             ?>
                             <p class="statistics-title">Shop for Sale</p>
@@ -83,7 +83,7 @@ error_reporting(0);
                           </div>
                           <div>
                           <?php
-                               $guery=mysqli_query($conn,"select * from property where property_for='rent'And type='shop'");
+                               $guery=mysqli_query($conn,"select * from property where property_for='rent'And type='shop'AND user_id='".$_SESSION['id']."'");
                                  $count4=mysqli_num_rows($guery);
                             ?>
                             <p class="statistics-title">Shop for Rent</p>
@@ -91,7 +91,7 @@ error_reporting(0);
                           </div>
                           <div>
                             <?php
-                               $query=mysqli_query($conn,"select * from new_agreement where user_id='".$_SESSION['id']."'");
+                               $query=mysqli_query($conn,"select * from new_agreement where user_id='".$_SESSION['id']."'AND user_id='".$_SESSION['id']."'");
                                  $count5=mysqli_num_rows($query);
                             ?>
                             <p class="statistics-title">No. of Agreement</p>

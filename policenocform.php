@@ -6,6 +6,10 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("include/configure.inc.php");
 $fid=$_GET['id'];
+
+if($_GET['id']==''){
+    header('Location:new_agreement.php');
+    } 
 ?>
 <!doctype html>
 <html>

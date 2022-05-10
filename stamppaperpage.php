@@ -6,7 +6,9 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
 }
 include("include/configure.inc.php");
 $fid=$_GET['id'];
-
+if($_GET['id']==''){
+    header('Location:new_agreement.php');
+    } 
 ?> 
 <!doctype html>
 <html>

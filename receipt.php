@@ -4,6 +4,10 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
 {
  header("Location:login.php"); 
 }
+
+if($_GET['id']==''){
+    header('Location:new_agreement.php');
+    } 
 include("include/configure.inc.php");
 $fid=$_GET['id'];
 function AmountInWords(float $amount)

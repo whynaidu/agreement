@@ -30,18 +30,19 @@ if(isset($_POST['sub'])){
   $office_address=$_POST['office_address'];
    $email=$_POST['email'];
       $rera=$_POST['rera'];
-      $prefix=$_POST['prefix'];
    $status=1;
    $pass= rand(100000, 999999);
 
 
-   $to=$email_no;
-   $sub="Password";
+   $to=$email;
+   $sub="Login Details";
  
  $mail = new PHPMailer(true);
  try {
   //Server settings
-  $mail->SMTPDebug = SMTP::DEBUG_SERVER;    
+  $mail->SMTPDebug = SMTP::DEBUG_SERVER;   
+  $mail->SMTPDebug = 0;   
+ 
   $mail->isSMTP();                             
   $mail->Host       = 'smtp.hostinger.com';      
   $mail->SMTPAuth   = true;                             
@@ -56,8 +57,11 @@ if(isset($_POST['sub'])){
   
   //Content
   $mail->isHTML(true);                               
-  $mail->Subject = 'Password';
-  $mail->Body    = 'Login Detail '.$email.' and '.$pass;
+  $mail->Subject = 'Welcome to Agreerent';
+  $mail->Body    = '<h3>Welcome '.$agent_name.'</h3><p>Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property.</p><p>Your Email ID is :- '.$email.'<p>
+  <p>Your Password is :- '.$pass.'</p>
+  <p>Please login with Registerd Email and Password<p><br><h3>Thanks & Regards,</p>
+Tectignis IT Solution<br>Aashiyana CHS Shop No 05,<br> Sector 11, Plot No 29, <br>Kamothe, Navi Mumbai, <br>Maharashtra 410206</h3>';
   $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
   if($mail->send()){
@@ -66,18 +70,7 @@ if(isset($_POST['sub'])){
    $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
     VALUES ('$user_id','$agent_name','$email','$passwordhash','$rera','$office_address','$mobile_no','$status')");
     if($sql=1){
-      // $sql=mysqli_query($conn,"select user_id from agent_details order by user_id desc") or die( mysqli_error($conn));;
-      //                 $row=mysqli_fetch_array($sql);
-      //                 $lastid=$row['user_id'];
-      //                 if(empty($lastid)){
-      //                     $number=001;
-      //                   }else{
-      //                     $id=str_pad($lastid + 1, 3,0, STR_PAD_LEFT);
-      //                     $number=$id;
-      //                   }	
-      // $last_id = mysqli_insert_id($conn);
-      header("location:consultantregistration.php");
-    }
+      echo "<script>alert('Agent Registered Successfully');</script>";    }
     else{
       echo "<script>alert('Something Wrong');</script>";
     }
@@ -122,9 +115,13 @@ if(isset($_POST['sub'])){
 
                
             textarea{
-                
-                border: 1px solid #DEE2E6;
-                border-radius: 4px;
+                   border: 1px solid #dee2e6;
+                   padding: 0.875rem 1.375rem;
+    font-weight: 400;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    width:100%;
+    color:#212529;
                 
             }
            
@@ -172,7 +169,6 @@ if(isset($_POST['sub'])){
 					  }					
                       					  ?>
                         <input type="text" name="no" value="<?php echo $number; ?>" class="form-control" id="exampledno" readonly>
-							<?php   ?>
                       </div>
                     </div>
 						
@@ -186,24 +182,24 @@ if(isset($_POST['sub'])){
                     <div class="form-group row">
                       <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control"name="office_address"  placeholder="Enter Address">
+                        <textarea name="office_address" rows="5" placeholder="Enter Address"required></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="tel" class="form-control"name="mobile_no"  placeholder="Enter Mobile Number ">
+                        <input type="tel" class="form-control"name="mobile_no"  placeholder="Enter Mobile Number"required>
                       </div>
                     </div>
 					  <div class="form-group row">
                       <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <input type="email" class="form-control"name="email"  placeholder="Enter Email ID">
+                        <input type="email" class="form-control"name="email"  placeholder="Enter Email ID" required>
                     
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="examplepan" class="col-sm-2 col-form-label">Rera No.<label style="color:Red">*</label></label>
+                      <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control"name="rera" placeholder="Enter Number">
                       </div>

@@ -40,7 +40,13 @@ if(isset($_POST['submit'])){
   <link rel="stylesheet" href="vendors/typicons/typicons.css">
   <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
   <!-- endinject -->
+  
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
   <link rel="stylesheet" href="js/select.dataTables.min.css">
@@ -50,6 +56,16 @@ if(isset($_POST['submit'])){
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
 </head>
+<style>
+    .select2-container .select2-selection--single{
+    height:34px !important;
+}
+.select2-container--default .select2-selection--single{
+         border: 1px solid #ccc !important; 
+     border-radius: 0px !important; 
+}
+
+  </style>
 <body>
  <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -75,19 +91,17 @@ if(isset($_POST['submit'])){
 					<div>
                         <h4 class="card-title card-title-dash">New Enquire</h4>
 					</div>
-                  <form class="forms-sample" method="post">
-					  <div class="row">
-               <div class="col-md-9 ">
+            <form class="forms-sample" method="post">
+               <div class="col-md-6 ">
                     <div class="form-group row">
-                      <label for="exampledno" class="col-sm-2 col-form-label">Client Name<label style="color:Red">*</label></label>
-                      <div class="col-sm-10">
-                        <Select class="form-control" id="exampledno" name="agent_id" required>
-                          <option selected>Select  </option>
+                      <label for="exampledno" class="col-sm-3 col-form-label">Client Name<label style="color:Red">*</label></label>
+                      <div class="col-sm-9">
+                        <Select class="js-example-basic-single w-100 form-control" data-select2-id="1" tabindex="-1" aria-hidden="true" id="exampledno" name="agent_id" required>
                           <?php $sql=mysqli_query($conn,"select * from agent_details");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                            ?>
-                          <option value="<?php echo $arr["user_id"]; ?>"><?php echo $arr["agent_name"]; ?> </option>
+                          <option value="<?php echo $arr["user_id"]; ?>"><?php echo $arr["agent_name"].'-'.$arr["user_id"];?> </option>
                           <?php } ?>
                         </select>                      
                       </div>
@@ -182,6 +196,9 @@ if(isset($_POST['submit'])){
 </script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script src="vendors/select2/select2.min.js"></script>
+
+
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="vendors/chart.js/Chart.min.js"></script>
@@ -195,6 +212,8 @@ if(isset($_POST['submit'])){
   <script src="js/template.js"></script>
   <script src="js/settings.js"></script>
   <script src="js/todolist.js"></script>
+  <script src="js/select2.js"></script>
+
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="js/jquery.cookie.js" type="text/javascript"></script>
