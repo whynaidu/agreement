@@ -26,14 +26,23 @@
               
             </a>
           </li>
-          <li class="nav-item">
-          <a class="nav-link active" href="paidleads.php" aria-expanded="false" aria-controls="ui-basic">
-            
-              <i class="menu-icon  mdi mdi-checkbox-marked-circle-outline "></i>
-              <span class="menu-title">Paid Leads&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #ff008059; border-radius: 30px;">&nbsp&nbsp&nbsp New &nbsp&nbsp&nbsp</span></span>
-              
-            </a>
-          </li>
+
+
+ <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon  mdi mdi-checkbox-marked-circle-outline"></i>
+        <span class="menu-title">Paid Leads&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #ff008059; border-radius: 30px;">&nbsp&nbsp&nbsp New &nbsp&nbsp&nbsp</span></span>
+</a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+    <li class="nav-item"> <a class="nav-link " href="categorylist.php">Send Leads</a></li>
+   
+     </ul>
+      </div>
+    </li>
+
+
+
       <li class="nav-item nav-category side">Rent Agreement
      
       <!-- <ul class="nav flex-column sub-menu">
@@ -68,19 +77,33 @@
         
         <li class="nav-item nav-category side">Consultant registration
      
-     <!-- <li class="nav-item">
-     <a class="nav-link active" href="todo.php" aria-expanded="false" aria-controls="ui-basic">
-               <i class="menu-icon md mdi mdi-pencil-box "></i>
-               <span class="menu-title">To Do</span>
-             </a> -->
-           </li>
-           <li class="nav-item">
+    
+
+
+
+           <!-- <li class="nav-item">
            <a class="nav-link active" href="consultantregistration.php" aria-expanded="false" aria-controls="ui-basic">
                <i class="menu-icon mdi mdi-face  "></i>
                <span class="menu-title">Consultant</span>
              </a>
-           </li>
+           </li> -->
 </li>
+
+<li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon  mdi mdi-face"></i>
+        <span class="menu-title">Consultant</span>
+      </a>
+      <div class="collapse" id="ui-basic8">
+        <ul class="nav flex-column sub-menu">
+    <li class="nav-item"> <a class="nav-link " href="consultantregistration.php">Add</a></li>
+    <li class="nav-item"> <a class="nav-link " href="cosultantlist.php">List</a></li>
+     </ul>
+      </div>
+    </li>
+
+
+
 
 
         <li class="nav-item nav-category side">other
@@ -91,11 +114,12 @@
               <span class="menu-title">To Do</span>
             </a>
           </li>
-          <li class="nav-item">
-          <a class="nav-link active" href="addnewenquire.php" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon  mdi mdi-comment-question-outline  "></i>
-              <span class="menu-title">Enquiry</span>
-            </a>
+
+
+
+
+            
+
 
             <li class="nav-item">
           <a class="nav-link active" href="newsletter.php" aria-expanded="false" aria-controls="ui-basic">
@@ -121,31 +145,50 @@
             </a>
           </li>
 
-          <li class="nav-item">
-          <a class="nav-link active" href="categorylist.php" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-chart-bubble "></i>
-              <span class="menu-title">Categories</span>
-            </a>
-          </li>
+         
+
+
+         
+
+
+<li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-chart-bubble"></i>
+        <span class="menu-title">Categories</span>
+      </a>
+      <div class="collapse" id="ui-basic5">
+        <ul class="nav flex-column sub-menu">
+    <li class="nav-item"> <a class="nav-link " href="categorylist.php">add</a></li>
+    <li class="nav-item"> <a class="nav-link " href="categorylist.php">view</a></li>
+     </ul>
+      </div>
+    </li>
+
+
+
+           <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon  mdi mdi-home-modern"></i>
+        <span class="menu-title">Property</span>
+      </a>
+      <div class="collapse" id="ui-basic1">
+        <ul class="nav flex-column sub-menu">
+    <li class="nav-item"> <a class="nav-link " href="userview.php">add</a></li>
+    <li class="nav-item"> <a class="nav-link " href="userview.php">view</a></li>
+     </ul>
+      </div>
+    </li>
 
 
           <li class="nav-item">
-          <a class="nav-link active" href="userview.php" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-home-modern "></i>
-              <span class="menu-title">Property</span>
-            </a>
-          </li>
-          
-
-
-          <li class="nav-item">
-      <a class="nav-link active" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+      <a class="nav-link active" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-headphones"></i>
         <span class="menu-title">Support</span>
       </a>
-      <div class="collapse" id="ui-basic">
+      <div class="collapse" id="ui-basic2">
         <ul class="nav flex-column sub-menu">
     <li class="nav-item"> <a class="nav-link " href="addticket.php">Add Ticket</a></li>
+    <li class="nav-item"> <a class="nav-link " href="addticket.php">View</a></li>
      </ul>
       </div>
     </li>
