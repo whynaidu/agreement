@@ -1,4 +1,3 @@
-
 <?php  
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
@@ -16,7 +15,6 @@ if(isset($_GET['delid'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -79,7 +77,7 @@ if(isset($_GET['delid'])){
                 <div class="tab-content tab-content-basic">
 				 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
+          <div class="card-body">
 					<div class="row">
 						<div class="col-9">
 					 <h4 class="card-title">Paid Leads</h4>
@@ -87,7 +85,7 @@ if(isset($_GET['delid'])){
 						<div class="col-3" >
 					 <div class="input-group">
                        <!-- <input type="text" class="form-control">
-                    <div class="input-group-append">
+                           <div class="input-group-append">
                         <button class="btn btn-sm btn-primary" type="button" style="color: aliceblue">Search</button>
                       </div>-->
                      
@@ -106,7 +104,7 @@ if(isset($_GET['delid'])){
 </script>
                     </div>
 						</div>
-					</div> -->
+					</div>
 
           <div class="table-responsive pt-3">
                   <div class="row"><div class="col-sm-12 col-md-8"><div class="dataTables_length" id="order-listing_length"><label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="-1">All</option></select> entries</label></div></div>

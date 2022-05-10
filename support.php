@@ -25,7 +25,7 @@ if(isset($_GET['delid'])){
   <title></title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
-  <link rel="stylesheet" href="veeandors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="vendors/typicons/typicons.css">
   <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">

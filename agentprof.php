@@ -5,6 +5,7 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
  header("Location:login.php"); 
 }
 include("include/configure.inc.php");
+
 if(isset($_POST['submit'])){
 	$name=$_POST['name'];  
   $email=$_POST['email'];
@@ -68,7 +69,7 @@ if(isset($_POST['submit'])){
 				<div class="row" >
 				 <div class="col-md-12 grid-margin stretch-card">
          <?php
-$selectquery="select * from agent_details";
+$selectquery="select * from agent_details where user_id='";
 $doctors = mysqli_query($conn,$selectquery);
 if (mysqli_num_rows($doctors)>0){
 
