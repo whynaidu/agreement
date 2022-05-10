@@ -7,11 +7,11 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
 }
 include("include/configure.inc.php");
 
-if(isset($_GET['edit'])){
-  $id=mysqli_real_escape_string($conn,$_GET['edit']);
-  $sql=mysqli_query($conn,"delete from enquiry where id='$id'");
+if(isset($_GET['delid'])){
+  $id=mysqli_real_escape_string($conn,$_GET['delid']);
+  $sql=mysqli_query($conn,"delete from agent_details where id='$id'");
   if($sql=1){
-    header("location:consultantregistration.php");
+    header("location:consaltantlist.php");
   }
 }
 ?>
@@ -39,7 +39,15 @@ if(isset($_GET['edit'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+  <style>
+    td{
+    width:10%;
+    word-break: break-word;
+    }
+    </style>
+
 </head>
+
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -89,14 +97,12 @@ if(isset($_GET['edit'])){
                         <thead>
                           <tr>
                             <th>Sr.No</th>
-                            <th>Name</th>
-						    <th>Email id</th>
-                            <th>Password</th>
-                            <th>Rera No</th>
-                            <th>Office Address</th>
+                            <th>Agent Code</th>
+                            <th>Name</th>                            
                             <th>Moile No</th>
-                            <th>Edit</th>
-                            
+						                <th>Email id</th>
+                            <th>Rera No</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <?php 
@@ -108,16 +114,19 @@ if(isset($_GET['edit'])){
                         <tbody>
                           <tr>
                             <td> <?php echo $count;?></td>
+                                                        <td> <?php echo $arr['user_id'];?> </td>
+
                             <td> <?php echo $arr['agent_name'];?> </td>
+                                                        <td> <?php echo $arr['mobile_no'];?></td>
+
                             <td> <?php echo $arr['email'];?> </td>
-                            <td> <?php echo $arr['password'];?></td>
                             <td> <?php echo $arr['rera_no'];?></td>
-                            <td> <?php echo $arr['office_address'];?></td>
-                            <td> <?php echo $arr['mobile_no'];?></td>
                            
                             <td>
-                            <a href="agentprof.php?edit=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"> <i class="mdi mdi-border-color"></i> </button></a>
-                              <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
+                            <a href="agentprof.php?edit=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-primary  btn-md" style="color: aliceblue"> <i class="mdi mdi-grease-pencil"></i> </button></a>
+                            <a href="consultantlist.php?delid=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-danger  btn-md" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button></a>
+
+                            <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
                           </tr>
                         </tbody>
                         <?php $count++;} ?>
@@ -148,7 +157,7 @@ if(isset($_GET['edit'])){
     <!-- page-body-wrapper ends -->
   <!-- container-scroller -->
   <script>
-      document.title="News Letter";
+      document.title="Consaltant List";
       // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <!-- plugins:js -->
