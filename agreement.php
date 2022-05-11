@@ -89,7 +89,7 @@ th {
 <div>
 	<table style="width: 100%;">
 	<?php 
-	
+	$fid=$_GET['id'];
 	$sql=mysqli_query($conn,"select * from property_details where document_no='$fid'");
 	 while($arr=mysqli_fetch_array($sql)){
 	?>
@@ -211,11 +211,13 @@ th {
 	</tbody>
 </table>
 <?php 
-	
-	$sql=mysqli_query($conn,"select * from agent_details where document_no='$fid' AND user_id='".$_SESSION['id']."'");
-	 while($arr=mysqli_fetch_array($sql)){
+	$userid=$_SESSION['id'];
+	$sql1=mysqli_query($conn,"select * from agent_details where  user_id='$userid'") or die( mysqli_error($conn));;
+	 while($arr1=mysqli_fetch_assoc($sql1)){
+
+
 	?>
-<p>IN CASE THE LEAVE & LICENSE AGREEMENT IS EXTENDED THEN THE LICENSEE SHALL PAY THE COMMISSION/BROKERAGE TO THE ESTATE AGENT_____________________________________  </p>                                                                                                                             
+<p>IN CASE THE LEAVE & LICENSE AGREEMENT IS EXTENDED THEN THE LICENSEE SHALL PAY THE COMMISSION/BROKERAGE TO THE ESTATE AGENT <u><b><?php echo $arr1['agent_name']; ?></b></u>  </p>                                                                                                                             
 <p>IN WITHNESS WHEREOF THE PARTIES HERETO HAVE EXECUTED THIS AGREEMENT IN THE MNNER HEREINAFTER APPEARING ON TH DAY AND THE YEAR FIRST HEREIN ABOVE WRI</p>
 	<p><b>Within named 'LICENSOR'</b></p>
 	<?php } ?>
