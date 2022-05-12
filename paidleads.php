@@ -16,19 +16,12 @@ if(isset($_GET['delid'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
+  
+<!-- Required meta tags -->
+<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title></title>
   <!-- plugins:css -->
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -44,16 +37,6 @@ if(isset($_GET['delid'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
-  <style>
-    .select2-container .select2-selection--single{
-    height:34px !important;
-}
-.select2-container--default .select2-selection--single{
-         border: 1px solid #ccc !important; 
-     border-radius: 0px !important; 
-}
-
-  </style>
 </head>
 <body>
   <div class="container-scroller">
@@ -71,44 +54,46 @@ if(isset($_GET['delid'])){
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-sm-12">
-              <div class="home-tab">
+            <div class="container">
+              <div class="card-body">
               
-                <div class="tab-content tab-content-basic">
-				 <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
-          <div class="card-body">
-					<div class="row">
-						<div class="col-9">
+                <div class="row">
+				 <div class="col-sm-9">
+           
+      
 					 <h4 class="card-title">Paid Leads</h4>
 						</div>
-						<div class="col-3" >
-					 <div class="input-group">
-                       <!-- <input type="text" class="form-control">
-                           <div class="input-group-append">
-                        <button class="btn btn-sm btn-primary" type="button" style="color: aliceblue">Search</button>
-                      </div>-->
-                     
-	        <select class="form-control select2">
-	           <option>Select</option> 
-	           <option>Car</option> 
-	           <option>Bike</option> 
-	           <option>Scooter</option> 
-	           <option>Cycle</option> 
-	           <option>Horse</option> 
-	        </select>
-	    </form>
- 	
-<script>
-    $('.select2').select2();
-</script>
-                    </div>
-						</div>
-					</div>
+            <div class="col-sm-3" style="text-align: end;">
+              <button href="Addtrainingsession.html" target="_self" style="color: aliceblue;" class="btn btn-primary btn-sm">+ Add New</button>
+              </div>
+</div>
+<hr>
+						<div class="row">
+                   <div class="col-sm-7">
+                     <label>show</label>
+                     <select>
+                       <option value="10">5</option>
+                       <option value="10">10</option>
+                       <option value="10">50</option>
+                       <option value="10">100</option>
+                    </select>
+                     <label>entries</label>
+                   </div>
+                   <div class="col-sm-5" style="text-align: end;">
+                   <div class="row">
+                       <div class="col-sm-4">
+                       <lable>Search</lable>
+                       </div>
+                       <div class="col-sm-8">
+                       <input type="text" class="form-control" name="text">
 
-          <div class="table-responsive pt-3">
-                  <div class="row"><div class="col-sm-12 col-md-8"><div class="dataTables_length" id="order-listing_length"><label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="-1">All</option></select> entries</label></div></div>
-                  <div class="table-responsive pt-3">
+                       </div>
+                   </div>
+                   </div>
+                 </div>
+
+
+	      <div class="table-responsive pt-3">
                       <table class="table table-bordered">
                         <thead>
                           <tr>
@@ -139,47 +124,30 @@ if(isset($_GET['delid'])){
                             <td> <?php echo $arr['location'];?> </td>
                             <td>
                             <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" onclick="ConfirmDelete()" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button></a>
-                              <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
+                              
                           </tr>
-                        </tbody>
+                        
                         <?php $count++;} ?>
-                      </table>
-
-                      <div class="col" align="right">
-                          <button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></button>
+                         </table>
                          </div>
+                         </div>
+                         </div>
+                         </div>
+                         </div>
+                         
+                         
+                     
 
+                  
 
-                  </div>
-                </div>
-              </div>
-            </div>
-					</div> 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-		</div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <?php include("partials/footer.php"); ?>
-
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-
-    <!-- page-body-wrapper ends -->
-  <!-- container-scroller -->
-  <script>
-    function ConfirmDelete()
-    {
-      return confirm("Are you sure you want to delete?");
-    }
-</script>  
-  <script>
-      document.title="Paid Leads";
+                         <?php include("partials/footer.php");?>
+             
+              
+            
+          
+					
+                         <script>
+      document.title="Social Medka | Leads";
       // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <!-- plugins:js -->

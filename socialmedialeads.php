@@ -55,37 +55,48 @@ if(isset($_GET['delid'])){
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-sm-12">
-              <div class="home-tab">
-               
-                <div class="tab-content tab-content-basic">
-				 <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-					<div class="row">
-						<div class="col-9">
-					 <h4 class="card-title">Social Media Leads</h4>
-						</div>
-						<!-- <div class="col-3">
-					 <div class="input-group">
-                      <input type="text" class="form-control">
-                      <div class="input-group-append">
-                        <button class="btn btn-sm btn-primary" type="button" style="color: aliceblue">Search</button>
-                      </div>
-                    </div>
-						</div> -->
+          <div class="container">
+     <div class="card m-3">
+       <div class="card-body">
+            <div class="row"> 
+              <div class="col-sm-9">
+              <h4>List All Training Session</h4>
+              </div>
+              <div class="col-sm-3" style="text-align: end;">
+              <button href="Addtrainingsession.html" target="_self" style="color: aliceblue;" class="btn btn-primary btn-sm">+ Add New</button>
+              </div>
+            </div>
+           <hr>
+                 <div class="row"> 
+                   <div class="col-sm-7">
+                     <label>show</label>
+                     <select>
+                       <option value="10">5</option>
+                       <option value="10">10</option>
+                       <option value="10">50</option>
+                       <option value="10">100</option>
+                    </select>
+                     <label>entries</label>
+                   </div>
+                   <div class="col-sm-5" style="text-align: end;">
+                   <div class="row">
+                       <div class="col-sm-4">
+                       <lable>Search</lable>
+                       </div>
+                       <div class="col-sm-8">
+                       <input type="text" class="form-control" id="myInput" onkeyup="searchFunction()" name="text">
 
-            <div class="table-responsive pt-3">
-                  <div class="row"><div class="col-sm-12 col-md-8"><div class="dataTables_length" id="order-listing_length"><label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="-1">All</option></select> entries</label></div></div>
-
-					</div>
-                  <div class="table-responsive pt-3">
-                      <table class="table table-bordered">
-                        <thead>
+                       </div>
+                   </div>
+                   </div>
+                 </div>
+                                                  
+                                                  <div class="table-responsive pt-3">
+                                                    <table class="table table-bordered" id="myTr">
+                                                    <thead>
                           <tr>
                             <th>Sr.No</th>
-						              	<th>Source</th>
-                            <th>Clinet Name</th>
+						                <th>Client Name</th>
                             <th>Mobile No</th>
                             <th>Type</th> 
                             <th> Requirements </th>
@@ -93,54 +104,63 @@ if(isset($_GET['delid'])){
                             <th> Location </th>
                           </tr>
                         </thead>
-                        <?php 
-                        
-                        $sql=mysqli_query($conn,"select * from leads where (source='facebook') OR (source='instagram')  AND user_id='".$_SESSION['id']."'");
-                        $count=1;
-                         while($arr=mysqli_fetch_array($sql)){
-                        ?>
-                        <tbody>
-                          <tr>
-                            <td> <?php echo $count;?></td>
-                            <td> <?php echo $arr['source'];?> </td>
-                            <td> <?php echo $arr['client_name'];?></td>
-                            <td> <?php echo $arr['mobile'];?></td>
-                            <td> <?php echo $arr['type'];?> </td>
-                            <td> <?php echo $arr['requirement'];?> </td>
-                            <td> <?php echo $arr['area'];?> </td>
-                            <td> <?php echo $arr['location'];?> </td>
-                            <td>
-<a class="btn btn-danger btn-rounded btn-icon" href="leads.php?delid=<?php echo $arr['id']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
-                          <i class="mdi mdi-delete"></i>
-                          </a>                                    <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
-                          </tr>
-                        </tbody>
-                        <?php $count++;} ?>
-                      </table>
+<?php 
 
-                      <div class="col" align="right">
-                          <button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></button>
-                         </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-					</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+$sql=mysqli_query($conn,"select * from leads");
+$count=1;
+while($arr=mysqli_fetch_array($sql)){
+?>
+                                                        <tr id="myTr">
+                                                            <td><?php echo $count ?></td>
+                                                            <td><?php echo $arr['client_name']; ?></td>
+                                                            <td><?php echo $arr['mobile']; ?></td>
+                                                            <td><?php echo $arr['type']; ?></td>
+                                                            <td><?php echo $arr['requirement']; ?></td>
+                                                            <td><?php echo $arr['area']; ?></td>
+                                                            <td><?php echo $arr['location']; ?></td>
+                                                            
+                                                        </tr>
+                                                        <?php $count++; } ?>
+</table>                                          
+    </div>
 		</div>
+</div>
+</div>
+</div>
+    
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <?php include("partials/footer.php"); ?>
+       
 
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
+      <?php include("partials/footer.php");?>
+
+      <script>
+      function searchFunction(){
+        let filter = document.getElementById('myInput').value.toUpperCase();
+
+        let tr = document.getElementById('myTr');
+
+        let td = tr.getElementsByTagName("td");
+
+        for (i = 0; i < td.length; i++) {
+
+         let a = td[i].getElementsByTagName("a")[0];
+        let txtValue = a.textContent || a.innerText;
+        
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            td[i].style.display = "";
+        } else {
+            td[i].style.display = "none";
+        }
+    }
+  }
+      
+      </script>
+
+
 
     <!-- page-body-wrapper ends -->
   <!-- container-scroller -->
@@ -170,6 +190,5 @@ if(isset($_GET['delid'])){
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
 </body>
-
 </html>
 

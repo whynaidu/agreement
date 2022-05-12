@@ -214,6 +214,10 @@ th {
 	
 	$sql=mysqli_query($conn,"select * from agent_details where document_no='$fid' AND user_id='".$_SESSION['id']."'");
 	 while($arr=mysqli_fetch_array($sql)){
+
+	 
+
+	 
 	?>
 <p>IN CASE THE LEAVE & LICENSE AGREEMENT IS EXTENDED THEN THE LICENSEE SHALL PAY THE COMMISSION/BROKERAGE TO THE ESTATE AGENT_____________________________________  </p>                                                                                                                             
 <p>IN WITHNESS WHEREOF THE PARTIES HERETO HAVE EXECUTED THIS AGREEMENT IN THE MNNER HEREINAFTER APPEARING ON TH DAY AND THE YEAR FIRST HEREIN ABOVE WRI</p>

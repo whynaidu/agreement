@@ -30,10 +30,17 @@ include("include/configure.inc.php");
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+      
+
 </head>
 
 <body>
-  <div class="container-scroller">
+  
+<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <?php include("partials/header.php"); ?>
 
@@ -59,26 +66,36 @@ include("include/configure.inc.php");
                             <h4 class="card-title">Police NOC</h4>
                           </div>
                           
-                          <form class="col-4" method="post">
-                            <div>
-                           <div class="input-group">
-                                <input type="text" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>"
-                                  class="form-control">&nbsp;&nbsp;
-                                <div class="input-group-append">
-                                  <button class="btn btn-sm btn-primary" type="submit" style="color: aliceblue"
-                                    name="">Search</button>
-                                </div>
-                              </div>
-                            </div>
+                         
+                 <div class="row"> 
+                   <div class="col-sm-7">
+                     <label>show</label>
+                     <select>
+                       <option value="10">5</option>
+                       <option value="10">10</option>
+                       <option value="10">50</option>
+                       <option value="10">100</option>
+                    </select>
+                     <label>entries</label>
+                   </div>
+                   <div class="col-sm-5" style="text-align: end;">
+                   <div class="row">
+                       <div class="col-sm-4">
+                       <lable>Search</lable>
+                       </div>
+                       <div class="col-sm-8">
+                       <input type="text" class="form-control" id="myInput" onkeyup="searchFunction()" name="text">
 
-                            
-                         </div>
-                        </form>
+                       </div>
+                   </div>
+                   </div>
+                 </div>
+                        
                         <div class="table-responsive pt-3">
-                          <table class="table table-bordered">
+                          <table class="table table-bordered" id="service_table">
                             <thead>
                               <tr>
-                                <th>Sr.No</th>
+                                <th class="th-sm">Sr.No</th>
                                 <th>Document No</th>
                                 <th>Owner Name</th>
                                 <th>Tenant Name</th>
@@ -86,7 +103,7 @@ include("include/configure.inc.php");
                                 <th> Action </th>
                               </tr>
                             </thead>
-
+<tbody>
 
                             <?php 
 
@@ -139,12 +156,12 @@ include("include/configure.inc.php");
                                         }
                                 
                                           ?>
+                                          </tbody>
                           </table>
 
-                          <div class="col" align="right">
-                          <button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
-                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></button>
-                         </div>
+                          <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+                          
 
                         </div>
                       </div>
@@ -152,6 +169,7 @@ include("include/configure.inc.php");
                   </div>
                 </div>
               </div>
+             
             </div>
           </div>
         </div>
@@ -167,6 +185,8 @@ include("include/configure.inc.php");
 
   <!-- page-body-wrapper ends -->
   <!-- container-scroller -->
+
+  <?php include("partials/footer.php");?>
   <script>
     document.title = "Police NOC List";
       // document.getElementById("welcome").innerHTML = document.title;
@@ -191,7 +211,22 @@ include("include/configure.inc.php");
   <script src="js/jquery.cookie.js" type="text/javascript"></script>
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
+  <script>$(document).ready(function () {
+    $.noConflict();
+    var table = $('#service_table').DataTable();
+});</script>
+  
   <!-- End custom js for this page-->
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+  <script src="app.js">
+<script>
+$(document).ready(function() {
+    $('#news').DataTable();
+  
+} );
+    </script>
 
 </html>

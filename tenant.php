@@ -117,6 +117,7 @@ if($_GET['id']==''){
                       <option value="" disabled selected hidden>select</option>
                           <option>Mr.</option>
                           <option>Mrs.</option>
+                          <option>Miss.</option>
                         </select>
                       </div>
                       <div class="col-sm-8">
@@ -165,13 +166,13 @@ if($_GET['id']==''){
                     <div class="form-group row">
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                      <textarea name="address" cols="73" rows="4" placeholder="Enter Address" required></textarea> 
+                      <textarea name="address" cols="66" rows="4" placeholder="Enter Address" required></textarea> 
                       </div>
                     </div>
 					          <div class="form-group row">
                       <label for="examplepreaddress" class="col-sm-2 col-form-label">Present Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <textarea name="permanent_address" cols="73" rows="4" placeholder="Enter Address" required></textarea>  
+                        <textarea name="permanent_address" cols="66" rows="4" placeholder="Enter Address" required></textarea>  
                       </div>
                     </div>
                

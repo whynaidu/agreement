@@ -16,7 +16,6 @@ if(isset($_GET['delid'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -76,7 +75,7 @@ if(isset($_GET['delid'])){
 
 					</div>
                   <div class="table-responsive pt-3">
-                      <table id="news" class="table table-bordered">
+                      <table id="news"class="table table-bordered">
                         <thead>
                           <tr>
                             <th>Sr.No</th>
@@ -87,13 +86,14 @@ if(isset($_GET['delid'])){
                             <th> Action </th>
                           </tr>
                         </thead>
+                       
+                        <tbody>
                         <?php 
                         
                         $sql=mysqli_query($conn,"select * from newsletter");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
-                        <tbody>
                           <tr>
                             <td> <?php echo $count;?></td>
                             <td> <?php echo $arr['email'];?> </td>
@@ -103,8 +103,9 @@ if(isset($_GET['delid'])){
                             <a href="newsletter.php?delid=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button></a>
                          </td>
                           </tr>
+                          <?php $count++;} ?>
                         </tbody>
-                        <?php $count++;} ?>
+                      
                       </table>
 
                       <!-- <div class="col" align="right">
@@ -135,6 +136,14 @@ if(isset($_GET['delid'])){
    </div>
   <!-- container-scroller -->
   <script>
+
+$(document).ready(function() {
+    $('#news').DataTable();
+  
+} );
+    </script>
+
+  <script>
       document.title="News Letter";
       // document.getElementById("welcome").innerHTML = document.title;
     </script>
@@ -159,14 +168,20 @@ if(isset($_GET['delid'])){
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-  <script src="../agreement/app.js"></script>
   <!-- End custom js for this page-->
 
 
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+  <script src="app.js">
+<script>
+$(document).ready(function() {
+    $('#news').DataTable();
+  
+} );
+    </script>
 
 </html>
 

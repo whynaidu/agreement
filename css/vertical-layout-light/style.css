@@ -27222,7 +27222,6 @@ body.avgrund-active {
 }
 
 .dataTables_wrapper .dataTable .btn, .dataTables_wrapper .dataTable .ajax-upload-dragdrop .ajax-file-upload, .ajax-upload-dragdrop .dataTables_wrapper .dataTable .ajax-file-upload, .dataTables_wrapper .dataTable .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .dataTables_wrapper .dataTable .swal2-styled {
-  padding: 0.1rem 1rem;
   vertical-align: top;
 }
 
@@ -27244,6 +27243,7 @@ body.avgrund-active {
 .dataTables_wrapper .dataTable thead .sorting_asc_disabled:after,
 .dataTables_wrapper .dataTable thead .sorting_desc_disabled:before,
 .dataTables_wrapper .dataTable thead .sorting_desc_disabled:after {
+  display:none;
   line-height: 2.5;
   font-family: themify;
   font-size: .65rem;
@@ -27282,7 +27282,12 @@ body.avgrund-active {
     margin-bottom: 1rem;
   }
 }
-
+.page-item.active {
+  z-index: 3;
+  /* color: #fff; */
+  background-color: #0d6efd;
+  border-color: #0d6efd;}
+  
 .expandable-table thead tr th {
   background: #1F3BB3;
   padding: 10px;
