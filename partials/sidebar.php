@@ -115,7 +115,12 @@
             </a>
           </li>
 
-
+          <li class="nav-item">
+    <a class="nav-link active" href="enquiry.php" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-comment-alert"></i>
+              <span class="menu-title">Enquiry</span>
+            </a>
+          </li>
 
 
             
@@ -173,8 +178,8 @@
       </a>
       <div class="collapse" id="ui-basic1">
         <ul class="nav flex-column sub-menu">
-    <li class="nav-item"> <a class="nav-link " href="userview.php">add</a></li>
-    <li class="nav-item"> <a class="nav-link " href="userview.php">view</a></li>
+    <li class="nav-item"> <a class="nav-link " href="property.php">add</a></li>
+    <li class="nav-item"> <a class="nav-link " href="propertylist.php">view</a></li>
      </ul>
       </div>
     </li>

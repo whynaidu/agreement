@@ -115,7 +115,8 @@ if($_GET['id']==''){
                           <option>Mother</option>
 						              <option>Husband</option>
                           <option>Wife</option>
-						              <option>Child</option>
+                          <option>Son</option>
+                          <option>Daughter</option>
                         </select> 
                       </div>
                     </div>
