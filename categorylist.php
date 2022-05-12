@@ -65,15 +65,22 @@ if(isset($_GET['delid'])){
                 <div class="card-body">
 					<div class="row">
 						<div class="col-9">
-					 <h4 class="card-title">Leads</h4>
+					 <h4 class="card-title">Category</h4>
 						</div>
 						<div class="col-3"style="text-align: end;">
-				<a href="addnewenquire.php"><button class="btn btn-primary text-white me-0">Add Leads</button></a>
+				<a href="addnewenquire.php"><button class="btn btn-primary text-white me-0">Add Category</button></a>
 						</div>
 					</div>
 
           <div class="table-responsive pt-3">
-                  <div class="row"><div class="col-sm-12 col-md-8"><div class="dataTables_length" id="order-listing_length"><label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="-1">All</option></select> entries</label></div></div>
+                  <div class="row"><div class="col-sm-12 col-md-8"><div class="dataTables_length" id="order-listing_length">
+                    <label>Show</label> 
+                    <select name="order-listing_length" style="width:min-content;"aria-controls="order-listing" class="custom-select custom-select-sm form-control">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="-1">All</option>
+                  </select><label> entries</label></div></div>
 
                   <div class="table-responsive pt-3">
                       <table class="table table-bordered">
@@ -99,7 +106,7 @@ if(isset($_GET['delid'])){
                             <td> <?php echo $arr['url'];?></td>
                           
                             <td>
-   <a class="btn btn-danger btn-rounded btn-icon" href="leads.php?delid=<?php echo $arr['id']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
+   <a class="btn btn-danger btn-rounded btn-icon" href="leads.php?delid=<?php echo $arr['id']; ?>" onclick="return checkDelete()" style="color: aliceblue;"class="btn btn-primary btn-rounded btn-icon">
                           <i class="mdi mdi-delete"></i>
                           </a>      
                          </td>                        <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
