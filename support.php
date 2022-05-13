@@ -17,7 +17,6 @@ if(isset($_GET['delid'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -39,20 +38,26 @@ if(isset($_GET['delid'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
-</head>
+  <link rel="stylesheet" href="ttps://cdn.datatables.net/1.11.5/css/dataTables.material.min.css">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/4.0.0/material-components-web.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+
+</head>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <?php include("partials/header.php"); ?>
 
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
+<!-- partial -->
+<div class="container-fluid page-body-wrapper" style="padding-top: 50px;">
+  <!-- partial:partials/_settings-panel.html -->
 
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <?php include("partials/sidebar.php"); ?>
+  <!-- partial -->
+  <!-- partial:partials/_sidebar.html -->
+  <?php include("partials/sidebar.php"); ?>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -60,29 +65,19 @@ if(isset($_GET['delid'])){
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="tab-content tab-content-basic">
-                  <div class="col-lg-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-8">
-                            <h4 class="card-title">Police NOC</h4>
-                          </div>
-                          <form class="col-6" method="post">
-                            <div>
-                              <div class="input-group">
-                                <input type="text" class="form-control">&nbsp;&nbsp;
-                                <div class="input-group-append">
-                                  <button class="btn btn-sm btn-primary" type="submit"
-                                    style="color: aliceblue">Search</button>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                        </form>
-                        <div class="table-responsive pt-3">
-                          <table class="table table-bordered">
-                            <thead>
-                              <tr>
+				  <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+					<div class="row">
+						<div class="col-9">
+					 <h4 class="card-title">News letter</h4>
+						</div>
+</div>
+
+                  <div class="table-responsive pt-3">
+                      <table id="news"class="table table-bordered cell-border" style="text-align:center;">
+                        <thead>
+                           <tr>
                                 <th>Sr.No</th>
                                 <th>Complaint No</th>
                                 <th>Complaint Date</th>
@@ -120,32 +115,45 @@ if(isset($_GET['delid'])){
                               </tr>
                             </tbody>
                             <?php $count++;}  ?>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
+</table>      
+
+                      <!-- <div class="col" align="right">
+                          <button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px" ><i class="mdi mdi-chevron-left"></i>Previous</button></a>
+                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></button>
+                         </div> -->
+
                   </div>
+                </div>
+              </div>
+            </div>
+					</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <?php include("partials/footer.php"); ?>
+		</div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <?php include("partials/footer.php"); ?>
 
-    <!-- partial -->
-  </div>
-  <!-- main-panel ends -->
-
-  <!-- page-body-wrapper ends -->
+        <!-- partial -->
+        </div>
+      <!-- main-panel ends -->
+    <!-- page-body-wrapper ends -->
   <!-- container-scroller -->
   <script>
-    document.title = "Police NOC List";
-    // document.getElementById("welcome").innerHTML = document.title;
-  </script>
+
+$(document).ready(function() {
+    $('#news').DataTable();
+  
+} );
+    </script>
+
+  <script>
+      document.title="News Letter";
+      // document.getElementById("welcome").innerHTML = document.title;
+    </script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
@@ -166,8 +174,20 @@ if(isset($_GET['delid'])){
   <script src="js/jquery.cookie.js" type="text/javascript"></script>
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
+
   <!-- End custom js for this page-->
- </div>
+
+
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+  
+<script>
+$(document).ready(function() {
+    $('#news').DataTable();
+  
+} );
+    </script>
 
 </html>

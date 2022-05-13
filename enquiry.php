@@ -1,4 +1,3 @@
-
 <?php  
 session_start();
 if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
@@ -17,7 +16,6 @@ if(isset($_GET['delid'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -39,6 +37,10 @@ if(isset($_GET['delid'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
 </head>
 <body>
   <div class="container-scroller">
@@ -46,7 +48,7 @@ if(isset($_GET['delid'])){
     <?php include("partials/header.php"); ?>
 
 <!-- partial -->
-<div class="container-fluid page-body-wrapper">
+<div class="container-fluid page-body-wrapper" style="padding-top: 50px;">
   <!-- partial:partials/_settings-panel.html -->
 
   <!-- partial -->
@@ -58,35 +60,20 @@ if(isset($_GET['delid'])){
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
-               
                 <div class="tab-content tab-content-basic">
-				 <div class="col-lg-12 grid-margin stretch-card">
+				  <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
 					<div class="row">
 						<div class="col-9">
 					 <h4 class="card-title">News letter</h4>
 						</div>
-						<!-- <div class="col-3">
-					 <div class="input-group">
-                      <input type="text" class="form-control">
-                      <div class="input-group-append">
-                        <button class="btn btn-sm btn-primary" type="button" style="color: aliceblue">Search</button>
-                        <div class="input-group">
-                      <input type="text" class="form-control">
-                      </div>
-                    </div>
-						</div>
-					</div> -->
+</div>
 
-          <div class="table-responsive pt-3">
-                  <div class="row"><div class="col-sm-12 col-md-8"><div class="dataTables_length" id="order-listing_length"><label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="-1">All</option></select> entries</label></div></div>
-          
-
-          
                   <div class="table-responsive pt-3">
-                      <table class="table table-bordered">
+                      <table id="news"class="table table-bordered" style="text-align:center;">
                         <thead>
+                           
                           <tr>
                             <th>Sr.No</th>
                             <th>Name</th>
@@ -115,11 +102,15 @@ if(isset($_GET['delid'])){
                           </tr>
                         </tbody>
                         <?php $count++;} ?>
+                      
+                      
                       </table>
-                      <div class="col" align="right">
-                          <button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px"><i class="mdi mdi-chevron-left"></i>Previous</button></a>
+
+                      <!-- <div class="col" align="right">
+                          <button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px" ><i class="mdi mdi-chevron-left"></i>Previous</button></a>
                      <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></button>
-                         </div>
+                         </div> -->
+
                   </div>
                 </div>
               </div>
@@ -136,11 +127,18 @@ if(isset($_GET['delid'])){
         <?php include("partials/footer.php"); ?>
 
         <!-- partial -->
-      </div>
+        </div>
       <!-- main-panel ends -->
-
     <!-- page-body-wrapper ends -->
   <!-- container-scroller -->
+  <script>
+
+$(document).ready(function() {
+    $('#news').DataTable();
+  
+} );
+    </script>
+
   <script>
       document.title="News Letter";
       // document.getElementById("welcome").innerHTML = document.title;
@@ -165,8 +163,20 @@ if(isset($_GET['delid'])){
   <script src="js/jquery.cookie.js" type="text/javascript"></script>
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
+
   <!-- End custom js for this page-->
+
+
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+  
+<script>
+$(document).ready(function() {
+    $('#news').DataTable();
+  
+} );
+    </script>
 
 </html>
-

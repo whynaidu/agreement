@@ -16,7 +16,6 @@ if(isset($_GET['delid'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -38,6 +37,13 @@ if(isset($_GET['delid'])){
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="stylesheet" href="ttps://cdn.datatables.net/1.11.5/css/dataTables.material.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/4.0.0/material-components-web.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+
 </head>
 <body>
   <div class="container-scroller">
@@ -45,7 +51,7 @@ if(isset($_GET['delid'])){
     <?php include("partials/header.php"); ?>
 
 <!-- partial -->
-<div class="container-fluid page-body-wrapper">
+<div class="container-fluid page-body-wrapper" style="padding-top: 50px;">
   <!-- partial:partials/_settings-panel.html -->
 
   <!-- partial -->
@@ -55,46 +61,22 @@ if(isset($_GET['delid'])){
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-          <div class="container">
-     <div class="card m-3">
-       <div class="card-body">
-            <div class="row"> 
-              <div class="col-sm-9">
-              <h4>List All Training Session</h4>
-              </div>
-              <div class="col-sm-3" style="text-align: end;">
-              <button href="Addtrainingsession.html" target="_self" style="color: aliceblue;" class="btn btn-primary btn-sm">+ Add New</button>
-              </div>
-            </div>
-           <hr>
-                 <div class="row"> 
-                   <div class="col-sm-7">
-                     <label>show</label>
-                     <select>
-                       <option value="10">5</option>
-                       <option value="10">10</option>
-                       <option value="10">50</option>
-                       <option value="10">100</option>
-                    </select>
-                     <label>entries</label>
-                   </div>
-                   <div class="col-sm-5" style="text-align: end;">
-                   <div class="row">
-                       <div class="col-sm-4">
-                       <lable>Search</lable>
-                       </div>
-                       <div class="col-sm-8">
-                       <input type="text" class="form-control" id="myInput" onkeyup="searchFunction()" name="text">
+            <div class="col-sm-12">
+              <div class="home-tab">
+                <div class="tab-content tab-content-basic">
+				  <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+					<div class="row">
+						<div class="col-9">
+					 <h4 class="card-title">News letter</h4>
+						</div>
+</div>
 
-                       </div>
-                   </div>
-                   </div>
-                 </div>
-                                                  
-                                                  <div class="table-responsive pt-3">
-                                                    <table class="table table-bordered" id="myTr">
-                                                    <thead>
-                          <tr>
+                  <div class="table-responsive pt-3">
+                      <table id="news"class="table table-bordered cell-border" style="text-align:center;">
+                        <thead>
+                            <tr>
                             <th>Sr.No</th>
 						                <th>Client Name</th>
                             <th>Mobile No</th>
@@ -121,51 +103,43 @@ while($arr=mysqli_fetch_array($sql)){
                                                             
                                                         </tr>
                                                         <?php $count++; } ?>
-</table>                                          
-    </div>
+</table>      
+
+                      <!-- <div class="col" align="right">
+                          <button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px" ><i class="mdi mdi-chevron-left"></i>Previous</button></a>
+                     <button type="submit" class="btn btn-primary  btn-lg" style="color: aliceblue; margin-top:14px" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></button>
+                         </div> -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+					</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 		</div>
-</div>
-</div>
-</div>
-    
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-       
+        <?php include("partials/footer.php"); ?>
 
         <!-- partial -->
-      </div>
+        </div>
       <!-- main-panel ends -->
-      <?php include("partials/footer.php");?>
-
-      <script>
-      function searchFunction(){
-        let filter = document.getElementById('myInput').value.toUpperCase();
-
-        let tr = document.getElementById('myTr');
-
-        let td = tr.getElementsByTagName("td");
-
-        for (i = 0; i < td.length; i++) {
-
-         let a = td[i].getElementsByTagName("a")[0];
-        let txtValue = a.textContent || a.innerText;
-        
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            td[i].style.display = "";
-        } else {
-            td[i].style.display = "none";
-        }
-    }
-  }
-      
-      </script>
-
-
-
     <!-- page-body-wrapper ends -->
   <!-- container-scroller -->
   <script>
-      document.title="Social Medka | Leads";
+
+$(document).ready(function() {
+    $('#news').DataTable();
+  
+} );
+    </script>
+
+  <script>
+      document.title="News Letter";
       // document.getElementById("welcome").innerHTML = document.title;
     </script>
   <!-- plugins:js -->
@@ -188,7 +162,20 @@ while($arr=mysqli_fetch_array($sql)){
   <script src="js/jquery.cookie.js" type="text/javascript"></script>
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
-  <!-- End custom js for this page-->
-</body>
-</html>
 
+  <!-- End custom js for this page-->
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+  
+<script>
+$(document).ready(function() {
+    $('#news').DataTable();
+  
+} );
+    </script>
+
+</html>
