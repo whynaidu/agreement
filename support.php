@@ -52,7 +52,7 @@ if(isset($_GET['delid'])){
     <?php include("partials/header.php"); ?>
 
 <!-- partial -->
-<div class="container-fluid page-body-wrapper" style="padding-top: 50px;">
+<div class="container-fluid page-body-wrapper">
   <!-- partial:partials/_settings-panel.html -->
 
   <!-- partial -->
