@@ -39,7 +39,7 @@ if(isset($_POST['sub'])){
  try {
   //Server settings
   $mail->SMTPDebug = SMTP::DEBUG_SERVER;   
-  // $mail->SMTPDebug = 0;
+  $mail->SMTPDebug = 0;
 
   $mail->isSMTP();                             
   $mail->Host       = 'smtp.hostinger.com';      
