@@ -110,7 +110,6 @@ if($status==1){
 }
 elseif($status==0){
 ?>
-<a href="agreement.php?id=<?php echo $row['did']; ?>"> <button type="btn-icon" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class=" mdi mdi-pen "></i> </button></a>
 <a href="listofagreement.php?gen=<?php echo $row['did']; ?>" ><button type="submit" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> Generate NOC</button> </a>
 <?php
 }
