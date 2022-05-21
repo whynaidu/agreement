@@ -50,7 +50,7 @@ if(isset($_POST['sub'])){
   $mail->Port       = 465;                             
 
   //Recipients
-  $mail->setFrom('vedant.naidu@tectignis.in', 'Tectignis It Solution');
+  $mail->setFrom('support@agreerent.in', 'Agreerent');
   $mail->addAddress($email, $agent_name);    
   
   //Content
