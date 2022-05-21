@@ -39,13 +39,13 @@ if(isset($_POST['sub'])){
  try {
   //Server settings
   $mail->SMTPDebug = SMTP::DEBUG_SERVER;   
-  $mail->SMTPDebug = 0;   
+  // $mail->SMTPDebug = 0;
 
   $mail->isSMTP();                             
   $mail->Host       = 'smtp.hostinger.com';      
   $mail->SMTPAuth   = true;                             
-  $mail->Username   = "vedant.naidu@tectignis.in";           
-  $mail->Password   = 'Vedant@123';                          
+  $mail->Username   = "support@agreerent.in";           
+  $mail->Password   = 'Admin#A2000';                          
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
   $mail->Port       = 465;                             
 
