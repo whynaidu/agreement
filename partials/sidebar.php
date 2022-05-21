@@ -23,8 +23,8 @@
           <a class="nav-link active" href="socialmedialeads.php" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon  mdi mdi-tablet-android "></i>
               <span class="menu-title">Social Media Leads</span>
-              
             </a>
+           
           </li>
 
 

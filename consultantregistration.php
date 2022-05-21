@@ -24,16 +24,14 @@ require 'PHPMailer/src/Exception.php';
 
 if(isset($_POST['sub'])){
 
-  $user_id=$_POST['no'];
-  $agent_name=$_POST['name'];
+   $user_id=$_POST['no'];
+   $agent_name=$_POST['name'];
    $mobile_no=$_POST['mobile_no'];
-  $office_address=$_POST['office_address'];
+   $office_address=$_POST['office_address'];
    $email=$_POST['email'];
-      $rera=$_POST['rera'];
+   $rera=$_POST['rera'];
    $status=1;
    $pass= rand(100000, 999999);
-
-
    $to=$email;
    $sub="Login Details";
  
@@ -42,12 +40,12 @@ if(isset($_POST['sub'])){
   //Server settings
   $mail->SMTPDebug = SMTP::DEBUG_SERVER;   
   $mail->SMTPDebug = 0;   
- 
+
   $mail->isSMTP();                             
   $mail->Host       = 'smtp.hostinger.com';      
   $mail->SMTPAuth   = true;                             
   $mail->Username   = "vedant.naidu@tectignis.in";           
-  $mail->Password   = 'Admin#2022';                          
+  $mail->Password   = 'Vedant@123';                          
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
   $mail->Port       = 465;                             
 
@@ -153,7 +151,7 @@ Tectignis IT Solution<br>Aashiyana CHS Shop No 05,<br> Sector 11, Plot No 29, <b
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Consultant Registration</h4>
-                  <form action="code.php" class="forms-sample" method="post" enctype="multipart/form-data">
+                  <form class="forms-sample" method="post" enctype="multipart/form-data">
             
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-2 col-form-label">Code No.<label style="color:Red">*</label></label>

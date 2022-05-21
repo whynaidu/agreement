@@ -69,7 +69,7 @@ if(isset($_GET['delid'])){
                 <div class="card-body">
 					<div class="row">
 						<div class="col-9">
-					 <h4 class="card-title">News letter</h4>
+					 <h4 class="card-title">Social Media Leads</h4>
 						</div>
 </div>
 

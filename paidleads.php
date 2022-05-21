@@ -66,12 +66,8 @@ if(isset($_GET['delid'])){
                 <div class="card-body">
 					<div class="row">
 						<div class="col-9">
-					 <h4 class="card-title">News letter</h4>
+					 <h4 class="card-title">Paid Leads</h4>
 						</div>
-            
-          <div class="table-responsive pt-3">
-                  <div class="row"><div class="col-sm-12 col-md-8"><div class="dataTables_length" id="order-listing_length"><label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="-1">All</option></select> entries</label></div></div>
-          
                   <div class="table-responsive pt-3">
                       <table id="news"class="table table-bordered">
                         <thead>
@@ -127,6 +123,7 @@ if(isset($_GET['delid'])){
           </div>
         </div>
 		</div>
+                         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <?php include("partials/footer.php"); ?>
@@ -171,7 +168,7 @@ $(document).ready(function() {
 
   <!-- End custom js for this page-->
 
-
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>

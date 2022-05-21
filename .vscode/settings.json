@@ -1,0 +1,10 @@
+{
+  "files.autoSave": "afterDelay",
+  "editor.wordWrap": "on",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "scm.alwaysShowRepositories": true,
+  "scm.defaultViewMode": "tree",
+  "scm.diffDecorationsGutterPattern": {
+    "added": true
+  }
+}

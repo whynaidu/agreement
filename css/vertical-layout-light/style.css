@@ -8727,7 +8727,10 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+.card{
+  border-radius: 1rem;
 
+}
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -13379,7 +13382,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid #e3e3e3;
-  border-radius: 20px;
+  border-radius: 20px !important; 
 }
 
 .card > hr {
@@ -27397,7 +27400,7 @@ body.avgrund-active {
 table.dataTable tbody td.select-checkbox:before {
   top: 1.4rem;
   left: 10px;
-  border: 1px solid #dee2e6;
+  border: 1px solid #080808;
   width: 14px;
   height: 14px;
 }

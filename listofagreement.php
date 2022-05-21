@@ -65,12 +65,8 @@ if(isset($_GET['gen'])){
                 <div class="card-body">
 				<h4 class="card-title">List of Agreements</h4>
         
-                  <div class="table-responsive pt-3">
-                  <div class="row"><div class="col-sm-12 col-md-8"><div class="dataTables_length" id="order-listing_length"><label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="-1">All</option></select> entries</label></div></div>
-<!--                   
-                  <div class="col-sm-12 col-md-4"><div id="order-listing_filter" class="dataTables_filter"><label><input type="search" class="form-control" placeholder="Search" aria-controls="order-listing"></label></div></div> -->
-                </div>
-                      <table class="table table-bordered">
+                 
+                      <table class="table table-bordered" style="text-align:center">
                         <thead>
                           <tr>
                             <th>Sr.No</th>
@@ -83,13 +79,14 @@ if(isset($_GET['gen'])){
                           </tr>
                         </thead>
 
-                        <?php                 
+   
+                        <tbody>
+                                               <?php                 
     $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, date_add(date_of_agreement, INTERVAL no_of_month month)as Enddate, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus from new_agreement inner join tenant on new_agreement.document_no=tenant.document_no inner join noc on 
     new_agreement.document_no=noc.document_no");
       $count=1;
       while($row = mysqli_fetch_array($sql)) {
       ?>
-                        <tbody>
                           <tr>
                             <td>  <?php echo $count;?> </td>
                             <td> <?php echo $row["tname"]; ?> </td>
@@ -120,8 +117,9 @@ elseif($status==0){
 ?>
 </td>
                           </tr>
+                           <?php $count++; } ?>  
                         </tbody>
-                        <?php $count++; } ?>  
+                       
 
                       </table>
                       <div class="col" align="right">

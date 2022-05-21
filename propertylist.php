@@ -66,7 +66,7 @@ if(isset($_GET['delid'])){
                 <div class="card-body">
 					<div class="row">
 						<div class="col-9">
-					 <h4 class="card-title">News letter</h4>
+					 <h4 class="card-title">Property List</h4>
 						</div>
             
                   <div class="table-responsive pt-3">
